@@ -1,0 +1,17 @@
+.DS*
+.autotest
+.generators
+.rakeTasks
+log/*.log
+tmp/**/*
+doc/api
+doc/app
+nbproject
+public/javascripts/global.js
+public/stylesheets/global.css
+public/.tmp*
+.tmp*~
+.idea
+.loadpath
+.project
+*.bak
