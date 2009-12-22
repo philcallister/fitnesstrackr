@@ -1,0 +1,15 @@
+development:
+      host: localhost
+      adapter: mysql
+      database: fitnesstrackr_dev
+      port: 3306
+      username: root
+      password:
+
+test:
+      host: localhost
+      adapter: mysql
+      database: fitnesstrackr_test
+      port: 3306
+      username: root
+      password:
