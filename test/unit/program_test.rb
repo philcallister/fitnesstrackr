@@ -1,9 +1,15 @@
 require 'test_helper'
 
 class ProgramTest < ActiveSupport::TestCase
-  
+
+  # Validations
   should_validate_presence_of :name, :description
+  should_ensure_length_in_range :name, 1..50
+  should_ensure_length_in_range :description, 1..255
+
+  # Associations
   should_have_many :workout_plans
+  
 
   ##############################################################################
   # Adding
@@ -14,44 +20,17 @@ class ProgramTest < ActiveSupport::TestCase
         assert_save(Program.make_unsaved)
       end
       should "NOT be added as NULL" do
-        bad_name(Program.make_unsaved(:name_nil))
+        bad_name(Program.make_unsaved(:name => nil))
       end
     end
     context "with 'description'" do
       should "NOT be added as NULL" do
-        bad_description(Program.make_unsaved(:description_nil))
+        bad_description(Program.make_unsaved(:description => nil))
       end
     end
     context "with 'name' and 'description'" do
       should "NOT be added when both NULL" do
-        bad_both(Program.make_unsaved(:both_nil))
-      end
-    end
-    # adding with length validation
-    context "while validating lengths" do
-      context "with 'name'" do
-        should "be added with a 'name' <= max" do
-          good_name(Program.make_unsaved(:name_max))
-        end
-        should "NOT be added with a 'name' > max" do
-          bad_name(Program.make_unsaved(:name_over))
-        end
-      end
-      context "with 'description'" do
-        should "be added with a 'description' <= max" do
-          good_description(Program.make_unsaved(:description_max))
-        end
-        should "NOT be added with a 'description' > max" do
-          bad_description(Program.make_unsaved(:description_over))
-        end
-      end
-      context "with 'name' and 'description'" do
-        should "be added with both <= max" do
-          good_both(Program.make_unsaved(:both_max))
-        end
-        should "NOT be added with both > max" do
-          bad_both(Program.make_unsaved(:both_over))
-        end
+        bad_both(Program.make_unsaved(:name => nil, :description => nil))
       end
     end
   end
@@ -70,7 +49,7 @@ class ProgramTest < ActiveSupport::TestCase
         assert_equal 3, @program.workout_plans.length
       end
       should "have a new workout plan added" do
-        @program.workout_plans << WorkoutPlan.make
+        @program.workout_plans << WorkoutPlan.make(:program => nil)
         assert_equal 4, @program.workout_plans.length
       end
     end
