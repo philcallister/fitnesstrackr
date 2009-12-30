@@ -12,38 +12,39 @@
 ActiveRecord::Schema.define(:version => 20091222023407) do
 
   create_table "cardio_plans", :force => true do |t|
-    t.integer  "exercise_type_id"
-    t.integer  "time",                                           :default => 0
-    t.integer  "level",                                          :default => 0
-    t.decimal  "incline",          :precision => 3, :scale => 1, :default => 0.0
-    t.decimal  "speed",            :precision => 3, :scale => 1, :default => 0.0
-    t.decimal  "distance",         :precision => 5, :scale => 2, :default => 0.0
-    t.integer  "calories",                                       :default => 0
-    t.integer  "min_hr",                                         :default => 0
-    t.integer  "max_hr",                                         :default => 0
+    t.integer  "exercise_id"
+    t.integer  "time",                                      :default => 0
+    t.integer  "level",                                     :default => 0
+    t.decimal  "incline",     :precision => 3, :scale => 1, :default => 0.0
+    t.decimal  "speed",       :precision => 3, :scale => 1, :default => 0.0
+    t.decimal  "distance",    :precision => 5, :scale => 2, :default => 0.0
+    t.integer  "calories",                                  :default => 0
+    t.integer  "min_hr",                                    :default => 0
+    t.integer  "max_hr",                                    :default => 0
     t.string   "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "cardios", :force => true do |t|
-    t.integer  "exercise_type_id"
-    t.integer  "time",                                           :default => 0
-    t.integer  "level",                                          :default => 0
-    t.decimal  "incline",          :precision => 3, :scale => 1, :default => 0.0
-    t.decimal  "speed",            :precision => 3, :scale => 1, :default => 0.0
-    t.decimal  "distance",         :precision => 5, :scale => 2, :default => 0.0
-    t.integer  "calories",                                       :default => 0
-    t.integer  "min_hr",                                         :default => 0
-    t.integer  "max_hr",                                         :default => 0
+    t.integer  "exercise_id"
+    t.integer  "time",                                      :default => 0
+    t.integer  "level",                                     :default => 0
+    t.decimal  "incline",     :precision => 3, :scale => 1, :default => 0.0
+    t.decimal  "speed",       :precision => 3, :scale => 1, :default => 0.0
+    t.decimal  "distance",    :precision => 5, :scale => 2, :default => 0.0
+    t.integer  "calories",                                  :default => 0
+    t.integer  "min_hr",                                    :default => 0
+    t.integer  "max_hr",                                    :default => 0
     t.string   "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "exercise_types", :force => true do |t|
-    t.string   "name",        :limit => 50, :null => false
-    t.string   "description",               :null => false
+  create_table "exercises", :force => true do |t|
+    t.string   "name",        :limit => 50,                            :null => false
+    t.string   "description",                                          :null => false
+    t.enum     "kind",        :limit => [:cardio, :single, :strength]
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -70,7 +71,7 @@ ActiveRecord::Schema.define(:version => 20091222023407) do
   end
 
   create_table "single_plans", :force => true do |t|
-    t.integer  "exercise_type_id"
+    t.integer  "exercise_id"
     t.string   "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -87,14 +88,14 @@ ActiveRecord::Schema.define(:version => 20091222023407) do
   end
 
   create_table "singles", :force => true do |t|
-    t.integer  "exercise_type_id"
+    t.integer  "exercise_id"
     t.string   "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "strength_plans", :force => true do |t|
-    t.integer  "exercise_type_id"
+    t.integer  "exercise_id"
     t.string   "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -113,7 +114,7 @@ ActiveRecord::Schema.define(:version => 20091222023407) do
   end
 
   create_table "strengths", :force => true do |t|
-    t.integer  "exercise_type_id"
+    t.integer  "exercise_id"
     t.string   "notes"
     t.datetime "created_at"
     t.datetime "updated_at"

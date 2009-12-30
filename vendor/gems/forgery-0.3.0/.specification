@@ -1,0 +1,135 @@
+--- !ruby/object:Gem::Specification 
+name: forgery
+version: !ruby/object:Gem::Version 
+  version: 0.3.0
+platform: ruby
+authors: 
+- Nathan Sutton
+autorequire: 
+bindir: bin
+cert_chain: []
+
+date: 2009-11-13 00:00:00 -06:00
+default_executable: 
+dependencies: []
+
+description: Easy and customizable generation of forged data. Can be used as a gem or a rails plugin. Includes rails generators for creating your own forgeries.
+email: nate@sevenwire.com
+executables: []
+
+extensions: []
+
+extra_rdoc_files: 
+- LICENSE
+- README.markdown
+files: 
+- .gitignore
+- LICENSE
+- README.markdown
+- Rakefile
+- VERSION.yml
+- forgery.gemspec
+- generators/forgery/USAGE
+- generators/forgery/forgery_generator.rb
+- init.rb
+- lib/forgery.rb
+- lib/forgery/dictionaries.rb
+- lib/forgery/dictionaries/cities
+- lib/forgery/dictionaries/colors
+- lib/forgery/dictionaries/company_names
+- lib/forgery/dictionaries/countries
+- lib/forgery/dictionaries/female_first_names
+- lib/forgery/dictionaries/frequencies
+- lib/forgery/dictionaries/genders
+- lib/forgery/dictionaries/languages
+- lib/forgery/dictionaries/last_names
+- lib/forgery/dictionaries/lorem_ipsum
+- lib/forgery/dictionaries/male_first_names
+- lib/forgery/dictionaries/name_suffixes
+- lib/forgery/dictionaries/name_titles
+- lib/forgery/dictionaries/province_abbrevs
+- lib/forgery/dictionaries/provinces
+- lib/forgery/dictionaries/races
+- lib/forgery/dictionaries/shirt_sizes
+- lib/forgery/dictionaries/state_abbrevs
+- lib/forgery/dictionaries/states
+- lib/forgery/dictionaries/street_suffixes
+- lib/forgery/dictionaries/streets
+- lib/forgery/dictionaries/top_level_domains
+- lib/forgery/extensions/array.rb
+- lib/forgery/extensions/hash.rb
+- lib/forgery/extensions/range.rb
+- lib/forgery/extensions/string.rb
+- lib/forgery/file_reader.rb
+- lib/forgery/forgery.rb
+- lib/forgery/forgery/address.rb
+- lib/forgery/forgery/basic.rb
+- lib/forgery/forgery/internet.rb
+- lib/forgery/forgery/lorem_ipsum.rb
+- lib/forgery/forgery/monetary.rb
+- lib/forgery/forgery/name.rb
+- lib/forgery/forgery/personal.rb
+- lib/forgery/forgery_api.rb
+- lib/forgery/formats.rb
+- lib/forgery/formats/phone
+- lib/forgery/formats/street_number
+- lib/forgery/formats/zip
+- spec/dictionaries_spec.rb
+- spec/extensions/array_spec.rb
+- spec/extensions/range_spec.rb
+- spec/extensions/string_spec.rb
+- spec/file_reader_spec.rb
+- spec/forgery/address_spec.rb
+- spec/forgery/basic_spec.rb
+- spec/forgery/internet_spec.rb
+- spec/forgery/lorem_ipsum_spec.rb
+- spec/forgery/monetary_spec.rb
+- spec/forgery/name_spec.rb
+- spec/forgery/personal_spec.rb
+- spec/forgery_spec.rb
+- spec/formats_spec.rb
+- spec/spec_helper.rb
+has_rdoc: true
+homepage: http://github.com/sevenwire/forgery
+licenses: []
+
+post_install_message: 
+rdoc_options: 
+- --charset=UTF-8
+require_paths: 
+- lib
+required_ruby_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      version: "0"
+  version: 
+required_rubygems_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      version: "0"
+  version: 
+requirements: []
+
+rubyforge_project: 
+rubygems_version: 1.3.5
+signing_key: 
+specification_version: 3
+summary: Easy and customizable generation of forged data.
+test_files: 
+- spec/dictionaries_spec.rb
+- spec/extensions/array_spec.rb
+- spec/extensions/range_spec.rb
+- spec/extensions/string_spec.rb
+- spec/file_reader_spec.rb
+- spec/forgery/address_spec.rb
+- spec/forgery/basic_spec.rb
+- spec/forgery/internet_spec.rb
+- spec/forgery/lorem_ipsum_spec.rb
+- spec/forgery/monetary_spec.rb
+- spec/forgery/name_spec.rb
+- spec/forgery/personal_spec.rb
+- spec/forgery_spec.rb
+- spec/formats_spec.rb
+- spec/spec_helper.rb

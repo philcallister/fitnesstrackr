@@ -1,7 +1,18 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-# one:
-#   column: value
-#
-# two:
-#   column: value
+single_set_plan_1_1_1:
+  single_plan: single_plan_1_1
+  number: 1
+single_set_plan_1_1_2:
+  single_plan: single_plan_1_1
+  number: 2
+single_set_plan_1_1_3:
+  single_plan: single_plan_1_1
+  number: 3
+single_set_plan_1_2_1:
+  single_plan: single_plan_1_2
+  number: 1
+single_set_plan_1_2_2:
+  single_plan: single_plan_1_2
+  number: 2
+single_set_plan_1_2_3:
+  single_plan: single_plan_1_2
+  number: 3

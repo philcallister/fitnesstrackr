@@ -1,5 +1,6 @@
 ENV["RAILS_ENV"] = "test"
 require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
+require File.expand_path(File.dirname(__FILE__) + "/blueprints")
 require 'test_help'
 
 class ActiveSupport::TestCase
@@ -34,5 +35,34 @@ class ActiveSupport::TestCase
   # -- they do not yet inherit this setting
   fixtures :all
 
+  # reset Sham
+  setup { Sham.reset }
+
   # Add more helper methods to be used by all tests here...
+  def bad_name(item)
+    assert_bad_value(item, :name, item.name)
+  end
+
+  def good_name(item)
+    assert_good_value(item, :name, item.name)
+  end
+
+  def bad_description(item)
+    assert_bad_value(item, :description, item.description)
+  end
+
+  def good_description(item)
+    assert_good_value(item, :description, item.description)
+  end
+
+  def bad_both(item)
+    bad_name(item)
+    bad_description(item)
+  end
+
+  def good_both(item)
+    good_name(item)
+    good_description(item)
+  end
+
 end

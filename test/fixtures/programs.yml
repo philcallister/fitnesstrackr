@@ -1,7 +1,7 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+program_1:
+  name: program_1
+  description: program_1
 
-# one:
-#   column: value
-#
-# two:
-#   column: value
+program_2:
+  name: program_2
+  description: program_2

@@ -2,7 +2,7 @@ class CreateCardios < ActiveRecord::Migration
 
   def self.up
     create_table :cardios do |t|
-      t.references :exercise_type
+      t.references :exercise
       t.integer :time, :default => 0
       t.integer :level, :default => 0
       t.decimal :incline, :precision => 3, :scale => 1, :default => 0

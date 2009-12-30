@@ -1,7 +1,9 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-# one:
-#   column: value
-#
-# two:
-#   column: value
+single_plan_1_1:
+  exercise: exercise_single_1
+  notes: need some single_plan_1_1
+single_plan_1_2:
+  exercise: exercise_single_2
+  notes: need some single_plan_1_2
+single_plan_1_3:
+  exercise: exercise_single_3
+  notes: need some single_plan_1_3

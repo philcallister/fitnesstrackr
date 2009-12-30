@@ -1,7 +1,33 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-# one:
-#   column: value
-#
-# two:
-#   column: value
+cardio_plan_1_1:
+  exercise: exercise_cardio_1
+  time: 20
+  level: 5
+  incline: 3.5
+  speed: 5.5
+  distance: 2
+  calories: 200
+  min_hr: 10
+  max_hr: 20
+  notes: nothing to do
+cardio_plan_1_2:
+  exercise: exercise_cardio_2
+  time: 20
+  level: 5
+  incline: 3.5
+  speed: 5.5
+  distance: 2
+  calories: 200
+  min_hr: 10
+  max_hr: 20
+  notes: nothing to do
+cardio_plan_1_3:
+  exercise: exercise_cardio_3
+  time: 20
+  level: 5
+  incline: 3.5
+  speed: 5.5
+  distance: 2
+  calories: 200
+  min_hr: 10
+  max_hr: 20
+  notes: nothing to do
