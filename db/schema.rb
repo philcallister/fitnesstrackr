@@ -70,16 +70,16 @@ ActiveRecord::Schema.define(:version => 20091222023407) do
     t.datetime "updated_at"
   end
 
+  create_table "single_plan_sets", :force => true do |t|
+    t.integer "single_plan_id"
+    t.integer "number",         :default => 0
+  end
+
   create_table "single_plans", :force => true do |t|
     t.integer  "exercise_id"
     t.string   "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "single_set_plans", :force => true do |t|
-    t.integer "single_plan_id"
-    t.integer "number",         :default => 0
   end
 
   create_table "single_sets", :force => true do |t|
@@ -94,17 +94,17 @@ ActiveRecord::Schema.define(:version => 20091222023407) do
     t.datetime "updated_at"
   end
 
+  create_table "strength_plan_sets", :force => true do |t|
+    t.integer "strength_plan_id"
+    t.integer "reps",             :default => 0
+    t.integer "weight",           :default => 0
+  end
+
   create_table "strength_plans", :force => true do |t|
     t.integer  "exercise_id"
     t.string   "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "strength_set_plans", :force => true do |t|
-    t.integer "strength_plan_id"
-    t.integer "reps",             :default => 0
-    t.integer "weight",           :default => 0
   end
 
   create_table "strength_sets", :force => true do |t|

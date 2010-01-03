@@ -1,24 +1,24 @@
-strength_set_plan_1_1_1:
+stength_plan_set_1_1_1:
   strength_plan: strength_plan_1_1
   reps: 1
   weight: 1
-strength_set_plan_1_1_2:
+stength_plan_set_1_1_2:
   strength_plan: strength_plan_1_1
   reps: 2
   weight: 2
-strength_set_plan_1_1_3:
+stength_plan_set_1_1_3:
   strength_plan: strength_plan_1_1
   reps: 3
   weight: 3
-strength_set_plan_1_2_1:
+stength_plan_set_1_2_1:
   strength_plan: strength_plan_1_2
   reps: 1
   weight: 1
-strength_set_plan_1_2_2:
+stength_plan_set_1_2_2:
   strength_plan: strength_plan_1_2
   reps: 2
   weight: 2
-strength_set_plan_1_2_3:
+stength_plan_set_1_2_3:
   strength_plan: strength_plan_1_2
   reps: 3
   weight: 3

@@ -1,7 +1,7 @@
-class CreateStrengthSetPlans < ActiveRecord::Migration
+class CreateStrengthPlanSets < ActiveRecord::Migration
 
   def self.up
-    create_table :strength_set_plans do |t|
+    create_table :strength_plan_sets do |t|
       t.references :strength_plan
       t.integer :reps, :default => 0
       t.integer :weight, :default => 0
@@ -9,7 +9,7 @@ class CreateStrengthSetPlans < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :strength_set_plans
+    drop_table :strength_plan_sets
   end
 
 end
