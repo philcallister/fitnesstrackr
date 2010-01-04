@@ -10,7 +10,6 @@ class ProgramTest < ActiveSupport::TestCase
   # Associations
   should_have_many :workout_plans
   
-
   ##############################################################################
   # Adding
   context "A new program" do
@@ -36,7 +35,7 @@ class ProgramTest < ActiveSupport::TestCase
   end
 
   ##############################################################################
-  # Updating
+  # Associations
   context "An existing program" do
     setup do
       @program = Program.make do |program|

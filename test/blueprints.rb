@@ -59,12 +59,6 @@ WorkoutPlan.blueprint do
   program {Program.make}
 end
 
-WorkoutPlan.blueprint(:no_program) do
-  name {Sham.workout_plan_name}
-  description {Sham.workout_plan_description}
-  program {nil}
-end
-
 
 ################################################################################
 # Exercises Workout Plan
@@ -135,12 +129,6 @@ StrengthPlanSet.blueprint do
   strength_plan {StrengthPlan.make}
 end
 
-StrengthPlanSet.blueprint(:no_strength_plan) do
-  reps {Sham.strength_plan_set_reps}
-  weight {Sham.strength_plan_set_weight}
-  strength_plan {nil}
-end
-
 
 #################################################################################
 # Single Plan
@@ -167,11 +155,6 @@ SinglePlanSet.blueprint do
   single_plan {SinglePlan.make}
 end
 
-SinglePlanSet.blueprint(:no_single_plan) do
-  number {Sham.single_plan_set_number}
-  single_plan {nil}
-end
-
 
 ################################################################################
 # Workout
@@ -183,11 +166,6 @@ Sham.workout_notes {|index| "workout_notes_#{index}"}
 Workout.blueprint do
   notes {Sham.workout_notes}
   workout_plan {WorkoutPlan.make}
-end
-
-Workout.blueprint(:no_workout_plan) do
-  notes {Sham.workout_notes}
-  workout_plan {nil}
 end
 
 
@@ -260,12 +238,6 @@ StrengthSet.blueprint do
   strength {Strength.make}
 end
 
-StrengthSet.blueprint(:no_strength) do
-  reps {Sham.strength_set_reps}
-  weight {Sham.strength_set_weight}
-  strength {nil}
-end
-
 
 #################################################################################
 # Single
@@ -290,9 +262,4 @@ Sham.single_set_number(:unique => false) {Forgery::Basic.number(:at_least => 1, 
 SingleSet.blueprint do
   number {Sham.single_set_number}
   single {Single.make}
-end
-
-SingleSet.blueprint(:no_single) do
-  number {Sham.single_set_number}
-  single {nil}
 end
