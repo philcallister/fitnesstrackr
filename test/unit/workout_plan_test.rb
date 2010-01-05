@@ -28,7 +28,7 @@ class WorkoutPlanTest < ActiveSupport::TestCase
   context "An existing workout plan (exercise plans)" do
     setup do
       @workout_plan = WorkoutPlan.make do |wp|
-        12.times { wp.exercises_workout_plan.make }
+        12.times { wp.exercises_workout_plans.make }
       end
     end
     context "with exercise plans" do
