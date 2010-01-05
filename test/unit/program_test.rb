@@ -6,6 +6,8 @@ class ProgramTest < ActiveSupport::TestCase
   should_validate_presence_of :name, :description
   should_ensure_length_in_range :name, 1..50
   should_ensure_length_in_range :description, 1..255
+  should_not_allow_values_for :name, nil
+  should_not_allow_values_for :description, nil
 
   # Associations
   should_have_many :workout_plans
@@ -13,23 +15,9 @@ class ProgramTest < ActiveSupport::TestCase
   ##############################################################################
   # Adding
   context "A new program" do
-    # adding with and without names and descriptions
-    context "with 'name'" do
+    context "with 'name' and 'description'" do
       should "be added" do
         assert_save(Program.make_unsaved)
-      end
-      should "NOT be added as NULL" do
-        bad_name(Program.make_unsaved(:name => nil))
-      end
-    end
-    context "with 'description'" do
-      should "NOT be added as NULL" do
-        bad_description(Program.make_unsaved(:description => nil))
-      end
-    end
-    context "with 'name' and 'description'" do
-      should "NOT be added when both NULL" do
-        bad_both(Program.make_unsaved(:name => nil, :description => nil))
       end
     end
   end
@@ -42,7 +30,6 @@ class ProgramTest < ActiveSupport::TestCase
         3.times { program.workout_plans.make }
       end
     end
-
     context "with workout plans" do
       should "have 3 workout plans" do
         assert_equal 3, @program.workout_plans.length

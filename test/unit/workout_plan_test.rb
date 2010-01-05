@@ -6,6 +6,8 @@ class WorkoutPlanTest < ActiveSupport::TestCase
   should_validate_presence_of :name, :description
   should_ensure_length_in_range :name, 1..50
   should_ensure_length_in_range :description, 1..255
+  should_not_allow_values_for :name, nil
+  should_not_allow_values_for :description, nil
 
   # Associations
   should_belong_to :program
@@ -14,22 +16,9 @@ class WorkoutPlanTest < ActiveSupport::TestCase
   ##############################################################################
   # Adding
   context "A new workout plan" do
-    context "with 'name'" do
+    context "with 'name' and 'description'" do
       should "be added" do
         assert_save(WorkoutPlan.make_unsaved)
-      end
-      should "NOT be added as NULL" do
-        bad_name(WorkoutPlan.make_unsaved(:name => nil))
-      end
-    end
-    context "with 'description'" do
-      should "NOT be added as NULL" do
-        bad_description(WorkoutPlan.make_unsaved(:description => nil))
-      end
-    end
-    context "with 'name' and 'description'" do
-      should "NOT be added when both NULL" do
-        bad_both(WorkoutPlan.make_unsaved(:name => nil, :description => nil))
       end
     end
   end

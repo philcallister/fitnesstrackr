@@ -10,7 +10,7 @@ class WorkoutPlan < ActiveRecord::Base
   has_many :workouts
   has_many_polymorphs :exercise_plans,
                          :through => :exercises_workout_plan,
-                         :from => [:cardio_plans, :strength_plans, :single_plans],
-                         :order => 'position'
-
+                         :from => [:cardio_plans, :strength_plans, :single_plans]
+  has_many :exercises_workout_plan, # Hmmmm...don't know about this
+            :order => 'position'
 end
