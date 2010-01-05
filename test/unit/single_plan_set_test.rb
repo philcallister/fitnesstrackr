@@ -12,4 +12,5 @@ class SinglePlanSetTest < ActiveSupport::TestCase
       assert_save(SinglePlanSet.make_unsaved)
     end
   end
+
 end
