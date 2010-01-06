@@ -16,10 +16,8 @@ class WorkoutPlanTest < ActiveSupport::TestCase
   ##############################################################################
   # Adding
   context "A new workout plan" do
-    context "with 'name' and 'description'" do
-      should "be added" do
-        assert_save(WorkoutPlan.make_unsaved)
-      end
+    should "be added" do
+      assert_save(WorkoutPlan.make_unsaved)
     end
   end
   

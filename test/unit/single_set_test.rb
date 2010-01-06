@@ -1,8 +1,16 @@
 require 'test_helper'
 
 class SingleSetTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+
+  # Associations
+  should_belong_to :single
+
+  ##############################################################################
+  # Adding
+  context "A new single set" do
+    should "be added" do
+      assert_save(SingleSet.make_unsaved)
+    end
   end
+
 end

@@ -15,10 +15,8 @@ class ProgramTest < ActiveSupport::TestCase
   ##############################################################################
   # Adding
   context "A new program" do
-    context "with 'name' and 'description'" do
-      should "be added" do
-        assert_save(Program.make_unsaved)
-      end
+    should "be added" do
+      assert_save(Program.make_unsaved)
     end
   end
 
