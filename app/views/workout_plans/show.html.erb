@@ -1,13 +1,13 @@
 <h1>Showing Workout Plan</h1>
-<h2><%= @workout_plan.program.name %></h2>
+<h2><%= h @workout_plan.program.name %></h2>
 <table cellpadding="0" cellspacing="0">
   <tr>
     <td class="item">Name</td>
-    <td><%= @workout_plan.name %>
+    <td><%= h @workout_plan.name %>
   </tr>
   <tr>
     <td class="item">Description</td>
-    <td><%= @workout_plan.description %>
+    <td><%= h @workout_plan.description %>
   </tr>
 </table>
 <br />

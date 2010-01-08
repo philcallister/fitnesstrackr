@@ -8,9 +8,9 @@
   </tr>
   <% @exercises.each do |exercise| %>
     <tr>
-      <td><%= exercise.name %></td>
-      <td><%= exercise.description %></td>
-      <td><%= exercise.kind %></td>
+      <td><%= h exercise.name %></td>
+      <td><%= h exercise.description %></td>
+      <td><%= h exercise.kind %></td>
       <td>
         <%= link_to 'Show', exercise %>&nbsp;&nbsp;|&nbsp;
         <%= link_to 'Edit', edit_exercise_path(exercise) %>&nbsp;&nbsp;|&nbsp;

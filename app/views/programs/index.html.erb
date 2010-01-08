@@ -7,8 +7,8 @@
   </tr>
   <% @programs.each do |program| %>
     <tr>
-      <td><%= program.name %></td>
-      <td><%= program.description %></td>
+      <td><%= h program.name %></td>
+      <td><%= h program.description %></td>
       <td>
         <%= link_to 'Show', program %>&nbsp;&nbsp;|&nbsp;
         <%= link_to 'Edit', edit_program_path(program) %>&nbsp;&nbsp;|&nbsp;

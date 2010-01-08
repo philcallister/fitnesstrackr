@@ -10,8 +10,8 @@
   </tr>
   <% @workout_plans.each do |workout_plan| %>
     <tr>
-      <td><%= workout_plan.name %></td>
-      <td><%= workout_plan.description %></td>
+      <td><%= h workout_plan.name %></td>
+      <td><%= h workout_plan.description %></td>
       <td>
         <%= link_to 'Show', workout_plan %>&nbsp;&nbsp;|&nbsp;
         <%= link_to 'Edit', edit_workout_plan_path(workout_plan) %>&nbsp;&nbsp;|&nbsp;
