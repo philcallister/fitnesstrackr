@@ -1,0 +1,18 @@
+<h1>Editing Workout Plan</h1>
+<% if @program %>
+  <h2><%= @program.name %></h2>
+<% end -%>
+<% form_for(@workout_plan) do |f| %>
+  <%= f.error_messages %>
+  <%= f.hidden_field :program_id %><br />
+  Name<br />
+  <%= f.text_field :name %><br />
+  Description<br />
+  <%= f.text_field :description %><br />
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+<br />
+<%= link_to 'Show', @workout_plan %> |
+<%= link_to 'Back', program_workout_plans_path(@workout_plan.program) %>

@@ -1,0 +1,27 @@
+<h1>Listing Workout Plans</h1>
+<% if @program %>
+  <h2><%= @program.name %></h2>
+<% end -%>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Actions</th>
+  </tr>
+  <% @workout_plans.each do |workout_plan| %>
+    <tr>
+      <td><%= workout_plan.name %></td>
+      <td><%= workout_plan.description %></td>
+      <td>
+        <%= link_to 'Show', workout_plan %>&nbsp;&nbsp;|&nbsp;
+        <%= link_to 'Edit', edit_workout_plan_path(workout_plan) %>&nbsp;&nbsp;|&nbsp;
+        <%= link_to 'Destroy', workout_plan, :confirm => 'Are you sure?', :method => :delete %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<br />
+<% if @program %>
+  <%= link_to 'New Workout Plan', new_program_workout_plan_path(@program) %>&nbsp;|
+  <%= link_to 'Back', programs_path %>
+<% end -%>

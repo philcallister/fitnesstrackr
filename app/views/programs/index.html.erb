@@ -1,0 +1,22 @@
+<h1>Listing Programs</h1>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Actions</th>
+  </tr>
+  <% @programs.each do |program| %>
+    <tr>
+      <td><%= program.name %></td>
+      <td><%= program.description %></td>
+      <td>
+        <%= link_to 'Show', program %>&nbsp;&nbsp;|&nbsp;
+        <%= link_to 'Edit', edit_program_path(program) %>&nbsp;&nbsp;|&nbsp;
+        <%= link_to 'Destroy', program, :confirm => 'Are you sure?', :method => :delete %>&nbsp;&nbsp;|&nbsp;
+        <%= link_to 'Workout Plans', program_workout_plans_path(:program_id => program) %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<br />
+<%= link_to 'New Program', new_program_path %>

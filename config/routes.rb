@@ -1,4 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
+
+  map.resources :programs do |program|
+    program.resources :workout_plans, :only => [:index, :new]
+  end
+  map.resources :workout_plans, :except => [:index, :new]
+
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
