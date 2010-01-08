@@ -4,7 +4,7 @@ class CreateExercises < ActiveRecord::Migration
     create_table :exercises do |t|
       t.string :name, :limit => 50, :null => false
       t.string :description, :limit => 255, :null => false
-      t.column :kind, :enum, :limit => [:cardio, :single, :strength]
+      t.column :kind, :enum, :limit => [:Cardio, :Single, :Strength]
       t.timestamps
     end
   end

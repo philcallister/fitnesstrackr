@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(:version => 20091222023407) do
   create_table "exercises", :force => true do |t|
     t.string   "name",        :limit => 50,                            :null => false
     t.string   "description",                                          :null => false
-    t.enum     "kind",        :limit => [:cardio, :single, :strength]
+    t.enum     "kind",        :limit => [:Cardio, :Single, :Strength]
     t.datetime "created_at"
     t.datetime "updated_at"
   end

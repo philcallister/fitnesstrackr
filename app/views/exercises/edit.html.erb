@@ -1,0 +1,18 @@
+<h1>Editing Exercise</h1>
+
+<% form_for(@exercise) do |f| %>
+  <%= f.error_messages %>
+  Name<br />
+  <%= f.text_field :name %><br />
+  Description<br />
+  <%= f.text_field :description %><br />
+  Kind<br />
+  <%= f.enum_select :kind %>
+  <br />
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @exercise %> |
+<%= link_to 'Back', exercises_path %>
