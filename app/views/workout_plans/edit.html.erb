@@ -1,10 +1,7 @@
 <h1>Editing Workout Plan</h1>
-<% if @program %>
-  <h2><%= @program.name %></h2>
-<% end -%>
+<h2><%= h @workout_plan.program.name %></h2>
 <% form_for(@workout_plan) do |f| %>
   <%= f.error_messages %>
-  <%= f.hidden_field :program_id %><br />
   Name<br />
   <%= f.text_field :name %><br />
   Description<br />

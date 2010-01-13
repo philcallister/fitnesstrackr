@@ -1,0 +1,2 @@
+module StrengthPlansHelper
+end

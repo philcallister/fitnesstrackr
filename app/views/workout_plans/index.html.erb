@@ -1,6 +1,6 @@
 <h1>Listing Workout Plans</h1>
 <% if @program %>
-  <h2><%= @program.name %></h2>
+  <h2><%= h @program.name %></h2>
 <% end -%>
 <table>
   <tr>
@@ -15,7 +15,8 @@
       <td>
         <%= link_to 'Show', workout_plan %>&nbsp;&nbsp;|&nbsp;
         <%= link_to 'Edit', edit_workout_plan_path(workout_plan) %>&nbsp;&nbsp;|&nbsp;
-        <%= link_to 'Destroy', workout_plan, :confirm => 'Are you sure?', :method => :delete %>
+        <%= link_to 'Destroy', workout_plan, :confirm => 'Are you sure?', :method => :delete %>&nbsp;&nbsp;|&nbsp;
+        <%= link_to 'Exercise Plans', workout_plan_exercise_plans_path(workout_plan) %>
       </td>
     </tr>
   <% end %>

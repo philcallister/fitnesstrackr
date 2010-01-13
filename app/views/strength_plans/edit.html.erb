@@ -1,0 +1,12 @@
+<h1>Editing strength_plan</h1>
+
+<% form_for(@strength_plan) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @strength_plan %> |
+<%= link_to 'Back', strength_plans_path %>

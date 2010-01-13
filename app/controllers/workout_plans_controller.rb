@@ -1,11 +1,11 @@
 class WorkoutPlansController < ApplicationController
 
-  before_filter :find_program, :only => [:index, :new]
-  before_filter :find_workout_plans, :only => [:index]
+  before_filter :find_program, :only => [:index, :new, :create, :update]
 
   # GET /workout_plans
   # GET /workout_plans.xml
   def index
+    @workout_plans = @program.nil? ? nil : @program.workout_plans
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @workout_plans }
@@ -92,14 +92,9 @@ class WorkoutPlansController < ApplicationController
   def find_program
     if params[:program_id]
       @program = Program.find(params[:program_id])
+    elsif params[:workout_plan][:program_id]
+      @program = Program.find(params[:workout_plan][:program_id])
     end
   end
 
-  def find_workout_plans
-    if params[:program_id]
-      @workout_plans = WorkoutPlan.find_all_by_program_id(params[:program_id])
-    else
-      @workout_plans = []
-    end
-  end
 end

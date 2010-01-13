@@ -2,6 +2,13 @@ require 'test_helper'
 
 class ExerciseTest < ActiveSupport::TestCase
 
+  # Validations
+  should_validate_presence_of :name, :description, :kind
+  should_ensure_length_in_range :name, 1..50
+  should_ensure_length_in_range :description, 1..255
+  should_not_allow_values_for :name, nil
+  should_not_allow_values_for :description, nil
+
   ##############################################################################
   # Adding
   context "A new exercise" do
