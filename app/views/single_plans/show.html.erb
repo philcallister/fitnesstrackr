@@ -1,0 +1,16 @@
+<h1>Showing Single Plan</h1>
+<% if @workout_plan %>
+  <h2><%= h @workout_plan.program.name %></h2>
+  <h2><%= h @workout_plan.name %></h2>
+<% end -%>
+<table cellpadding="0" cellspacing="0">
+  <tr>
+    <td class="item">Notes</td>
+    <td><%= h @single_plan.notes %>
+  </tr>
+</table>
+<br />
+<% if @workout_plan %>
+  <%= link_to 'Edit', edit_workout_plan_single_plan_path(@workout_plan, @single_plan) %> |
+  <%= link_to 'Back', workout_plan_exercise_plans_path(@workout_plan) %>
+<% end -%>

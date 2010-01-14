@@ -1,5 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :cardio_plans
 
   map.resources :programs do |program|
     program.resources :workout_plans, :only => [:index, :new]
@@ -7,9 +6,11 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :workout_plans, :except => [:index, :new] do |workout_plan|
     workout_plan.resources :exercise_plans, :only => [:index]
     workout_plan.resources :strength_plans, :only => [:new, :edit, :update, :show]
+    workout_plan.resources :single_plans, :only => [:new, :edit, :update, :show]
     workout_plan.resources :cardio_plans, :only => [:new, :edit, :update, :show]
   end
   map.resources :strength_plans, :except => [:index, :new]
+  map.resources :single_plans, :except => [:index, :new]
   map.resources :cardio_plans, :except => [:index, :new]
   map.resources :exercises
 
