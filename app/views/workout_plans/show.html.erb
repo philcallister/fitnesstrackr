@@ -1,5 +1,7 @@
 <h1>Showing Workout Plan</h1>
-<h2><%= h @workout_plan.program.name %></h2>
+<% if @workout_plan %>
+  <h2><%= h @workout_plan.program.name %></h2>
+<% end -%>
 <table cellpadding="0" cellspacing="0">
   <tr>
     <td class="item">Name</td>

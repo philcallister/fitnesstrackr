@@ -1,6 +1,6 @@
 class StrengthPlansController < ApplicationController
   
-  before_filter :find_workout_plan, :only => [:new, :create, :update]
+  before_filter :find_workout_plan, :only => [:new, :create, :edit, :update, :show]
 
   # GET /strength_plans/1
   # GET /strength_plans/1.xml
@@ -38,7 +38,7 @@ class StrengthPlansController < ApplicationController
     respond_to do |format|
       if @strength_plan.save
         flash[:notice] = 'StrengthPlan was successfully created.'
-        format.html { redirect_to(@strength_plan) }
+        format.html { redirect_to workout_plan_strength_plan_path(@workout_plan, @strength_plan) }
         format.xml  { render :xml => @strength_plan, :status => :created, :location => @strength_plan }
       else
         format.html { render :action => "new" }
@@ -55,7 +55,11 @@ class StrengthPlansController < ApplicationController
     respond_to do |format|
       if @strength_plan.update_attributes(params[:strength_plan])
         flash[:notice] = 'StrengthPlan was successfully updated.'
-        format.html { redirect_to(@strength_plan) }
+        if @workout_plan
+          format.html { redirect_to workout_plan_strength_plan_path(@workout_plan, @strength_plan) }
+        else
+          format.html { redirect_to(@strength_plan) }
+        end
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

@@ -1,0 +1,2 @@
+module CardioPlansHelper
+end

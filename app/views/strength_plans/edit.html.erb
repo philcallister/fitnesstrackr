@@ -1,12 +1,18 @@
-<h1>Editing strength_plan</h1>
-
+<h1>Editing Strength Plan</h1>
+<% if @workout_plan %>
+  <h2><%= h @workout_plan.program.name %></h2>
+  <h2><%= h @workout_plan.name %></h2>
+<% end -%>
 <% form_for(@strength_plan) do |f| %>
   <%= f.error_messages %>
-
+  <%= hidden_field_tag 'workout_plan_id', @workout_plan.id %><br />
+  Notes<br />
+  <%= f.text_field :notes %><br />
   <p>
     <%= f.submit 'Update' %>
   </p>
 <% end %>
-
-<%= link_to 'Show', @strength_plan %> |
-<%= link_to 'Back', strength_plans_path %>
+<br />
+<% if @workout_plan %>
+  <%= link_to 'Back', workout_plan_exercise_plans_path(@workout_plan) %>
+<% end -%>

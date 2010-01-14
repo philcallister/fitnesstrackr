@@ -13,16 +13,16 @@
       <td><%= h exercise_plan.notes %></td>
       <td>
         <% if exercise_plan.is_a?(CardioPlan) %>
-          <%= link_to 'Show', strength_plan_path(exercise_plan) %>&nbsp;&nbsp;|&nbsp;
-          <%= link_to 'Edit', edit_strength_plan_path(exercise_plan) %>&nbsp;&nbsp;|&nbsp;
-          <%= link_to 'Destroy', strength_plan_path(exercise_plan), :confirm => 'Are you sure?', :method => :delete %>
+          <%= link_to 'Show', workout_plan_cardio_plan_path(@workout_plan, exercise_plan) %>&nbsp;&nbsp;|&nbsp;
+          <%= link_to 'Edit', edit_workout_plan_cardio_plan_path(@workout_plan, exercise_plan) %>&nbsp;&nbsp;|&nbsp;
+          <%= link_to 'Destroy', cardio_plan_path(exercise_plan), :confirm => 'Are you sure?', :method => :delete %>
         <% elsif exercise_plan.is_a?(StrengthPlan) %>
-          <%= link_to 'Show', strength_plan_path(exercise_plan) %>&nbsp;&nbsp;|&nbsp;
-          <%= link_to 'Edit', edit_strength_plan_path(exercise_plan) %>&nbsp;&nbsp;|&nbsp;
+          <%= link_to 'Show', workout_plan_strength_plan_path(@workout_plan, exercise_plan) %>&nbsp;&nbsp;|&nbsp;
+          <%= link_to 'Edit', edit_workout_plan_strength_plan_path(@workout_plan, exercise_plan) %>&nbsp;&nbsp;|&nbsp;
           <%= link_to 'Destroy', strength_plan_path(exercise_plan), :confirm => 'Are you sure?', :method => :delete %>
         <% elsif exercise_plan.is_a?(SinglePlan) %>
-          <%= link_to 'Show', strength_plan_path(exercise_plan) %>&nbsp;&nbsp;|&nbsp;
-          <%= link_to 'Edit', edit_strength_plan_path(exercise_plan) %>&nbsp;&nbsp;|&nbsp;
+          <%= link_to 'Show', workout_plan_strength_plan_path(@workout_plan, exercise_plan) %>&nbsp;&nbsp;|&nbsp;
+          <%= link_to 'Edit', edit_workout_plan_strength_plan_path(@workout_plan, exercise_plan) %>&nbsp;&nbsp;|&nbsp;
           <%= link_to 'Destroy', strength_plan_path(exercise_plan), :confirm => 'Are you sure?', :method => :delete %>
         <% end %>
       </td>
@@ -32,5 +32,6 @@
 <br />
 <% if @workout_plan %>
   <%= link_to 'New Strength Plan', new_workout_plan_strength_plan_path(@workout_plan) %>&nbsp;|
+  <%= link_to 'New Cardio Plan', new_workout_plan_cardio_plan_path(@workout_plan) %>&nbsp;|
   <%= link_to 'Back', program_workout_plans_path(@workout_plan.program) %>
 <% end -%>
