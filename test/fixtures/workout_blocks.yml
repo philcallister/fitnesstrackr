@@ -1,0 +1,9 @@
+workout_block_1_1:
+  program: program_1
+  name: workout_block_1_1
+  description: workout_block_1_1
+
+workout_block_1_2:
+  program: program_1
+  name: workout_block_1_2
+  description: workout_block_1_2

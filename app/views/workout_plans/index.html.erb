@@ -1,6 +1,6 @@
 <h1>Listing Workout Plans</h1>
-<% if @program %>
-  <h2><%= h @program.name %></h2>
+<% if @workout_block %>
+  <h2><%= h @workout_block.program.name %>&nbsp;>&nbsp;<%= h @workout_block.name %></h2>
 <% end -%>
 <table>
   <tr>
@@ -22,7 +22,7 @@
   <% end %>
 </table>
 <br />
-<% if @program %>
-  <%= link_to 'New Workout Plan', new_program_workout_plan_path(@program) %>&nbsp;|
-  <%= link_to 'Back', programs_path %>
+<% if @workout_block %>
+  <%= link_to 'New Workout Plan', new_workout_block_workout_plan_path(@workout_block) %>&nbsp;|
+  <%= link_to 'Back', program_workout_blocks_path(@workout_block.program) %>
 <% end -%>

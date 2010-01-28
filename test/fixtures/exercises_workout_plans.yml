@@ -1,15 +1,15 @@
 exercises_workout_plans_1_1:
   exercise_plan: cardio_plan_1_1
   exercise_plan_type: CardioPlan
-  workout_plan: workout_plan_1_1
+  workout_plan: workout_plan_1_1_1
   position: 1
 exercises_workout_plans_1_2:
   exercise_plan: strength_plan_1_1
   exercise_plan_type: StrengthPlan
-  workout_plan: workout_plan_1_1
+  workout_plan: workout_plan_1_1_1
   position: 2
 exercises_workout_plans_1_3:
   exercise_plan: single_plan_1_1
   exercise_plan_type: SinglePlan
-  workout_plan: workout_plan_1_1
+  workout_plan: workout_plan_1_1_1
   position: 3

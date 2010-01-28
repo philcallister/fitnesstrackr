@@ -46,6 +46,21 @@ end
 
 
 ################################################################################
+# Workout Block
+
+# Shams
+Sham.workout_block_name {|index| "workout_block_#{index}"}
+Sham.workout_block_description {|index| "workout_block_description_#{index}"}
+
+# Builders
+WorkoutBlock.blueprint do
+  name {Sham.workout_block_name}
+  description {Sham.workout_block_description}
+  program {Program.make}
+end
+
+
+################################################################################
 # Workout Plan
 
 # Shams
@@ -56,7 +71,7 @@ Sham.workout_plan_description {|index| "workout_plan_description_#{index}"}
 WorkoutPlan.blueprint do
   name {Sham.workout_plan_name}
   description {Sham.workout_plan_description}
-  program {Program.make}
+  workout_block {WorkoutBlock.make}
 end
 
 

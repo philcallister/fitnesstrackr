@@ -1,7 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
-
   map.resources :programs do |program|
-    program.resources :workout_plans, :only => [:index, :new]
+    program.resources :workout_blocks, :only => [:index, :new]
+  end
+  map.resources :workout_blocks, :except => [:index, :new] do |workout_block|
+    workout_block.resources :workout_plans, :only => [:index, :new]
   end
   map.resources :workout_plans, :except => [:index, :new] do |workout_plan|
     workout_plan.resources :exercise_plans, :only => [:index]

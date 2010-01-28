@@ -1,7 +1,5 @@
 <h1>Showing Workout Plan</h1>
-<% if @workout_plan %>
-  <h2><%= h @workout_plan.program.name %></h2>
-<% end -%>
+<h2><%= h @workout_plan.workout_block.program.name %>&nbsp;>&nbsp;<%= h @workout_plan.workout_block.name %></h2>
 <table cellpadding="0" cellspacing="0">
   <tr>
     <td class="item">Name</td>
@@ -14,4 +12,4 @@
 </table>
 <br />
 <%= link_to 'Edit', edit_workout_plan_path(@workout_plan) %> |
-<%= link_to 'Back', program_workout_plans_path(@workout_plan.program) %>
+<%= link_to 'Back', workout_block_workout_plans_path(@workout_plan.workout_block) %>

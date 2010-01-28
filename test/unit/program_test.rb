@@ -10,7 +10,7 @@ class ProgramTest < ActiveSupport::TestCase
   should_not_allow_values_for :description, nil
 
   # Associations
-  should_have_many :workout_plans
+  should_have_many :workout_blocks
   
   ##############################################################################
   # Adding
@@ -25,16 +25,16 @@ class ProgramTest < ActiveSupport::TestCase
   context "An existing program" do
     setup do
       @program = Program.make do |program|
-        3.times { program.workout_plans.make }
+        3.times { program.workout_blocks.make }
       end
     end
-    context "with workout plans" do
-      should "have 3 workout plans" do
-        assert_equal 3, @program.workout_plans.length
+    context "with workout blocks" do
+      should "have 3 workout blocks" do
+        assert_equal 3, @program.workout_blocks.length
       end
-      should "have a new workout plan added" do
-        @program.workout_plans << WorkoutPlan.make(:program => nil)
-        assert_equal 4, @program.workout_plans.length
+      should "have a new workout bloock added" do
+        @program.workout_blocks << WorkoutBlock.make(:program => nil)
+        assert_equal 4, @program.workout_blocks.length
       end
     end
   end

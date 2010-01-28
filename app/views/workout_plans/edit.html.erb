@@ -1,5 +1,5 @@
 <h1>Editing Workout Plan</h1>
-<h2><%= h @workout_plan.program.name %></h2>
+<h2><%= h @workout_plan.workout_block.program.name %>&nbsp;>&nbsp;<%= h @workout_plan.workout_block.name %></h2>
 <% form_for(@workout_plan) do |f| %>
   <%= f.error_messages %>
   Name<br />
@@ -12,4 +12,4 @@
 <% end %>
 <br />
 <%= link_to 'Show', @workout_plan %> |
-<%= link_to 'Back', program_workout_plans_path(@workout_plan.program) %>
+<%= link_to 'Back', workout_block_workout_plans_path(@workout_plan.workout_block) %>

@@ -10,7 +10,7 @@ class WorkoutPlanTest < ActiveSupport::TestCase
   should_not_allow_values_for :description, nil
 
   # Associations
-  should_belong_to :program
+  should_belong_to :workout_block
   should_have_many :workouts
 
   ##############################################################################

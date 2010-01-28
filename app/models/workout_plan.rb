@@ -6,11 +6,11 @@ class WorkoutPlan < ActiveRecord::Base
   validates_length_of :description, :within => 1..255
 
   # Associations
-  belongs_to :program
+  belongs_to :workout_block
   has_many :workouts
   has_many_polymorphs :exercise_plans,
-                         :through => :exercises_workout_plans,
-                         :from => [:cardio_plans, :strength_plans, :single_plans],
-                         :order => 'position'
+                      :through => :exercises_workout_plans,
+                      :from => [:cardio_plans, :strength_plans, :single_plans],
+                      :order => 'position'
 
 end

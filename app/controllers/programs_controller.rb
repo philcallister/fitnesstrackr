@@ -1,5 +1,7 @@
 class ProgramsController < ApplicationController
   
+  before_filter :find_program, :only => [:show, :edit, :update, :destroy]
+
   # GET /programs
   # GET /programs.xml
   def index
@@ -14,8 +16,6 @@ class ProgramsController < ApplicationController
   # GET /programs/1
   # GET /programs/1.xml
   def show
-    @program = Program.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @program }
@@ -35,7 +35,7 @@ class ProgramsController < ApplicationController
 
   # GET /programs/1/edit
   def edit
-    @program = Program.find(params[:id])
+    # edit.html.erb
   end
 
   # POST /programs
@@ -58,8 +58,6 @@ class ProgramsController < ApplicationController
   # PUT /programs/1
   # PUT /programs/1.xml
   def update
-    @program = Program.find(params[:id])
-
     respond_to do |format|
       if @program.update_attributes(params[:program])
         flash[:notice] = 'Program was successfully updated.'
@@ -75,7 +73,6 @@ class ProgramsController < ApplicationController
   # DELETE /programs/1
   # DELETE /programs/1.xml
   def destroy
-    @program = Program.find(params[:id])
     @program.destroy
 
     respond_to do |format|
@@ -83,4 +80,14 @@ class ProgramsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+
+  private
+
+  def find_program
+    if params[:id]
+      @program = Program.find(params[:id])
+    end
+  end
+
 end
