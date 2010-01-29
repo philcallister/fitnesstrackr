@@ -1,6 +1,6 @@
 <h1>New Workout Plan</h1>
 <% if @workout_block %>
-<h2><%= h @workout_block.program.name %>&nbsp;>&nbsp;<%= h @workout_block.name %></h2>
+  <h2><%= h @workout_block.program.name %>&nbsp;>&nbsp;<%= h @workout_block.name %></h2>
 <% end -%>
 <% form_for(@workout_plan) do |f| %>
   <%= f.error_messages %>
