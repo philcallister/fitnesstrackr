@@ -12,7 +12,7 @@ class ExercisePlansController < ApplicationController
     end
   end
 
-  
+
   private
 
   def find_workout_plan

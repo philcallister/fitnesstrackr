@@ -53,14 +53,14 @@ ActiveRecord::Schema.define(:version => 20100126040831) do
     t.integer "exercise_plan_id"
     t.string  "exercise_plan_type"
     t.integer "workout_plan_id"
-    t.integer "position"
+    t.integer "exercise_workout_plan_position"
   end
 
   create_table "exercises_workouts", :force => true do |t|
     t.integer "exercise_id"
     t.string  "exercise_type"
     t.integer "workout_id"
-    t.integer "position"
+    t.integer "exercise_workout_position"
   end
 
   create_table "programs", :force => true do |t|
@@ -122,17 +122,18 @@ ActiveRecord::Schema.define(:version => 20100126040831) do
 
   create_table "workout_blocks", :force => true do |t|
     t.integer  "program_id"
-    t.string   "name",        :limit => 50, :null => false
-    t.string   "description",               :null => false
-    t.integer  "position"
+    t.string   "name",                   :limit => 50, :null => false
+    t.string   "description",                          :null => false
+    t.integer  "workout_block_position"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "workout_plans", :force => true do |t|
     t.integer  "workout_block_id"
-    t.string   "name",             :limit => 50, :null => false
-    t.string   "description",                    :null => false
+    t.string   "name",                  :limit => 50, :null => false
+    t.string   "description",                         :null => false
+    t.integer  "workout_plan_position"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

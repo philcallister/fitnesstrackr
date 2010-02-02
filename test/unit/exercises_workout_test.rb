@@ -32,19 +32,19 @@ class ExercisesWorkoutTest < ActiveSupport::TestCase
       should "move 1st to bottom (2 items)" do
         ew = @workout_1.exercises_workouts.first
         ew.move_to_bottom
-        assert_equal 2, ew.position
+        assert_equal 2, ew.exercise_workout_position
         assert_equal @workout_1.exercises.last.exercises_workouts.first, ew
       end
       should "move 1st to bottom (10 items)" do
         ew = @workout_2.exercises_workouts.first
         ew.move_to_bottom
-        assert_equal 10, ew.position
+        assert_equal 10, ew.exercise_workout_position
         assert_equal @workout_2.exercises.last.exercises_workouts.first, ew
       end
       should "move 1st down one (10 items)" do
         ew = @workout_2.exercises_workouts.first
         ew.move_lower
-        assert_equal 2, ew.position
+        assert_equal 2, ew.exercise_workout_position
         assert_equal @workout_2.exercises[1].exercises_workouts.first, ew
       end
     end

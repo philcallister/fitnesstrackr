@@ -4,7 +4,7 @@ class CreateExercisesWorkoutPlans < ActiveRecord::Migration
     create_table :exercises_workout_plans do |t|
       t.references :exercise_plan, :polymorphic => true
       t.references :workout_plan
-      t.integer :position
+      t.integer :exercise_workout_plan_position
     end
   end
 

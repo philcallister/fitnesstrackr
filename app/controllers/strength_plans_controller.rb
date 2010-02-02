@@ -51,19 +51,10 @@ class StrengthPlansController < ApplicationController
   # PUT /strength_plans/1
   # PUT /strength_plans/1.xml
   def update
-    respond_to do |format|
-      if @strength_plan.update_attributes(params[:strength_plan])
-        flash[:notice] = 'Strength Plan was successfully updated.'
-        if @workout_plan
-          format.html { redirect_to workout_plan_strength_plan_path(@workout_plan, @strength_plan) }
-        else
-          format.html { redirect_to(@strength_plan) }
-        end
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @strength_plan.errors, :status => :unprocessable_entity }
-      end
+    if params[:move_up] || params[:move_down]
+      update_move
+    else
+      update_all
     end
   end
 
@@ -95,4 +86,32 @@ class StrengthPlansController < ApplicationController
       @strength_plan = StrengthPlan.find(params[:id])
     end
   end
+
+  def update_all
+    @workout_plan = @strength_plan.workout_plans.first
+    respond_to do |format|
+      if @strength_plan.update_attributes(params[:strength_plan])
+        flash[:notice] = 'Strength Plan was successfully updated.'
+        format.html { redirect_to(@strength_plan) }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @strength_plan.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  def update_move
+    if params[:move_up]
+      @strength_plan.exercises_workout_plans.first.move_higher
+    else
+      @strength_plan.exercises_workout_plans.first.move_lower
+    end
+    flash[:notice] = 'Strength Plan was successfully moved.'
+    respond_to do |format|
+      format.html { redirect_to(workout_plan_exercise_plans_path(@strength_plan.workout_plans.first)) }
+      format.xml  { head :ok }
+    end
+  end
+
 end

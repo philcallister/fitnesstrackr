@@ -59,15 +59,10 @@ class WorkoutPlansController < ApplicationController
   # PUT /workout_plans/1
   # PUT /workout_plans/1.xml
   def update
-    respond_to do |format|
-      if @workout_plan.update_attributes(params[:workout_plan])
-        flash[:notice] = 'Workout Plan was successfully updated.'
-        format.html { redirect_to(@workout_plan) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @workout_plan.errors, :status => :unprocessable_entity }
-      end
+    if params[:move_up] || params[:move_down]
+      update_move
+    else
+      update_all
     end
   end
 
@@ -97,6 +92,32 @@ class WorkoutPlansController < ApplicationController
   def find_workout_plan
     if params[:id]
       @workout_plan = WorkoutPlan.find(params[:id])
+    end
+  end
+
+  def update_all
+    respond_to do |format|
+      if @workout_plan.update_attributes(params[:workout_plan])
+        flash[:notice] = 'Workout Plan was successfully updated.'
+        format.html { redirect_to(@workout_plan) }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @workout_plan.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  def update_move
+    if params[:move_up]
+      @workout_plan.move_higher
+    else
+      @workout_plan.move_lower
+    end
+    flash[:notice] = 'Workout Plan was successfully moved.'
+    respond_to do |format|
+      format.html { redirect_to(workout_block_workout_plans_path(@workout_plan.workout_block)) }
+      format.xml  { head :ok }
     end
   end
 

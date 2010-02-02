@@ -5,7 +5,7 @@ class CreateWorkoutBlocks < ActiveRecord::Migration
       t.references :program
       t.string :name, :limit => 50, :null => false
       t.string :description, :limit => 255, :null => false
-      t.integer :position
+      t.integer :workout_block_position
 
       t.timestamps
     end

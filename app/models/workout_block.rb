@@ -7,7 +7,7 @@ class WorkoutBlock < ActiveRecord::Base
 
   # Associations
   belongs_to :program
-  has_many :workout_plans
-  acts_as_list :scope => :program
+  acts_as_list :scope => :program, :column => 'workout_block_position'
+  has_many :workout_plans, :order => 'workout_plan_position'
 
 end

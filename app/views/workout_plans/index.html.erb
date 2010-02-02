@@ -4,12 +4,21 @@
 <% end -%>
 <table>
   <tr>
+    <th>Position</th>
     <th>Name</th>
     <th>Description</th>
     <th>Actions</th>
   </tr>
-  <% @workout_plans.each do |workout_plan| %>
+  <% @workout_plans.each_with_index do |workout_plan, i| %>
     <tr>
+      <td>
+        <% if i > 0 -%>
+          <%= link_to "Up", workout_plan_path(workout_plan, :move_up => 1), {:method => :put} %>
+        <% end -%>
+        <% if i < @workout_plans.length - 1 -%>
+          <%= link_to "Down", workout_plan_path(workout_plan, :move_down => 1), {:method => :put} %>
+        <% end -%>
+      </td>
       <td><%= h workout_plan.name %></td>
       <td><%= h workout_plan.description %></td>
       <td>

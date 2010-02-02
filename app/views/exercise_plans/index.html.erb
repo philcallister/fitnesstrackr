@@ -4,24 +4,46 @@
 <% end -%>
 <table>
   <tr>
+    <th>Position</th>
     <th>Notes</th>
     <th>Actions</th>
   </tr>
-  <% @exercise_plans.each do |exercise_plan| %>
+  <% @exercise_plans.each_with_index do |exercise_plan, i| %>
     <tr>
+      <td>
+        <%# TODO: Clean this crap up...the whole thing %>
+        <% if i > 0 -%>
+          <% if exercise_plan.is_a?(CardioPlan) %>
+            <%= link_to 'Up', cardio_plan_path(exercise_plan, :move_up => 1), {:method => :put} %>
+          <% elsif exercise_plan.is_a?(StrengthPlan) %>
+            <%= link_to 'Up', strength_plan_path(exercise_plan, :move_up => 1), {:method => :put} %>
+          <% elsif exercise_plan.is_a?(SinglePlan) %>
+            <%= link_to 'Up', single_plan_path(exercise_plan, :move_up => 1), {:method => :put} %>
+          <% end %>
+        <% end -%>
+        <% if i < @exercise_plans.length - 1 -%>
+          <% if exercise_plan.is_a?(CardioPlan) %>
+            <%= link_to 'Down', cardio_plan_path(exercise_plan, :move_down => 1), {:method => :put} %>
+          <% elsif exercise_plan.is_a?(StrengthPlan) %>
+            <%= link_to 'Down', strength_plan_path(exercise_plan, :move_down => 1), {:method => :put} %>
+          <% elsif exercise_plan.is_a?(SinglePlan) %>
+            <%= link_to 'Down', single_plan_path(exercise_plan, :move_down => 1), {:method => :put} %>
+          <% end %>
+        <% end -%>
+      </td>
       <td><%= h exercise_plan.notes %></td>
       <td>
         <% if exercise_plan.is_a?(CardioPlan) %>
-          <%= link_to 'Show', workout_plan_cardio_plan_path(@workout_plan, exercise_plan) %>&nbsp;&nbsp;|&nbsp;
-          <%= link_to 'Edit', edit_workout_plan_cardio_plan_path(@workout_plan, exercise_plan) %>&nbsp;&nbsp;|&nbsp;
+          <%= link_to 'Show', cardio_plan_path(exercise_plan) %>&nbsp;&nbsp;|&nbsp;
+          <%= link_to 'Edit', edit_cardio_plan_path(exercise_plan) %>&nbsp;&nbsp;|&nbsp;
           <%= link_to 'Destroy', cardio_plan_path(exercise_plan), :confirm => 'Are you sure?', :method => :delete %>
         <% elsif exercise_plan.is_a?(StrengthPlan) %>
-          <%= link_to 'Show', workout_plan_strength_plan_path(@workout_plan, exercise_plan) %>&nbsp;&nbsp;|&nbsp;
-          <%= link_to 'Edit', edit_workout_plan_strength_plan_path(@workout_plan, exercise_plan) %>&nbsp;&nbsp;|&nbsp;
+          <%= link_to 'Show', strength_plan_path( exercise_plan) %>&nbsp;&nbsp;|&nbsp;
+          <%= link_to 'Edit', edit_strength_plan_path(exercise_plan) %>&nbsp;&nbsp;|&nbsp;
           <%= link_to 'Destroy', strength_plan_path(exercise_plan), :confirm => 'Are you sure?', :method => :delete %>
         <% elsif exercise_plan.is_a?(SinglePlan) %>
-          <%= link_to 'Show', workout_plan_single_plan_path(@workout_plan, exercise_plan) %>&nbsp;&nbsp;|&nbsp;
-          <%= link_to 'Edit', edit_workout_plan_single_plan_path(@workout_plan, exercise_plan) %>&nbsp;&nbsp;|&nbsp;
+          <%= link_to 'Show', single_plan_path(exercise_plan) %>&nbsp;&nbsp;|&nbsp;
+          <%= link_to 'Edit', edit_single_plan_path(exercise_plan) %>&nbsp;&nbsp;|&nbsp;
           <%= link_to 'Destroy', single_plan_path(exercise_plan), :confirm => 'Are you sure?', :method => :delete %>
         <% end %>
       </td>
