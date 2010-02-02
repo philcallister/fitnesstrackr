@@ -38,8 +38,8 @@ class SinglePlansController < ApplicationController
 
     respond_to do |format|
       if @single_plan.save
-        flash[:notice] = 'Single Plan was successfully created.'
-        format.html { redirect_to workout_plan_single_plan_path(@workout_plan, @single_plan) }
+        flash[:notice] = 'Sinlge Plan was successfully created.'
+        format.html { redirect_to(@single_plan) }
         format.xml  { render :xml => @single_plan, :status => :created, :location => @single_plan }
       else
         format.html { render :action => "new" }

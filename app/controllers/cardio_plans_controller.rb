@@ -39,7 +39,7 @@ class CardioPlansController < ApplicationController
     respond_to do |format|
       if @cardio_plan.save
         flash[:notice] = 'Cardio Plan was successfully created.'
-        format.html { redirect_to workout_plan_cardio_plan_path(@workout_plan, @cardio_plan) }
+        format.html { redirect_to(@cardio_plan) }
         format.xml  { render :xml => @cardio_plan, :status => :created, :location => @cardio_plan }
       else
         format.html { render :action => "new" }

@@ -39,7 +39,7 @@ class StrengthPlansController < ApplicationController
     respond_to do |format|
       if @strength_plan.save
         flash[:notice] = 'Strength Plan was successfully created.'
-        format.html { redirect_to workout_plan_strength_plan_path(@workout_plan, @strength_plan) }
+        format.html { redirect_to(@strength_plan) }
         format.xml  { render :xml => @strength_plan, :status => :created, :location => @strength_plan }
       else
         format.html { render :action => "new" }
