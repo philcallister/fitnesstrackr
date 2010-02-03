@@ -4,6 +4,9 @@
 <% end -%>
 <% form_for(@single_plan) do |f| %>
   <%= f.error_messages %>
+  Exercise<br />
+  <%= f.select('exercise_id', options_from_collection_for_select(@exercises, :id, :name, @single_plan.exercise.nil? ? nil : @single_plan.exercise.id),
+	       {:prompt => '-Select Exercise'}) %><br />
   Notes<br />
   <%= f.text_field :notes %><br />
   <p>

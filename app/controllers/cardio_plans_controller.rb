@@ -2,6 +2,7 @@ class CardioPlansController < ApplicationController
   
   before_filter :find_workout_plan, :only => [:new, :create]
   before_filter :find_cardio_plan, :only => [:show, :edit, :update, :destroy]
+  before_filter :find_exercises, :only => [:new, :edit]
 
   # GET /cardio_plans/1
   # GET /cardio_plans/1.xml

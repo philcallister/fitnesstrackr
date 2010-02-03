@@ -5,4 +5,8 @@ class Exercise < ActiveRecord::Base
   validates_length_of :name, :within => 1..50
   validates_length_of :description, :within => 1..255
 
+  # Scope
+  default_scope :order => 'name'
+
+
 end

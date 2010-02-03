@@ -2,6 +2,7 @@ class StrengthPlansController < ApplicationController
   
   before_filter :find_workout_plan, :only => [:new, :create]
   before_filter :find_strength_plan, :only => [:show, :edit, :update, :destroy]
+  before_filter :find_exercises, :only => [:new, :edit]
 
   # GET /strength_plans/1
   # GET /strength_plans/1.xml

@@ -5,6 +5,9 @@
 <% form_for(@cardio_plan) do |f| %>
   <%= f.error_messages %>
   <%= hidden_field_tag 'workout_plan_id', @workout_plan.id %><br />
+  Exercise<br />
+  <%= f.select('exercise_id', options_from_collection_for_select(@exercises, :id, :name),
+	       {:prompt => '-Select Exercise'}) %><br />
   Notes<br />
   <%= f.text_field :notes %><br />
   Time<br />
