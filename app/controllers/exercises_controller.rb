@@ -37,6 +37,7 @@ class ExercisesController < ApplicationController
   # GET /exercises/1/edit
   def edit
     @exercise = Exercise.find(params[:id])
+    @kinds = [ ["Cardio", 0], ["Strength", 1], ["Single", 2]]
   end
 
   # POST /exercises
