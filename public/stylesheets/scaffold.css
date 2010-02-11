@@ -203,6 +203,7 @@ a:hover { color: #fff; background-color:#000; }
 
 #detail {
   background-color: #ddd;
+  padding-bottom: 15px;
 }
 
 #detail h3 {
