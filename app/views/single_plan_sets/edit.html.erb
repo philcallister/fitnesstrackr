@@ -1,0 +1,12 @@
+<h1>Editing single_plan_set</h1>
+
+<% form_for(@single_plan_set) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @single_plan_set %> |
+<%= link_to 'Back', single_plan_sets_path %>

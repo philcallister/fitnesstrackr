@@ -1,7 +1,7 @@
 body { background-color: #fff; color: #333; }
 
 body, p, ol, ul, td, th {
-  font-family: "Lucida Grande",Lucida,"MS Trebuchet","Trebuchet MS",Verdana,sans-serif;
+  font-family: Helvetica, Arial;
   font-size:   13px;
   line-height: 18px;
   text-align: left;
@@ -60,3 +60,169 @@ a:hover { color: #fff; background-color:#000; }
   list-style: square;
 }
 
+#super-header {
+  background-color: /*#69a430;*/ #336693;
+  -moz-border-radius-topright: 15px;
+  -moz-border-radius-topleft: 15px;
+  -webkit-border-top-left-radius: 15px;
+  -webkit-border-top-right-radius: 15px;
+}
+
+#account {
+  list-style-image: none;
+  list-style-position: outside;
+  list-style-type: none;
+  float: right;
+  padding: 0;
+  padding-right: 10px;
+  margin: 0.75em;
+}
+
+#account li {
+  float:left;
+  line-height: 10px;
+  margin-left: 10px;
+  border-left: 1px solid #fff;
+}
+
+#account li:first-child {
+  border-left: none;
+}
+
+#account li a {
+  color: #fff;
+  margin: 0 0 0 10px;
+  padding: 2px 2px;
+  text-decoration: none;
+}
+
+#account li a:hover {
+  color: #222;
+  background-color: #cfdbe5;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+
+#header {
+  background-color: /*#b7e68a;*/ #cfdbe5;
+}
+
+#logo {
+  height: 60px;
+}
+
+#nav {
+  height: 60px;
+  float: right;
+}
+
+#nav ul {
+  list-style-image: none;
+  list-style-position: outside;
+  list-style-type: none;
+  padding-top: 0.75em;
+}
+
+#nav ul li {
+  float:left;
+  margin-left: 5px;
+  margin-right: 0px;
+  border-left: 1px solid #336693;
+}
+
+#nav ul li:first-child {
+  border-left: none;
+}
+
+#nav li a {
+  color: #222;
+  border: 1px solid transparent;
+  margin: 0 0 0 5px;
+  padding: 2px 15px;
+  font-size: 1.5em;
+  text-decoration: none;
+  text-shadow: 1px 1px #fff;
+}
+
+#nav li a:hover {
+  color: #fff;
+  background-color: #336693;
+  border: 1px solid #1b354d;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  text-shadow: 1px 1px #222;
+}
+
+#callout {
+  background: /*#336693*/ #fff url(/images/callout-bg.png) repeat-x scroll 0 0;
+}
+
+#mission {
+  color: #fff;
+}
+
+#mission h1 {
+  font-size: 2.25em;
+  text-shadow: 2px 2px #222;
+}
+
+#mission h1:first-child {
+  padding-top: 0.5em;
+}
+
+#mission p {
+  font-size: 1.25em;
+  line-height: 1.5em;
+  text-shadow: 1px 1px #222;
+}
+
+#mission a {
+  display: inline-block;
+  text-indent: -9999px;
+  height: 44px;
+}
+
+#mission a#button-more {
+  width: 182px;
+  background: #336693 url(/images/button-more.png) no-repeat scroll 0 0;
+  margin-right: 5px;
+}
+
+#mission a#button-more:hover {
+  background: #336693 url(/images/button-more.png) no-repeat scroll 0 -44px;
+}
+
+#mission a#button-signup {
+  width: 126px;
+  background: #336693 url(/images/button-signup.png) no-repeat scroll 0 0;
+}
+
+#mission a#button-signup:hover {
+  background: #336693 url(/images/button-signup.png) no-repeat scroll 0 -44px;
+}
+
+#detail {
+  background-color: #ddd;
+}
+
+#detail h3 {
+  margin-bottom: 0.5em;
+  color: #222;
+  text-shadow: 1px 1px #ccc;
+  text-decoration: underline;
+}
+
+#detail p {
+  padding: 0;
+}
+
+#footer {
+  padding-top: 0.5em;
+  height: 2em;
+  color: #fff;
+  background-color: /*#69a430;*/ #336693;
+  -moz-border-radius-bottomright: 15px;
+  -moz-border-radius-bottomleft: 15px;
+  -webkit-border-bottom-left-radius: 15px;
+  -webkit-border-top-right-radius: 15px;
+}

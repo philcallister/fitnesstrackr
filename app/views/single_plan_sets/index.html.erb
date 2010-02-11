@@ -1,0 +1,18 @@
+<h1>Listing single_plan_sets</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% @single_plan_sets.each do |single_plan_set| %>
+  <tr>
+    <td><%= link_to 'Show', single_plan_set %></td>
+    <td><%= link_to 'Edit', edit_single_plan_set_path(single_plan_set) %></td>
+    <td><%= link_to 'Destroy', single_plan_set, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New single_plan_set', new_single_plan_set_path %>

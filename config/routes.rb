@@ -11,10 +11,20 @@ ActionController::Routing::Routes.draw do |map|
     workout_plan.resources :single_plans, :only => [:new]
     workout_plan.resources :cardio_plans, :only => [:new]
   end
-  map.resources :strength_plans, :except => [:index, :new]
-  map.resources :single_plans, :except => [:index, :new]
+  map.resources :strength_plans, :except => [:index, :new] do |strength_plan|
+    #strength_plan.resources :strength_plan_sets, :only => [:index, :new]
+  end
+  map.resources :single_plans, :except => [:index, :new] do |single_plan|
+    single_plan.resources :single_plan_sets, :only => [:index, :new]
+  end
   map.resources :cardio_plans, :except => [:index, :new]
+  map.resources :single_plan_sets, :except => [:index, :new]
   map.resources :exercises
+
+  map.root :controller => 'landing',
+           :actioin => 'index'
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
 
