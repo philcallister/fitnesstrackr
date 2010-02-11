@@ -6,7 +6,7 @@
   Description<br />
   <%= f.text_field :description %><br />
   Kind<br />
-  <%= f.enum_select :kind %>
+  <%= f.select :kind, @kinds %>
   <br />
   <p>
     <%= f.submit 'Create' %>

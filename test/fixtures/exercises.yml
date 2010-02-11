@@ -1,36 +1,36 @@
 exercise_cardio_1:
   name: exercise_cardio_1
   description: exercise_cardio_1
-  kind: cardio
+  kind: 0
 exercise_cardio_2:
   name: exercise_cardio_2
   description: exercise_cardio2
-  kind: cardio
+  kind: 0
 exercise_cardio_3:
   name: exercise_cardio_3
   description: exercise_cardio_3
-  kind: cardio
+  kind: 0
 exercise_strength_1:
   name: exercise_strength_1
   description: exercise_strength_1
-  kind: strength
+  kind: 1
 exercise_strength_2:
   name: exercise_strength_2
   description: exercise_strength_2
-  kind: strength
+  kind: 1
 exercise_strength_3:
   name: exercise_strength_3
   description: exercise_strength_3
-  kind: strength
+  kind: 1
 exercise_single_1:
   name: exercise_single_1
   description: exercise_single_1
-  kind: single
+  kind: 2
 exercise_single_2:
   name: exercise_single_2
   description: exercise_single_2
-  kind: single
+  kind: 2
 exercise_single_3:
   name: exercise_single_3
   description: exercise_single_3
-  kind: single
+  kind: 2

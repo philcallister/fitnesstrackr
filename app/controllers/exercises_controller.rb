@@ -26,6 +26,7 @@ class ExercisesController < ApplicationController
   # GET /exercises/new.xml
   def new
     @exercise = Exercise.new
+    @kinds = [ ["Cardio", 0], ["Strength", 1], ["Single", 2]]
 
     respond_to do |format|
       format.html # new.html.erb
