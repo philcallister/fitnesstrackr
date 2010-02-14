@@ -8,6 +8,9 @@
   <%= stylesheet_link_tag 'scaffold', '960' %>
 </head>
 <body>
-  <%= yield %>
+  <%= render :partial => "layouts/super_header" %>
+  <%= render :partial => "layouts/header" %>
+  <%= yield(:content) %>
+  <%= render :partial => "layouts/footer" %>
 </body>
 </html>
