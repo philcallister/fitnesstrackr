@@ -20,9 +20,10 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :cardio_plans, :except => [:index, :new]
   map.resources :single_plan_sets, :except => [:index, :new]
   map.resources :exercises
+  map.resources :builds, :only => [:index]
 
   map.root :controller => 'landing',
-           :actioin => 'index'
+           :action => 'index'
 
 
 

@@ -1,4 +1,7 @@
-body { background-color: #fff; color: #333; }
+body {
+  background: #fff url(/images/bg.png) repeat-x scroll 0 0;
+  color: #002233;
+}
 
 body, p, ol, ul, td, th {
   font-family: Helvetica, Arial;
@@ -61,7 +64,8 @@ a:hover { color: #fff; background-color:#000; }
 }
 
 #super-header {
-  background-color: /*#69a430;*/ #336693;
+  background-color: #5599bb; /*#336693;*/
+  border: 1px solid #5599bb;
   -moz-border-radius-topright: 15px;
   -moz-border-radius-topleft: 15px;
   -webkit-border-top-left-radius: 15px;
@@ -97,14 +101,15 @@ a:hover { color: #fff; background-color:#000; }
 }
 
 #account li a:hover {
-  color: #222;
-  background-color: #cfdbe5;
+  color: #002233;
+  background-color: #c0deed; /*#cfdbe5;*/
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
 }
 
 #header {
-  background-color: /*#b7e68a;*/ #cfdbe5;
+  background-color: #c0deed; /*#cfdbe5;*/
+  border: 1px solid #c0deed;
 }
 
 #logo {
@@ -127,7 +132,7 @@ a:hover { color: #fff; background-color:#000; }
   float:left;
   margin-left: 5px;
   margin-right: 0px;
-  border-left: 1px solid #336693;
+  border-left: 1px solid #002233;
 }
 
 #nav ul li:first-child {
@@ -135,26 +140,26 @@ a:hover { color: #fff; background-color:#000; }
 }
 
 #nav li a {
-  color: #222;
-  border: 1px solid transparent;
+  color: #002233;
   margin: 0 0 0 5px;
   padding: 2px 15px;
   font-size: 1.5em;
   text-decoration: none;
-  text-shadow: 1px 1px #fff;
+  text-shadow: 0px 1px #fff;
 }
 
 #nav li a:hover {
   color: #fff;
-  background-color: #336693;
-  border: 1px solid #1b354d;
+  background-color: #5599bb; /*#002233;*/
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
-  text-shadow: 1px 1px #222;
+  text-shadow: 0px 1px #002233;
 }
 
 #callout {
   background: /*#336693*/ #fff url(/images/callout-bg.png) repeat-x scroll 0 0;
+  border-left: 1px solid #5b7993;
+  border-right: 1px solid #5b7993;
 }
 
 #mission {
@@ -163,7 +168,7 @@ a:hover { color: #fff; background-color:#000; }
 
 #mission h1 {
   font-size: 2.25em;
-  text-shadow: 2px 2px #222;
+  text-shadow: 0px 2px #222;
 }
 
 #mission h1:first-child {
@@ -173,48 +178,45 @@ a:hover { color: #fff; background-color:#000; }
 #mission p {
   font-size: 1.25em;
   line-height: 1.5em;
-  text-shadow: 1px 1px #222;
+  text-shadow: 0px 1px #222;
 }
 
-#mission a {
-  display: inline-block;
-  text-indent: -9999px;
-  height: 44px;
+#mission a.button-landing {
+  color: #333;
+  border: 1px solid #DDFF66;
+  background: #99CC22 url(/images/button-landing.png) repeat-x scroll 0 0;
+  margin: 0px 5px;
+  font-size: 1.4em;
+  font-weight: bold;
+  letter-spacing: 0.02em;
+  padding: 5px 20px;
+  text-align: center;
+  text-shadow: 0 1px 0 #DDFF66;
+  text-decoration: none;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
 }
 
-#mission a#button-more {
-  width: 182px;
-  background: #336693 url(/images/button-more.png) no-repeat scroll 0 0;
-  margin-right: 5px;
-}
-
-#mission a#button-more:hover {
-  background: #336693 url(/images/button-more.png) no-repeat scroll 0 -44px;
-}
-
-#mission a#button-signup {
-  width: 126px;
-  background: #336693 url(/images/button-signup.png) no-repeat scroll 0 0;
-}
-
-#mission a#button-signup:hover {
-  background: #336693 url(/images/button-signup.png) no-repeat scroll 0 -44px;
+#mission a.button-landing:hover, #mission a.button-landing:focus {
+  background-position: 0 -10px;
+  color: #111;
 }
 
 #detail {
-  background-color: #ddd;
+  background-color: #c0deed; /*#ddeef6;*/
+  border: 1px solid #c0deed; /*#ddeef6;*/
   padding-bottom: 15px;
 }
 
 #detail h3 {
   margin-bottom: 0.5em;
-  color: #444;
-  text-shadow: 1px 1px #ccc;
+  color: #002233;
+  /*text-shadow: 0px 1px #888;*/
   text-decoration: underline;
 }
 
 #detail p {
-  color: #888;
+  color: #336693;
   margin-top: 0.5em;
   padding: 0;
 }
@@ -223,9 +225,20 @@ a:hover { color: #fff; background-color:#000; }
   padding-top: 0.5em;
   height: 2em;
   color: #fff;
-  background-color: /*#69a430;*/ #336693;
+  background-color: #5599bb; /*#336693;*/
+  border: 1px solid #5599bb;
   -moz-border-radius-bottomright: 15px;
   -moz-border-radius-bottomleft: 15px;
   -webkit-border-bottom-left-radius: 15px;
   -webkit-border-bottom-right-radius: 15px;
 }
+
+.build-item {
+  padding: 0.5em;
+  margin: 0.25em;
+  background-color: #ededed;
+  border: 1px solid #c0deed;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+
