@@ -192,7 +192,7 @@ a:hover { color: #fff; background-color:#000; }
   text-shadow: 0px 1px #222;
 }
 
-#mission a.button-landing {
+a.button-landing {
   color: #333;
   border: 1px solid #DDFF66;
   background: #99CC22 url(/images/button-landing.png) repeat-x scroll 0 0;
@@ -208,7 +208,7 @@ a:hover { color: #fff; background-color:#000; }
   -webkit-border-radius: 5px;
 }
 
-#mission a.button-landing:hover, #mission a.button-landing:focus {
+a.button-landing:hover, a.button-landing:focus {
   background-position: 0 -10px;
   color: #111;
 }
@@ -244,6 +244,41 @@ a:hover { color: #fff; background-color:#000; }
   -webkit-border-bottom-right-radius: 15px;
 }
 
+#contact {
+  list-style-image: none;
+  list-style-position: outside;
+  list-style-type: none;
+  float: right;
+  margin: 0.25em;
+  margin-right: 0.75em;
+  padding: 0 10px;
+}
+
+#contact li {
+  float:left;
+  line-height: 10px;
+  margin-left: 10px;
+  border-left: 1px solid #fff;
+}
+
+#contact li:first-child {
+  border-left: none;
+}
+
+#contact li a {
+  color: #fff;
+  margin: 0 0 0 10px;
+  padding: 2px 2px;
+  text-decoration: none;
+}
+
+#contact li a:hover {
+  color: #002233;
+  background-color: #c0deed;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+
 .build-item {
   padding: 0.5em;
   margin: 0.25em;
@@ -253,3 +288,23 @@ a:hover { color: #fff; background-color:#000; }
   -webkit-border-radius: 5px;
 }
 
+a.button-big {
+  color: #333;
+  border: 1px solid #eee;
+  background: #99CC22 url(/images/button-big.png) repeat-x scroll 0 0;
+  margin: 0px 5px;
+  font-size: 1.4em;
+  font-weight: bold;
+  letter-spacing: 0.02em;
+  padding: 5px 20px;
+  text-align: center;
+  text-shadow: 0 1px 0 #eee;
+  text-decoration: none;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+
+a.button-big:hover, a.button-big:focus {
+  background-position: 0 -10px;
+  color: #111;
+}
