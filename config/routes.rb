@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resource :user_session
+  map.resource :account, :controller => 'users'
+  map.resources :users
+
   map.resources :programs do |program|
     program.resources :workout_blocks, :only => [:index, :new]
   end
@@ -20,7 +24,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :cardio_plans, :except => [:index, :new]
   map.resources :single_plan_sets, :except => [:index, :new]
   map.resources :exercises
-  map.resources :builds, :only => [:index]
+  map.resources :dashboards, :only => [:index]
 
   map.root :controller => 'landing',
            :action => 'index'

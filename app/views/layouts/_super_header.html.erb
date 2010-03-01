@@ -2,7 +2,12 @@
   <div id = "super-header" class="container_12 clearfix">
     <div class="grid_3 prefix_9">
       <ul id="account">
-        <li><a href="#">Sign Out</a></li>
+        <li><%= link_to 'Sign Up', new_user_path %></li>
+        <% if current_user_session %>
+          <li><%= link_to 'Sign Out', user_session_path, :method => :delete %></li>
+        <% else %>
+          <li><%= link_to 'Sign In', new_user_session_path %></li>
+        <% end %>
       </ul>
     </div>
   </div>

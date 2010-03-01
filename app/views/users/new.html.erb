@@ -1,0 +1,13 @@
+<% content_for :content do -%>
+  <div class="container_12 clearfix">
+    <div class="grid_12">
+      <h1>Register</h1>
+
+      <% form_for @user, :url => account_path do |f| %>
+        <%= f.error_messages %>
+        <%= render :partial => "form", :object => f %>
+        <%= f.submit "Register" %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
