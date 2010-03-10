@@ -345,13 +345,20 @@ a.button-landing:hover, a.button-landing:focus {
   -webkit-border-top-right-radius: 15px;
 }
 
-.dashboard-secondary {
+.dashboard-secondary-left, .dashboard-secondary-right {
   background-color: #C0DEED;
   color: #002233;
   padding: 2px 10px;
-  margin-right: 2px;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
+}
+
+.dashboard-secondary-left {
+  margin-right: 3px;
+}
+
+.dashboard-secondary-right {
+  margin-left: 3px;
 }
 
 a.button-big {
