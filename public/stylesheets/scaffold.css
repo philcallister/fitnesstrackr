@@ -303,6 +303,7 @@ a.button-landing:hover, a.button-landing:focus {
 /******************************************************************************/
 /* Dashboard crap                                                             */
 #dashboard {
+  background-color: #fff;
   border: 1px solid #c0deed;
 }
 
@@ -336,7 +337,7 @@ a.button-landing:hover, a.button-landing:focus {
 }
 
 .dashboard-header-copy {
-  background-color: #ffd7ad;
+  background-color: #C0DEED; /*#ffd7ad;*/
   color: #002233;
   padding: 2px 10px;
   -moz-border-radius-bottomright: 15px;
