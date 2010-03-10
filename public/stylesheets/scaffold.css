@@ -11,6 +11,15 @@ body, p, ol, ul, td, th {
   padding: 1px 5px;
 }
 
+hr {
+  border: 0;
+  color: #d2d2d2;
+  background-color: #d2d2d2;
+  height: 1px;
+  width: 100%;
+  text-align: left;
+}
+
 td.item {
   font-weight: bold;
   padding-right: 20px;
@@ -63,6 +72,9 @@ a:hover { color: #fff; background-color:#000; }
   list-style: square;
 }
 
+/******************************************************************************/
+/* Super-header stuff                                                         */
+
 #super-header {
   background-color: #5599bb; /*#336693;*/
   border: 1px solid #5599bb;
@@ -108,6 +120,8 @@ a:hover { color: #fff; background-color:#000; }
   -webkit-border-radius: 5px;
 }
 
+/******************************************************************************/
+/* Header stuff                                                               */
 #header {
   background-color: #c0deed; /*#cfdbe5;*/
   border: 1px solid #c0deed;
@@ -157,6 +171,8 @@ a:hover { color: #fff; background-color:#000; }
   /*text-shadow: 0px 1px #002233;*/
 }
 
+/******************************************************************************/
+/* Landing Callout                                                            */
 #callout {
   background: /*#336693*/ #fff url(/images/callout-bg.png) repeat-x scroll 0 0;
   border-left: 1px solid #5b7993;
@@ -214,9 +230,11 @@ a.button-landing:hover, a.button-landing:focus {
   color: #111;
 }
 
+/******************************************************************************/
+/* Landing Information                                                        */
 #detail {
-  background-color: #c0deed; /*#ddeef6;*/
-  border: 1px solid #c0deed; /*#ddeef6;*/
+  background-color: #e1e9ed; /*#ddeef6;*/
+  border: 1px solid #e1e9ed; /*#ddeef6;*/
   padding-bottom: 15px;
 }
 
@@ -233,6 +251,8 @@ a.button-landing:hover, a.button-landing:focus {
   padding: 0;
 }
 
+/******************************************************************************/
+/* Footer stuff                                                               */
 #footer {
   padding-top: 0.5em;
   height: 2em;
@@ -280,13 +300,58 @@ a.button-landing:hover, a.button-landing:focus {
   -webkit-border-radius: 5px;
 }
 
-.build-item {
-  padding: 0.5em;
-  margin: 0.25em;
-  background-color: #ededed;
+/******************************************************************************/
+/* Dashboard crap                                                             */
+#dashboard {
   border: 1px solid #c0deed;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
+}
+
+.dashboard-section {
+  background-color: #e1e9ed;
+  border: 1px solid #d2d2d2;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+}
+
+.dashboard-header {
+  background-color: #ff8c15;
+  color: #fff;
+  font-weight:bold;
+  padding:2px 10px;
+  text-shadow:0 1px #222222;
+  -moz-border-radius-bottomleft: 15px;
+  -moz-border-radius-topleft: 15px;
+  -webkit-border-bottom-left-radius: 15px;
+  -webkit-border-top-left-radius: 15px;
+}
+
+.dashboard-marker {
+  background-color: #ff8c15;
+  color: #fff;
+  font-weight:bold;
+  padding:2px 10px;
+  text-shadow:0 1px #222222;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+}
+
+.dashboard-header-copy {
+  background-color: #ffd7ad;
+  color: #002233;
+  padding: 2px 10px;
+  -moz-border-radius-bottomright: 15px;
+  -moz-border-radius-topright: 15px;
+  -webkit-border-bottom-right-radius: 15px;
+  -webkit-border-top-right-radius: 15px;
+}
+
+.dashboard-secondary {
+  background-color: #C0DEED;
+  color: #002233;
+  padding: 2px 10px;
+  margin-right: 2px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
 }
 
 a.button-big {
@@ -301,11 +366,46 @@ a.button-big {
   text-align: center;
   text-shadow: 0 1px 0 #eee;
   text-decoration: none;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -moz-border-radius-topRight: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
 }
 
 a.button-big:hover, a.button-big:focus {
   background-position: 0 -10px;
   color: #111;
+}
+
+/******************************************************************************/
+/* Progress Meter                                                             */
+.meter-wrap{
+  position: relative;
+}
+.meter-wrap, .meter-value, .meter-text {
+  /* The width and height of your image */
+  height: 35px;
+  background-color: #aaa;
+}
+.meter-wrap {
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+}
+.meter-value {
+  background: #99CC22 url(/images/progress-bar.png) repeat-x scroll 0 0;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+}
+
+.meter-text {
+  position: absolute;
+  top:0; left:0;
+  padding-top: .5em;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #333;
+  background: transparent;
+  text-shadow: 0 1px 0 #DDFF66;
+  text-align: center;
+  width: 100%;
 }

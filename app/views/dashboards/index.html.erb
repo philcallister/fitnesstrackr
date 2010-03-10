@@ -1,28 +1,44 @@
 <% content_for :content do -%>
-  <div id="build" class="container_12 clearfix" style="border: 1px solid #c0deed">
-    <div id="program" class="grid_12">
-      <div class="grid_10 alpha"><input type="text" tabindex="1" size="40"/></div>
-      <div class="grid_2 omega"><a href="#" class="button-big">Search</a></div>
-      <!-- %= render :partial => "programs" % -->
-      <div class="build-item grid_12">
-        <div style="color: #336693; font-size: 1.25em;">Program 1</div>
-        <div>Program 1 is very cool.  You're going to really love this.</div>
-      </div>
-      <div class="build-item grid_12">
-        <div style="color: #336693; font-size: 1.25em;">Program 2</div>
-        <div>Program 2 is very cool.  You're going to really love this.</div>
-      </div>
-      <div class="build-item grid_12">
-        <div style="color: #336693; font-size: 1.25em;">Program 3</div>
-        <div>Program 3 is very cool.  You're going to really love this.</div>
-      </div>
-      <div class="build-item grid_12">
-        <div style="color: #336693; font-size: 1.25em;">Program 4</div>
-        <div>Program 4 is very cool.  You're going to really love this.</div>
+  <div id="dashboard" class="container_12 clearfix">
+    <div id="goal" class="container_12 clearfix">
+      <div id="" class="grid_12 dashboard-section" style="height: 150px; margin-top: 10px;">
+        <div style="font-size: 1.25em; margin: 15px 10px 20px 10px;">
+          <span class="dashboard-header">Goal</span><span class="dashboard-header-copy">Complete the Waupaca Triathlon in under 2 hours&nbsp;&nbsp;/&nbsp;&nbsp;Swim under 17 minutes</span>
+        </div>
+        <hr />
+        <div style="padding: 10px 10px 10px 10px; font-size: 1.25em;">
+          <div style="display: inline-block;"
+            <span class="dashboard-secondary">Start Date</span><span>March 3rd, 2010</span>
+          </div>
+          <div style="display: inline-block; float: right;">
+            <span class="dashboard-secondary">End Date</span><span>Aug 19th, 2010</span>
+          </div>
+        </div>
+        <div class="meter-wrap" style="padding: 1px; margin-right: 10px; margin-left: 10px">
+          <div class="meter-value" style="width: 64%;">
+            <div class="meter-text">
+              9 of 14 Workouts Complete (64%)
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div id="workout_plans "class="grid_12 clearfix">
-      <span>Workout Plans</span>
+    <div id="current" class="container_12 clearfix">
+      <div id="" class="grid_4 dashboard-section" style="height: 275px; margin: 10px 9px;">
+        <div style="margin-top: 5px; padding: 10px; font-size: 1.25em;">
+          <span class="dashboard-marker">Measurements</span>
+        </div>
+      </div>
+      <div id="" class="grid_4 dashboard-section" style="height: 275px; margin: 10px 9px;">
+        <div class="" style="margin-top: 5px; padding: 10px; font-size: 1.25em;">
+          <span class="dashboard-marker">Program</span>
+        </div>
+      </div>
+      <div id="" class="grid_4 dashboard-section" style="height: 275px; margin: 10px 9px;">
+        <div class="" style="margin-top: 5px; padding: 10px; font-size: 1.25em;">
+          <span class="dashboard-marker">Workout Plan</span>
+        </div>
+      </div>
     </div>
   </div>
 <% end -%>
