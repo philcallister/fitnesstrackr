@@ -359,7 +359,8 @@ a.button-landing:hover, a.button-landing:focus {
 }
 
 .dashboard-secondary-right {
-  margin-left: 3px;
+  margin-right: 3px;
+  margin-left: 20px;
 }
 
 a.button-big {
@@ -413,7 +414,7 @@ a.button-big:hover, a.button-big:focus {
   font-weight: bold;
   color: #333;
   background: transparent;
-  text-shadow: 0 1px 0 #DDFF66;
+  text-shadow: 0 1px 0 #e2e2e2;/*#E1E9ED;*/
   text-align: center;
   width: 100%;
 }

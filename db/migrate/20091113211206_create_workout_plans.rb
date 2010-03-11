@@ -6,6 +6,7 @@ class CreateWorkoutPlans < ActiveRecord::Migration
       t.string :name, :limit => 50, :null => false
       t.string :description, :limit => 255, :null => false
       t.integer :workout_plan_position
+      t.boolean :has_pt, :null => false
 
       t.timestamps
     end

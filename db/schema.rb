@@ -153,6 +153,7 @@ ActiveRecord::Schema.define(:version => 20100225035009) do
     t.string   "name",                  :limit => 50, :null => false
     t.string   "description",                         :null => false
     t.integer  "workout_plan_position"
+    t.boolean  "has_pt",                              :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

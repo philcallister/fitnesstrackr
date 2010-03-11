@@ -9,7 +9,6 @@ class WorkoutPlan < ActiveRecord::Base
   belongs_to :workout_block
   acts_as_list :scope => :workout_block, :column => 'workout_plan_position'
   has_many :workouts
-
   has_many_polymorphs :exercise_plans,
                       :through => :exercises_workout_plans,
                       :from => [:cardio_plans, :strength_plans, :single_plans],

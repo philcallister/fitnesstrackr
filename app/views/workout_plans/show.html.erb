@@ -12,6 +12,10 @@
           <td class="item">Description</td>
           <td><%= h @workout_plan.description %></td>
         </tr>
+        <tr>
+          <td class="item">Personal Trainer</td>
+          <td><%= h @workout_plan.has_pt %></td>
+        </tr>
       </table>
       <br />
       <%= link_to 'Edit', edit_workout_plan_path(@workout_plan) %> |

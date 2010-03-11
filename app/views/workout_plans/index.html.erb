@@ -10,6 +10,7 @@
           <th>Position</th>
           <th>Name</th>
           <th>Description</th>
+          <th>Personal Trainer</th>
           <th>Actions</th>
         </tr>
         <% @workout_plans.each_with_index do |workout_plan, i| %>
@@ -24,6 +25,7 @@
             </td>
             <td><%= h workout_plan.name %></td>
             <td><%= h workout_plan.description %></td>
+            <td><%= h workout_plan.has_pt %></td>
             <td>
               <%= link_to 'Show', workout_plan %>&nbsp;&nbsp;|&nbsp;
               <%= link_to 'Edit', edit_workout_plan_path(workout_plan) %>&nbsp;&nbsp;|&nbsp;

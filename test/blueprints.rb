@@ -66,12 +66,14 @@ end
 # Shams
 Sham.workout_plan_name {|index| "workout_plan_#{index}"}
 Sham.workout_plan_description {|index| "workout_plan_description_#{index}"}
+Sham.workout_plan_has_pt(:unique => false) {Forgery::Basic.boolean}
 
 # Builders
 WorkoutPlan.blueprint do
   name {Sham.workout_plan_name}
   description {Sham.workout_plan_description}
   workout_block {WorkoutBlock.make}
+  has_pt {Sham.workout_plan_has_pt}
 end
 
 
