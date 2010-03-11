@@ -1,16 +1,22 @@
-<h1>New Exercise</h1>
-<% form_for(@exercise) do |f| %>
-  <%= f.error_messages %>
-  Name<br />
-  <%= f.text_field :name %><br />
-  Description<br />
-  <%= f.text_field :description %><br />
-  Kind<br />
-  <%= f.select :kind, @kinds %>
-  <br />
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
+<% content_for :content do -%>
+  <div class="container_12 clearfix">
+    <div class="grid_12">
+      <h1>New Exercise</h1>
+      <% form_for(@exercise) do |f| %>
+        <%= f.error_messages %>
+        Name<br />
+        <%= f.text_field :name %><br />
+        Description<br />
+        <%= f.text_field :description %><br />
+        Kind<br />
+        <%= f.select :kind, @kinds %>
+        <br />
+        <p>
+          <%= f.submit 'Create' %>
+        </p>
+      <% end %>
+      <br />
+      <%= link_to 'Back', exercises_path %>
+    </div>
+  </div>
 <% end %>
-<br />
-<%= link_to 'Back', exercises_path %>

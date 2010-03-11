@@ -1,3 +1,8 @@
-
-<%= link_to 'Edit', edit_single_plan_set_path(@single_plan_set) %> |
-<%= link_to 'Back', single_plan_sets_path %>
+<% content_for :content do -%>
+  <div class="container_12 clearfix">
+    <div class="grid_12">
+      <%= link_to 'Edit', edit_single_plan_set_path(@single_plan_set) %> |
+      <%= link_to 'Back', single_plan_sets_path %>
+    </div>
+  </div>
+<% end %>

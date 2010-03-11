@@ -1,37 +1,43 @@
-<h1>Listing Workout Blocks</h1>
-<% if @program %>
-  <h2><%= h @program.name %></h2>
-<% end -%>
-<table>
-  <tr>
-    <th>Position</th>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Actions</th>
-  </tr>
-  <% @workout_blocks.each_with_index do |workout_block, i| %>
-    <tr>
-      <td>
-        <% if i > 0 -%>
-          <%= link_to "Up", workout_block_path(workout_block, :move_up => 1), {:method => :put} %>
-        <% end -%>
-        <% if i < @workout_blocks.length - 1 -%>
-          <%= link_to "Down", workout_block_path(workout_block, :move_down => 1), {:method => :put} %>
-        <% end -%>
-      </td>
-      <td><%= h workout_block.name %></td>
-      <td><%= h workout_block.description %></td>
-      <td>
-        <%= link_to 'Show', workout_block %>&nbsp;&nbsp;|&nbsp;
-        <%= link_to 'Edit', edit_workout_block_path(workout_block) %>&nbsp;&nbsp;|&nbsp;
-        <%= link_to 'Destroy', workout_block, :confirm => 'Are you sure?', :method => :delete %>&nbsp;&nbsp;|&nbsp;
-        <%= link_to 'Workout Plans', workout_block_workout_plans_path(workout_block) %>
-      </td>
-    </tr>
-  <% end %>
-</table>
-<br />
-<% if @program %>
-  <%= link_to 'New Workout Block', new_program_workout_block_path(@program) %>&nbsp;|
-  <%= link_to 'Back', programs_path %>
-<% end -%>
+<% content_for :content do -%>
+  <div class="container_12 clearfix">
+    <div class="grid_12">
+      <h1>Listing Workout Blocks</h1>
+      <% if @program %>
+        <h2><%= h @program.name %></h2>
+      <% end -%>
+      <table>
+        <tr>
+          <th>Position</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+        <% @workout_blocks.each_with_index do |workout_block, i| %>
+          <tr>
+            <td>
+              <% if i > 0 -%>
+                <%= link_to "Up", workout_block_path(workout_block, :move_up => 1), {:method => :put} %>
+              <% end -%>
+              <% if i < @workout_blocks.length - 1 -%>
+                <%= link_to "Down", workout_block_path(workout_block, :move_down => 1), {:method => :put} %>
+              <% end -%>
+            </td>
+            <td><%= h workout_block.name %></td>
+            <td><%= h workout_block.description %></td>
+            <td>
+              <%= link_to 'Show', workout_block %>&nbsp;&nbsp;|&nbsp;
+              <%= link_to 'Edit', edit_workout_block_path(workout_block) %>&nbsp;&nbsp;|&nbsp;
+              <%= link_to 'Destroy', workout_block, :confirm => 'Are you sure?', :method => :delete %>&nbsp;&nbsp;|&nbsp;
+              <%= link_to 'Workout Plans', workout_block_workout_plans_path(workout_block) %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+      <br />
+      <% if @program %>
+        <%= link_to 'New Workout Block', new_program_workout_block_path(@program) %>&nbsp;|
+        <%= link_to 'Back', programs_path %>
+      <% end -%>
+    </div>
+  </div>
+<% end %>

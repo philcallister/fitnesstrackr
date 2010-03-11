@@ -1,47 +1,53 @@
-<h1>Showing Cardio Plan</h1>
-<h2><%= h @workout_plan.workout_block.program.name %>&nbsp;>&nbsp;<%= h @workout_plan.workout_block.name %>&nbsp;>&nbsp;<%= h @workout_plan.name %></h2>
-<table cellpadding="0" cellspacing="0">
-  <tr>
-    <td class="item">Exercise</td>
-    <td><%= h @cardio_plan.exercise.nil? ? 'Not Selected' : @cardio_plan.exercise.name %> </td>
-  </tr>
-  <tr>
-    <td class="item">Notes</td>
-    <td><%= h @cardio_plan.notes %></td>
-  </tr>
-  <tr>
-    <td class="item">Time</td>
-    <td><%= h @cardio_plan.time %></td>
-  </tr>
-  <tr>
-    <td class="item">Level</td>
-    <td><%= h @cardio_plan.level %></td>
-  </tr>
-  <tr>
-    <td class="item">Incline</td>
-    <td><%= h @cardio_plan.incline %></td>
-  </tr>
-  <tr>
-    <td class="item">Speed</td>
-    <td><%= h @cardio_plan.speed %></td>
-  </tr>
-  <tr>
-    <td class="item">Distance</td>
-    <td><%= h @cardio_plan.distance %></td>
-  </tr>
-  <tr>
-    <td class="item">Calories</td>
-    <td><%= h @cardio_plan.calories %></td>
-  </tr>
-  <tr>
-    <td class="item">Min Heartrate</td>
-    <td><%= h @cardio_plan.min_hr %></td>
-  </tr>
-  <tr>
-    <td class="item">Max Heartrate</td>
-    <td><%= h @cardio_plan.max_hr %></td>
-  </tr>
-</table>
-<br />
-<%= link_to 'Edit', edit_cardio_plan_path(@cardio_plan) %> |
-<%= link_to 'Back', workout_plan_exercise_plans_path(@workout_plan) %>
+<% content_for :content do -%>
+  <div class="container_12 clearfix">
+    <div class="grid_12">
+      <h1>Showing Cardio Plan</h1>
+      <h2><%= h @workout_plan.workout_block.program.name %>&nbsp;>&nbsp;<%= h @workout_plan.workout_block.name %>&nbsp;>&nbsp;<%= h @workout_plan.name %></h2>
+      <table cellpadding="0" cellspacing="0">
+        <tr>
+          <td class="item">Exercise</td>
+          <td><%= h @cardio_plan.exercise.nil? ? 'Not Selected' : @cardio_plan.exercise.name %> </td>
+        </tr>
+        <tr>
+          <td class="item">Notes</td>
+          <td><%= h @cardio_plan.notes %></td>
+        </tr>
+        <tr>
+          <td class="item">Time</td>
+          <td><%= h @cardio_plan.time %></td>
+        </tr>
+        <tr>
+          <td class="item">Level</td>
+          <td><%= h @cardio_plan.level %></td>
+        </tr>
+        <tr>
+          <td class="item">Incline</td>
+          <td><%= h @cardio_plan.incline %></td>
+        </tr>
+        <tr>
+          <td class="item">Speed</td>
+          <td><%= h @cardio_plan.speed %></td>
+        </tr>
+        <tr>
+          <td class="item">Distance</td>
+          <td><%= h @cardio_plan.distance %></td>
+        </tr>
+        <tr>
+          <td class="item">Calories</td>
+          <td><%= h @cardio_plan.calories %></td>
+        </tr>
+        <tr>
+          <td class="item">Min Heartrate</td>
+          <td><%= h @cardio_plan.min_hr %></td>
+        </tr>
+        <tr>
+          <td class="item">Max Heartrate</td>
+          <td><%= h @cardio_plan.max_hr %></td>
+        </tr>
+      </table>
+      <br />
+      <%= link_to 'Edit', edit_cardio_plan_path(@cardio_plan) %> |
+      <%= link_to 'Back', workout_plan_exercise_plans_path(@workout_plan) %>
+    </div>
+  </div>
+<% end %>

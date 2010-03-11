@@ -10,7 +10,7 @@
 <body>
   <%= render :partial => "layouts/super_header" %>
   <%= render :partial => "user_sessions/header" %>
-  <p style="color: green"><%= flash[:notice] %></p>
+  <%= render :partial => "layouts/flasher" %>
   <%= yield(:content) %>
   <%= render :partial => "layouts/footer" %>
 </body>
