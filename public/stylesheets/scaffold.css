@@ -349,21 +349,42 @@ a.button-landing:hover, a.button-landing:focus {
   -webkit-border-top-right-radius: 15px;
 }
 
-.dashboard-secondary-left, .dashboard-secondary-right {
+.dashboard-item-left {
   background-color: #C0DEED;
   color: #002233;
   padding: 2px 10px;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
+  -moz-border-radius-bottomleft: 15px;
+  -moz-border-radius-topleft: 15px;
+  -webkit-border-bottom-left-radius: 15px;
+  -webkit-border-top-left-radius: 15px;
 }
 
-.dashboard-secondary-left {
-  margin-right: 3px;
+.dashboard-item-right {
+  background-color: #5599bb;
+  color: #fff;
+  padding: 2px 10px;
+  -moz-border-radius-bottomright: 15px;
+  -moz-border-radius-topright: 15px;
+  -webkit-border-bottom-right-radius: 15px;
+  -webkit-border-top-right-radius: 15px;
 }
 
-.dashboard-secondary-right {
-  margin-right: 3px;
-  margin-left: 20px;
+ul.item {
+  list-style-image: none;
+  list-style-position: outside;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul.item li {
+  font-size: 1.25em;
+  padding: 8px 0px 8px 10px;
+}
+
+ul.item li div {
+  display: inline-block;
+  width: 120px;
 }
 
 a.button-big {
