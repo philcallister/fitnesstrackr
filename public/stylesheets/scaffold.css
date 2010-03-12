@@ -378,13 +378,27 @@ ul.item {
 }
 
 ul.item li {
-  font-size: 1.25em;
   padding: 8px 0px 8px 10px;
 }
 
 ul.item li div {
   display: inline-block;
   width: 120px;
+  cursor: pointer;
+  padding: 3px 10px;
+}
+
+ul.item li div input {
+  color: #222;
+  background-color: #fff;
+  border: 1px solid #C0DEED;
+  width: 100%;
+  padding: 0px 2px;
+  margin: 0;
+  -moz-border-radius-bottomright: 5px;
+  -moz-border-radius-topRight: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
 }
 
 a.button-big {
