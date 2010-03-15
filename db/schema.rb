@@ -146,6 +146,7 @@ ActiveRecord::Schema.define(:version => 20100313044628) do
     t.string   "current_login_ip"
     t.string   "last_login_ip"
     t.date     "birthday"
+    t.integer  "height"
     t.string   "goal",                :limit => 100
     t.datetime "goal_start_date"
     t.datetime "goal_end_date"
