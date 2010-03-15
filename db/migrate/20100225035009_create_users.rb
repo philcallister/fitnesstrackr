@@ -1,6 +1,7 @@
 class CreateUsers < ActiveRecord::Migration
   def self.up
     create_table :users do |t|
+      # Credentials
       t.string    :login,               :null => false                # optional, you can use email instead, or both
       t.string    :email,               :null => false                # optional, you can use login instead, or both
       t.string    :crypted_password,    :null => false                # optional, see below
@@ -17,6 +18,13 @@ class CreateUsers < ActiveRecord::Migration
       t.datetime  :last_login_at                                      # optional, see Authlogic::Session::MagicColumns
       t.string    :current_login_ip                                   # optional, see Authlogic::Session::MagicColumns
       t.string    :last_login_ip                                      # optional, see Authlogic::Session::MagicColumns
+
+      # User goodies
+      t.date      :birthday
+      t.int       :height
+      t.string    :goal, :limit => 100
+      t.datetime  :goal_start_date
+      t.datetime  :goal_end_date
 
       t.timestamps
     end

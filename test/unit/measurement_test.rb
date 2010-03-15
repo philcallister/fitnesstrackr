@@ -1,10 +1,8 @@
 require 'test_helper'
 
-class UserTest < ActiveSupport::TestCase
-
+class MeasurementTest < ActiveSupport::TestCase
   # Replace this with your real tests.
   test "the truth" do
     assert true
   end
-
 end

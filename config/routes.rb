@@ -1,7 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
   map.resource :user_session
   map.resource :account, :controller => 'users'
-  map.resources :users
+  map.resources :users do |user|
+    user.resources :measurements, :only => [:index, :new]
+  end
 
   map.resources :programs do |program|
     program.resources :workout_blocks, :only => [:index, :new]
@@ -21,6 +23,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :single_plans, :except => [:index, :new] do |single_plan|
     single_plan.resources :single_plan_sets, :only => [:index, :new]
   end
+  map.resources :measurements, :except => [:index, :new]
   map.resources :cardio_plans, :except => [:index, :new]
   map.resources :single_plan_sets, :except => [:index, :new]
   map.resources :exercises

@@ -1,0 +1,23 @@
+<% content_for :content do -%>
+  <div class="container_12 clearfix">
+    <div class="grid_12">
+      <h1>Editing Measurement</h1>
+      <h2><%= h @measurement.user.login %></h2>
+      <% form_for(@measurement) do |f| %>
+        <%= f.error_messages %>
+        Weight<br />
+        <%= f.text_field :weight %><br />
+        BMI<br />
+        <%= f.text_field :bmi %><br />
+        V02 Max<br />
+        <%= f.text_field :v02_max %><br />
+        <p>
+          <%= f.submit 'Update' %>
+        </p>
+      <% end %>
+      <br />
+      <%= link_to 'Show', @measurement %> |
+      <%= link_to 'Back', user_measurements_path(@measurement.user) %>
+    </div>
+  </div>
+<% end %>

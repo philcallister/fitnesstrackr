@@ -1,0 +1,36 @@
+<% content_for :content do -%>
+  <div class="container_12 clearfix">
+    <div class="grid_12">
+      <h1>Listing Measurements</h1>
+      <% if @user %>
+        <h2><%= h @user.login %></h2>
+      <% end -%>
+      <table>
+        <tr>
+          <th>Measure Date</th>
+          <th>Weight</th>
+          <th>BMI</th>
+          <th>V02 Max</th>
+          <th>Actions</th>
+        </tr>
+        <% @measurements.each_with_index do |measurement, i| %>
+          <tr>
+            <td><%= h measurement.measure_date %></td>
+            <td><%= h measurement.weight %></td>
+            <td><%= h measurement.bmi %></td>
+            <td><%= h measurement.v02_max %></td>
+            <td>
+              <%= link_to 'Show', measurement %>&nbsp;&nbsp;|&nbsp;
+              <%= link_to 'Edit', edit_measurement_path(measurement) %>&nbsp;&nbsp;|&nbsp;
+              <%= link_to 'Destroy', measurement, :confirm => 'Are you sure?', :method => :delete %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+      <br />
+      <% if @user %>
+        <%= link_to 'New Measurement', new_user_measurement_path(@user) %>
+      <% end -%>
+    </div>
+  </div>
+<% end %>
