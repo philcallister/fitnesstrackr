@@ -10,8 +10,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      flash[:notice] = "Account registered!"
-      redirect_back_or_default account_url
+      flash[:notice] = "Account registered"
+      redirect_back_or_default dashboards_url # TODO: Create initial welcome page
     else
       render :action => :new
     end
@@ -28,8 +28,8 @@ class UsersController < ApplicationController
   def update
     @user = @current_user # makes our views "cleaner" and more consistent
     if @user.update_attributes(params[:user])
-      flash[:notice] = "Account updated!"
-      redirect_to account_url
+      flash[:notice] = "Account updated"
+      redirect_to dashboards_url
     else
       render :action => :edit
     end

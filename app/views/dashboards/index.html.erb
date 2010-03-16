@@ -3,19 +3,19 @@
     <div id="goal" class="container_12 clearfix">
       <div id="" class="grid_12 dashboard-section" style="margin-top: 10px;">
         <div style="font-size: 1.25em; margin: 15px 10px 15px 10px;">
-          <% if @current_user.goal.nil? || @current_user.goal.blank? -%>
+          <% if current_user.goal.nil? || current_user.goal.blank? -%>
             <span class="dashboard-header">Goal</span><span class="dashboard-header-copy" style="color: #dd0000;">You haven't set a goal.&nbsp;&nbsp;Set a goal to help keep yourself motivated!</span>
           <% else -%>
-            <span class="dashboard-header">Goal</span><span class="dashboard-header-copy"><%= @current_user.goal %></span>
+            <span class="dashboard-header">Goal</span><span class="dashboard-header-copy"><%= current_user.goal %></span>
           <% end -%>
         </div>
         <hr />
         <div style="padding: 5px 10px 15px 10px; font-size: 1.25em;">
           <div style="display: inline-block;">
-            <span class="dashboard-item-left">Start Date</span><span class="dashboard-item-right"><%= (@current_user.goal_start_date.nil?) ? "None" : @current_user.goal_start_date.strftime("%B %d, %Y") %></span>
+            <span class="dashboard-item-left">Start Date</span><span class="dashboard-item-right"><%= (current_user.goal_start_date.nil?) ? "None" : current_user.goal_start_date.strftime("%B %d, %Y") %></span>
           </div>
           <div style="display: inline-block; margin-left: 15px;">
-            <span class="dashboard-item-left">End Date</span><span class="dashboard-item-right"><%= (@current_user.goal_end_date.nil?) ? "None" : @current_user.goal_end_date.strftime("%B %d, %Y") %></span>
+            <span class="dashboard-item-left">End Date</span><span class="dashboard-item-right"><%= (current_user.goal_end_date.nil?) ? "None" : current_user.goal_end_date.strftime("%B %d, %Y") %></span>
           </div>
         </div>
       </div>
@@ -56,11 +56,11 @@
         <hr />
         <div>
             <ul class="item">
-              <li><div class="dashboard-item-left">Age</div><div id="age" class="dashboard-item-right"><%= @current_user.age ? @current_user.age : "None" %> </div></li>
-              <li><div class="dashboard-item-left">Height</div><div id="height" class="dashboard-item-right"><%= @current_user.height ? @current_user.height : "None" %> </div></li>
-              <li><div class="dashboard-item-left">Weight</div><div id="weight-edit" class="dashboard-item-right edit"><%= @current_user.measurements.recent ? @current_user.measurements.recent.weight : "None" %></div></li>
-              <li><div class="dashboard-item-left">BMI</div><div id="bmi-edit" class="dashboard-item-right edit"><%= @current_user.measurements.recent ? @current_user.measurements.recent.bmi : "None" %></div></li>
-              <li><div class="dashboard-item-left">V02 Max</div><div id="v02-max" class="dashboard-item-right edit"><%= @current_user.measurements.recent ? @current_user.measurements.recent.v02_max : "None" %></div></li>
+              <li><div class="dashboard-item-left">Age</div><div id="age" class="dashboard-item-right"><%= current_user.age ? current_user.age : "None" %> </div></li>
+              <li><div class="dashboard-item-left">Height</div><div id="height" class="dashboard-item-right"><%= current_user.height ? current_user.height : "None" %> </div></li>
+              <li><div class="dashboard-item-left">Weight</div><div id="weight-edit" class="dashboard-item-right edit"><%= current_user.measurements.recent ? current_user.measurements.recent.weight : "None" %></div></li>
+              <li><div class="dashboard-item-left">BMI</div><div id="bmi-edit" class="dashboard-item-right edit"><%= current_user.measurements.recent ? current_user.measurements.recent.bmi : "None" %></div></li>
+              <li><div class="dashboard-item-left">V02 Max</div><div id="v02-max" class="dashboard-item-right edit"><%= current_user.measurements.recent ? current_user.measurements.recent.v02_max : "None" %></div></li>
             </ul>
         </div>
       </div>
