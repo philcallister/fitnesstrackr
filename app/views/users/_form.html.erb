@@ -11,8 +11,9 @@
 <%= form.password_field :password_confirmation %><br />
 <br />
 <hr />
+<h1>Goal</h1>
 <%= form.label :goal %><br />
-<%= form.text_area :goal, :rows => 2 %><br />
+<%= form.text_area :goal, :rows => 2, :cols => 43 %><br />
 <br />
 <%= form.label :goal_start_date %><br />
 <%= form.text_field :goal_start_date %><br />
@@ -20,6 +21,8 @@
 <%= form.label :goal_end_date %><br />
 <%= form.text_field :goal_end_date %><br />
 <br />
+<hr />
+<h1>Personal</h1>
 <%= form.label :birthday %><br />
 <%= form.text_field :birthday %><br />
 <br />
