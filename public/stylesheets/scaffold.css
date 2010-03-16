@@ -12,7 +12,8 @@ body, p, ol, ul, td, th {
 }
 
 label {
-  font-size: 1.1em;
+  font-size: 1.25em;
+  font-weight: bold;
   color: #5599bb;
 }
 
