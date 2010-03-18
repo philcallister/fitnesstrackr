@@ -150,6 +150,18 @@ a:hover { color: #fff; background-color:#000; }
   -webkit-border-radius: 10px;
 }
 
+.account-form {
+  padding: 20px 60px;
+  background-color: #e1e9ed;
+  border: 1px solid #d2d2d2;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-box-shadow: 0px 2px 2px #999;
+  -webkit-box-shadow: 0px 2px 2px #999;
+  box-shadow: 0px 2px 2px #999;
+}
+
+
 /******************************************************************************/
 /* Super-header stuff                                                         */
 
@@ -444,6 +456,21 @@ a.button-landing:hover, a.button-landing:focus {
   -webkit-border-top-right-radius: 5px;
 }
 
+.edit, .edit a:visited {
+  color: #002233;
+  float: right;
+  padding: 2px 5px;
+  margin-top: -3px;
+  text-decoration: underline;
+}
+
+.edit a:hover, .edit a:focus {
+  color: #fff;
+  background-color: #5599BB;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+
 ul.item {
   list-style-image: none;
   list-style-position: outside;
@@ -470,8 +497,6 @@ ul.item li div input {
   width: 100%;
   padding: 0px 2px;
   margin: 0;
-  font-size: 1em;
-  font-weight: normal;
   text-align: left;
   text-shadow: none;
   -moz-border-radius-bottomright: 5px;

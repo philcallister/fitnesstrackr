@@ -4,16 +4,17 @@
       <h1>Sign In</h1>
 
       <% form_for @user_session, :url => user_session_path do |f| %>
-        <%= f.error_messages %>
-        <%= f.label :login %><br />
-        <%= f.text_field :login %><br />
-        <br />
-        <%= f.label :password %><br />
-        <%= f.password_field :password %><br />
-        <br />
-        <%= f.check_box :remember_me %>&nbsp;<%= f.label :remember_me %><br />
-        <br />
-        <hr />
+        <div class="account-form">
+          <%= f.error_messages %>
+          <%= f.label :login %><br />
+          <%= f.text_field :login %><br />
+          <br />
+          <%= f.label :password %><br />
+          <%= f.password_field :password %><br />
+          <br />
+          <%= f.check_box :remember_me %>&nbsp;<%= f.label :remember_me %><br />
+          <br />
+        </div>
         <br />
         <%= f.submit "Login" %>
       <% end %>

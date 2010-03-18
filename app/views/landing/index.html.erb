@@ -7,7 +7,7 @@
           <h1>Mobilize Your Workouts</h1>
           <p>Set your fitness goals and create your workout plans <b>online</b>. Use your <b>mobile device</b> during workouts to execute your plan.  Analyze your trends to <b>track your progress</b>.</p>
           <a class="button-landing" href="#">Tell me more</a>
-          <%= link_to 'Sign me up', new_user_path, :class => "button-landing" %>
+          <%= link_to 'Sign me up', new_user_path(:at => User::MAIN), :class => "button-landing" %>
         </div>
       </div>
       <div class="grid_6">

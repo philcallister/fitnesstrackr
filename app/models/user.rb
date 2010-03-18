@@ -1,5 +1,10 @@
 class User < ActiveRecord::Base
 
+  ALL = 0
+  MAIN = 1
+  GOAL = 2
+  PERSONAL = 3
+
   # Validations
   validates_length_of :goal, :maximum => 100, :allow_nil => true, :allow_blank => true
 

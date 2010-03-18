@@ -1,32 +1,44 @@
-<%= form.label :login %><br />
-<%= form.text_field :login %><br />
-<br />
-<%= form.label :email %><br />
-<%= form.text_field :email %><br />
-<br />
-<%= form.label :password, form.object.new_record? ? nil : "Change password" %><br />
-<%= form.password_field :password %><br />
-<br />
-<%= form.label :password_confirmation %><br />
-<%= form.password_field :password_confirmation %><br />
-<br />
-<hr />
-<h1>Goal</h1>
-<%= form.label :goal %><br />
-<%= form.text_area :goal, :rows => 2, :cols => 43 %><br />
-<br />
-<%= form.label :goal_start_date %><br />
-<%= form.text_field :goal_start_date %><br />
-<br />
-<%= form.label :goal_end_date %><br />
-<%= form.text_field :goal_end_date %><br />
-<br />
-<hr />
-<h1>Personal</h1>
-<%= form.label :birthday %><br />
-<%= form.text_field :birthday %><br />
-<br />
-<%= form.label :height %><br />
-<%= form.text_field :height %><br />
-<br />
-<hr />
+<% if @account_type == User::ALL || @account_type == User::MAIN %>
+  <h1>Account</h1>
+  <div class="account-form">
+    <%= form.label :login %><br />
+    <%= form.text_field :login %><br />
+    <br />
+    <%= form.label :email %><br />
+    <%= form.text_field :email %><br />
+    <br />
+    <%= form.label :password, form.object.new_record? ? nil : "Change password" %><br />
+    <%= form.password_field :password %><br />
+    <br />
+    <%= form.label :password_confirmation %><br />
+    <%= form.password_field :password_confirmation %><br />
+    <br />
+  </div>
+<% end %>
+
+<% if @account_type == User::ALL || @account_type == User::GOAL %>
+  <h1>Goal</h1>
+  <div class="account-form">
+    <%= form.label :goal %><br />
+    <%= form.text_area :goal, :rows => 2, :cols => 43 %><br />
+    <br />
+    <%= form.label :goal_start_date %><br />
+    <%= form.text_field :goal_start_date %><br />
+    <br />
+    <%= form.label :goal_end_date %><br />
+    <%= form.text_field :goal_end_date %><br />
+    <br />
+  </div>
+<% end %>
+
+<% if @account_type == User::ALL || @account_type == User::PERSONAL %>
+  <h1>Personal</h1>
+  <div class="account-form">
+    <%= form.label :birthday %><br />
+    <%= form.text_field :birthday %><br />
+    <br />
+    <%= form.label :height %><br />
+    <%= form.text_field :height %><br />
+    <br />
+  </div>
+<% end %>

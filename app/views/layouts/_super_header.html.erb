@@ -1,13 +1,13 @@
 <!-- div id="super-header" class="clearfix" -->
   <div id = "super-header" class="container_12 clearfix">
-    <div class="grid_4 prefix_8">
+    <div class="grid_5 prefix_7">
       <ul id="account">
         <% if current_user_session %>
-          <li>Welcome, <%= current_user.login %></li>
+          <li>Welcome, <b><%= current_user.login %></b></li>
           <li><%= link_to 'Sign Out', user_session_path, :method => :delete %></li>
-          <li><%= link_to 'Account', edit_account_path %></li>
+          <li><%= link_to 'Account', edit_account_path(:at => User::MAIN) %></li>
         <% else %>
-          <li><%= link_to 'Sign Up', new_user_path %></li>
+          <li><%= link_to 'Sign Up', new_user_path(:at => User::MAIN) %></li>
           <li><%= link_to 'Sign In', new_user_session_path %></li>
         <% end %>
       </ul>
