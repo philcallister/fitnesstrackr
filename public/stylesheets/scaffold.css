@@ -21,7 +21,7 @@ input {
   color: #333;
   border: 1px solid #aaa;
   background: #e2e2e2 url(/images/button-big.png) repeat-x scroll 0 0;
-  margin: 0;
+  margin: 0 10px 0 0;
   font-size: 1.25em;
   font-weight: bold;
   letter-spacing: 0.02em;
@@ -436,9 +436,7 @@ a.button-landing:hover, a.button-landing:focus {
   -webkit-border-top-right-radius: 15px;
 }
 
-.dashboard-item-left {
-  background-color: #C0DEED;
-  color: #002233;
+.dashboard-item-left, .dashboard-item-calc-left {
   padding: 2px 10px;
   -moz-border-radius-bottomleft: 5px;
   -moz-border-radius-topleft: 5px;
@@ -446,14 +444,32 @@ a.button-landing:hover, a.button-landing:focus {
   -webkit-border-top-left-radius: 5px;
 }
 
-.dashboard-item-right {
-  background-color: #5599bb;
-  color: #fff;
+.dashboard-item-left {
+  background-color: #C0DEED;
+  color: #002233;
+}
+
+.dashboard-item-calc-left {
+  background-color: #d2d2d2;
+  color: #002233;
+}
+
+.dashboard-item-right, .dashboard-item-calc-right {
   padding: 2px 10px;
   -moz-border-radius-bottomright: 5px;
   -moz-border-radius-topright: 5px;
   -webkit-border-bottom-right-radius: 5px;
   -webkit-border-top-right-radius: 5px;
+}
+
+.dashboard-item-right {
+  background-color: #5599bb;
+  color: #fff;
+}
+
+.dashboard-item-calc-right {
+  background-color: #aaa;
+  color: #fff;
 }
 
 .edit, .edit a:visited {
@@ -471,7 +487,7 @@ a.button-landing:hover, a.button-landing:focus {
   -webkit-border-radius: 5px;
 }
 
-ul.item {
+ul.item, ul.item-calc {
   list-style-image: none;
   list-style-position: outside;
   list-style-type: none;
@@ -480,13 +496,16 @@ ul.item {
 }
 
 ul.item li {
-  padding: 8px 0px 8px 10px;
+  padding: 4px 0px 4px 10px;
 }
 
-ul.item li div {
+ul.item-calc li {
+  padding: 4px 0px 4px 10px;
+}
+
+ul.item li div, ul.item-calc li div {
   display: inline-block;
   width: 120px;
-  cursor: pointer;
   padding: 3px 10px;
 }
 
@@ -509,7 +528,7 @@ a.button-big {
   color: #333;
   border: 1px solid #eee;
   background: #99CC22 url(/images/button-big.png) repeat-x scroll 0 0;
-  margin: 0px 5px;
+  margin: 0px 15px;
   font-size: 1.4em;
   font-weight: bold;
   letter-spacing: 0.02em;

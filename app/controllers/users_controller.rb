@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :only => [:show, :edit, :update]
   before_filter :find_account_type, :only => [:show, :edit, :new]
+  before_filter :check_for_cancel, :only => [:update, :create]
 
   def new
     @user = User.new
@@ -44,6 +45,12 @@ class UsersController < ApplicationController
       @account_type = params[:at].to_i
     else
       @account_type = User::ALL
+    end
+  end
+
+  def check_for_cancel
+    if params[:commit] == "Cancel"
+      redirect_to dashboards_url
     end
   end
 

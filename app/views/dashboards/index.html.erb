@@ -8,7 +8,7 @@
           <% else -%>
             <span class="dashboard-header">Goal</span><span class="dashboard-header-copy"><%= current_user.goal %></span>
           <% end -%>
-          <span class="edit"><%= link_to 'Edit', edit_account_path(:at => User::GOAL), :class => "edit" %></span>
+          <span class="edit"><%= link_to 'Edit', edit_account_path(:at => User::GOAL) %></span>
         </div>
         <hr />
         <div style="padding: 5px 10px 15px 10px; font-size: 1.25em;">
@@ -52,17 +52,27 @@
     <div id="current" class="container_12 clearfix">
       <div id="" class="grid_4 dashboard-section" style="height: 275px; margin: 10px 9px;">
         <div style="margin-top: 5px; padding: 10px; font-size: 1.25em;">
-          <span class="dashboard-marker">Measurements</span>
+          <span class="dashboard-marker">Personal</span>
+          <span class="edit"><%= link_to 'Edit', edit_account_path(:at => User::PERSONAL) %></span>
+        </div>
+        <div>
+          <ul class="item-calc">
+            <li><div class="dashboard-item-calc-left">Age</div><div id="age" class="dashboard-item-calc-right"><%= current_user.age ? current_user.age : "None" %> </div></li>
+            <li><div class="dashboard-item-calc-left">Height</div><div id="height" class="dashboard-item-calc-right"><%= current_user.height ? current_user.height : "None" %> </div></li>
+            <li><div class="dashboard-item-calc-left">BMI</div><div id="bmi-edit" class="dashboard-item-calc-right"><%= current_user.measurements.recent ? current_user.measurements.recent.bmi : "None" %></div></li>
+          </ul>
         </div>
         <hr />
+        <div style="margin-top: 5px; padding: 10px; font-size: 1.25em;">
+          <span class="dashboard-marker">Measurements</span>
+          <span class="edit"><%= link_to 'Edit', edit_account_path(:at => User::PERSONAL) %></span>
+          <span class="edit"><%= link_to 'Add', edit_account_path(:at => User::PERSONAL) %></span>
+        </div>
         <div style="font-size: 1.25em;">
-            <ul class="item">
-              <li><div class="dashboard-item-left">Age</div><div id="age" class="dashboard-item-right"><%= current_user.age ? current_user.age : "None" %> </div></li>
-              <li><div class="dashboard-item-left">Height</div><div id="height" class="dashboard-item-right"><%= current_user.height ? current_user.height : "None" %> </div></li>
-              <li><div class="dashboard-item-left">Weight</div><div id="weight-edit" class="dashboard-item-right"><%= current_user.measurements.recent ? current_user.measurements.recent.weight : "None" %></div></li>
-              <li><div class="dashboard-item-left">BMI</div><div id="bmi-edit" class="dashboard-item-right"><%= current_user.measurements.recent ? current_user.measurements.recent.bmi : "None" %></div></li>
-              <li><div class="dashboard-item-left">V02 Max</div><div id="v02-max" class="dashboard-item-right"><%= current_user.measurements.recent ? current_user.measurements.recent.v02_max : "None" %></div></li>
-            </ul>
+          <ul class="item">
+            <li><div class="dashboard-item-left">Weight</div><div id="weight-edit" class="dashboard-item-right"><%= current_user.measurements.recent ? current_user.measurements.recent.weight : "None" %></div></li>
+            <li><div class="dashboard-item-left">V02 Max</div><div id="v02-max" class="dashboard-item-right"><%= current_user.measurements.recent ? current_user.measurements.recent.v02_max : "None" %></div></li>
+          </ul>
         </div>
       </div>
       <div id="" class="grid_4 dashboard-section" style="height: 275px; margin: 10px 9px;">
