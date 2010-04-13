@@ -3,6 +3,11 @@ body {
   color: #002233;
 }
 
+abbr {
+  border: none;
+  font-weight: normal;
+}
+
 body, p, ol, ul, td, th {
   font-family: Helvetica, Arial;
   font-size:   13px;
@@ -475,7 +480,7 @@ a.button-landing:hover, a.button-landing:focus {
 .edit, .edit a:visited {
   color: #002233;
   float: right;
-  padding: 2px 5px;
+  padding: 2px 3px;
   margin-top: -3px;
   text-decoration: underline;
 }

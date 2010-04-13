@@ -50,42 +50,64 @@
       </div>
     </div>
     <div id="current" class="container_12 clearfix">
-      <div id="" class="grid_4 dashboard-section" style="height: 275px; margin: 10px 9px;">
+      <div id="" class="grid_4 dashboard-section" style="height: 315px; margin: 10px 9px;">
         <div style="margin-top: 5px; padding: 10px; font-size: 1.25em;">
           <span class="dashboard-marker">Personal</span>
+          <span class="edit"><%= link_to 'Show', edit_account_path(:at => User::PERSONAL) %></span>
           <span class="edit"><%= link_to 'Edit', edit_account_path(:at => User::PERSONAL) %></span>
         </div>
         <div>
           <ul class="item-calc">
-            <li><div class="dashboard-item-calc-left">Age</div><div id="age" class="dashboard-item-calc-right"><%= current_user.age ? current_user.age : "None" %> </div></li>
-            <li><div class="dashboard-item-calc-left">Height</div><div id="height" class="dashboard-item-calc-right"><%= current_user.height ? current_user.height : "None" %> </div></li>
-            <li><div class="dashboard-item-calc-left">BMI</div><div id="bmi-edit" class="dashboard-item-calc-right"><%= current_user.measurements.recent ? current_user.measurements.recent.bmi : "None" %></div></li>
+            <li><div class="dashboard-item-left">Age</div><div id="age" class="dashboard-item-right"><%= current_user.age ? current_user.age : "None" %> </div></li>
+            <li><div class="dashboard-item-left">Height</div><div id="height" class="dashboard-item-right"><%= current_user.height ? current_user.height : "None" %> </div></li>
           </ul>
         </div>
         <hr />
         <div style="margin-top: 5px; padding: 10px; font-size: 1.25em;">
           <span class="dashboard-marker">Measurements</span>
-          <span class="edit"><%= link_to 'Edit', edit_account_path(:at => User::PERSONAL) %></span>
-          <span class="edit"><%= link_to 'Add', edit_account_path(:at => User::PERSONAL) %></span>
+          <span class="edit"><%= link_to 'Show', new_measurement_path %></span>
+          <span class="edit"><%= link_to 'Edit', new_measurement_path %></span>
+          <span class="edit"><%= link_to 'Add', new_measurement_path %></span>
         </div>
         <div style="font-size: 1.25em;">
           <ul class="item">
             <li><div class="dashboard-item-left">Weight</div><div id="weight-edit" class="dashboard-item-right"><%= current_user.measurements.recent ? current_user.measurements.recent.weight : "None" %></div></li>
-            <li><div class="dashboard-item-left">V02 Max</div><div id="v02-max" class="dashboard-item-right"><%= current_user.measurements.recent ? current_user.measurements.recent.v02_max : "None" %></div></li>
+            <li><div class="dashboard-item-left">Waist</div><div id="weight-edit" class="dashboard-item-right"><%= current_user.measurements.recent ? current_user.measurements.recent.waist : "None" %></div></li>
+          </ul>
+        </div>
+        <hr />
+        <div style="margin-top: 5px; padding: 10px; font-size: 1.25em;">
+          <span class="dashboard-marker">Calculations</span>
+          <span class="edit"><%= link_to 'Show', new_measurement_path %></span>
+        </div>
+        <div style="font-size: 1.25em;">
+          <ul class="item">
+            <li><div class="dashboard-item-calc-left">BMI</div><div id="bmi-edit" class="dashboard-item-calc-right"><%= current_user.measurements.recent ? current_user.measurements.recent.bmi : "None" %></div></li>
           </ul>
         </div>
       </div>
-      <div id="" class="grid_4 dashboard-section" style="height: 275px; margin: 10px 9px;">
+      <div id="" class="grid_4 dashboard-section" style="height: 315px; margin: 10px 9px;">
         <div class="" style="margin-top: 5px; padding: 10px; font-size: 1.25em;">
-          <span class="dashboard-marker">Program</span>
+          <span class="dashboard-marker">Programs</span>
+          <span class="edit"><%= link_to 'Manage', new_measurement_path %></span>
         </div>
         <hr />
+        <div class="" style="margin-top: 5px; padding: 10px; text-shadow: 0 1px 0 #fff;">
+          <span style="font-size: 1.25em;"><b>Interval training</b></span><br /><br />
+          <span>This form of training involves alternating periods of activity and recovery. The advantage of this form of training is that it provides greater amounts of exposure to intensive training without incurring excessive fatigue. Greater recovery will occur if you remain walking or moving throughout. This increases the body's ability to remove lactic acid from the muscles, take it back to the liver, and convert it to energy.</span>
+        </div>
       </div>
-      <div id="" class="grid_4 dashboard-section" style="height: 275px; margin: 10px 9px;">
+      <div id="" class="grid_4 dashboard-section" style="height: 315px; margin: 10px 9px;">
         <div class="" style="margin-top: 5px; padding: 10px; font-size: 1.25em;">
-          <span class="dashboard-marker">Workout Plan</span>
+          <span class="dashboard-marker">Workout Plans</span>
+          <span class="edit"><%= link_to 'Manage', new_measurement_path %></span>
         </div>
         <hr />
+        <div>
+          <%= calendar(:year => 2010, :month => 4, :first_day_of_week => 0) do |d|
+                #render_calendar_cell(d)
+              end %>
+        </div>
       </div>
     </div>
   </div>

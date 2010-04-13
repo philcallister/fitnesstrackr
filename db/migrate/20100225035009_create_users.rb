@@ -20,6 +20,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string    :last_login_ip                                      # optional, see Authlogic::Session::MagicColumns
 
       # User goodies
+      t.integer   :gender
       t.date      :birthday
       t.integer   :height
       t.string    :goal, :limit => 100, :default => nil
