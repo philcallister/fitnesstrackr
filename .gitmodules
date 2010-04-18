@@ -1,3 +1,0 @@
-[submodule "vendor/plugins/calendar_helper"]
-	path = vendor/plugins/calendar_helper
-	url = git@github.com:philcallister/calendar_helper.git
