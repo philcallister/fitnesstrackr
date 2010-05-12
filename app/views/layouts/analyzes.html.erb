@@ -5,16 +5,9 @@
 <head>
   <!-- noscript><meta http-equiv="refresh" content="0; /404.html"/></noscript -->
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title>Dashboard: <%= controller.action_name %></title>
-  <%= stylesheet_link_tag 'scaffold', '960', 'calendar', 'jquery-ui-1.8.1.custom' %>
+  <title>Analzye: <%= controller.action_name %></title>
+  <%= stylesheet_link_tag 'scaffold', '960', 'calendar', 'jquery-ui-1.8.1.custom', 'visualize/basic', 'visualize/visualize', 'visualize/visualize-dark' %>
   <%= render :partial => "layouts/jquery_rocks" %>
-
-  <!-- script type="text/javascript">
-    $(document).ready(function() {
-      $('.edit').editable();
-    });
-  </script -->
-
 </head>
 <body>
   <%= render :partial => "layouts/super_header" %>

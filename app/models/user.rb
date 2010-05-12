@@ -10,12 +10,15 @@ class User < ActiveRecord::Base
 
   # Associations
   has_many :measurements do
+    def find_date(date)
+      find_by_measure_date(date)
+    end
     def recent
       first(:order => "measure_date DESC")
     end
     def current(reload=false)
       @current_measurement = nil if reload
-      @current_measurement ||= first(:conditions => "measure_date = '#{Date.today}'")
+      @current_measurement ||= find_by_measure_date(Date.today)
     end
   end
 
@@ -28,7 +31,7 @@ class User < ActiveRecord::Base
       now = Date.today
       return now.year - birthday.year - ((now.month > birthday.month || (now.month == birthday.month && now.day >= birthday.day)) ? 0 : 1)
     end
-    return n=nil
+    return nil
   end
 
 end

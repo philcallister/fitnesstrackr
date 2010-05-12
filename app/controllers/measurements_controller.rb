@@ -28,16 +28,31 @@ class MeasurementsController < ApplicationController
   # Only create a new measurement if we're on a new day, otherwise just
   # use the measurement from the current day
   def new
-    if current_user.measurements.current
-      @measurement = current_user.measurements.current
+    new_measurement = false
+    if params[:measure_date]
+      @measurement = current_user.measurements.find_date(Date.parse(params[:measure_date]))
+      unless @measurement
+        @measurement = (current_user.measurements.recent) ? current_user.measurements.recent.clone :
+                                                            Measurement.new
+        @measurement.measure_date = Date.parse(params[:measure_date])
+        new_measurement = true
+      end
+    elsif current_user.measurements.recent
+      @measurement = current_user.measurements.recent
     else
-      @measurement = Measurement.new
-      @measurement.user = current_user
+      @measurement = (current_user.measurements.recent) ? current_user.measurements.recent.clone :
+                                                          Measurement.new
+      new_measurement = true
     end
 
     respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @measurement }
+      if new_measurement
+        format.html # new.html.erb
+        format.xml  { render :xml => @measurement }
+      else
+        format.html { render :action => :edit }
+        format.xml  { render :xml => @measurement }
+      end
     end
   end
 
@@ -49,19 +64,24 @@ class MeasurementsController < ApplicationController
   # POST /measurements
   # POST /measurements.xml
   def create
-    if current_user.measurements.current
+    unless current_user.measurements.find_date(params[:measure_date]).nil?
       update_all
     else
       @measurement = Measurement.new(params[:measurement])
-      @measurement.measure_date = Date.today
+      @measurement.user = current_user
       respond_to do |format|
-        if @measurement.save
-          flash[:notice] = 'Measurement was successfully created.'
-          format.html { redirect_to(@measurement) }
-          format.xml  { render :xml => @measurement, :status => :created, :location => @measurement }
+        unless params[:commit] == 'Cancel'
+          if @measurement.save
+            flash[:notice] = 'Measurement was successfully created.'
+            format.html { redirect_to dashboards_path }
+            format.xml  { render :xml => @measurement, :status => :created, :location => @measurement }
+          else
+            format.html { render :action => "new" }
+            format.xml  { render :xml => @measurement.errors, :status => :unprocessable_entity }
+          end
         else
-          format.html { render :action => "new" }
-          format.xml  { render :xml => @measurement.errors, :status => :unprocessable_entity }
+          format.html { redirect_to dashboards_path }
+          format.xml  { head :ok }
         end
       end
     end
@@ -96,13 +116,18 @@ class MeasurementsController < ApplicationController
 
   def update_all
     respond_to do |format|
-      if @measurement.update_attributes(params[:measurement])
-        flash[:notice] = 'Measurement was successfully updated.'
-        format.html { redirect_to(@measurement) }
-        format.xml  { head :ok }
+      unless params[:commit] == 'Cancel'
+        if @measurement.update_attributes(params[:measurement])
+          flash[:notice] = 'Measurement was successfully updated.'
+          format.html { redirect_to dashboards_path }
+          format.xml  { head :ok }
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @measurement.errors, :status => :unprocessable_entity }
+        end
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @measurement.errors, :status => :unprocessable_entity }
+        format.html { redirect_to dashboards_path }
+        format.xml  { head :ok }
       end
     end
   end

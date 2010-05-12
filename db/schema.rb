@@ -160,8 +160,8 @@ ActiveRecord::Schema.define(:version => 20100313044628) do
     t.date     "birthday"
     t.integer  "height"
     t.string   "goal",                :limit => 100
-    t.datetime "goal_start_date"
-    t.datetime "goal_end_date"
+    t.date     "goal_start_date"
+    t.date     "goal_end_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

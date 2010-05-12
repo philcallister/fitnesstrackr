@@ -24,8 +24,8 @@ class CreateUsers < ActiveRecord::Migration
       t.date      :birthday
       t.integer   :height
       t.string    :goal, :limit => 100, :default => nil
-      t.datetime  :goal_start_date
-      t.datetime  :goal_end_date
+      t.date      :goal_start_date
+      t.date      :goal_end_date
 
       t.timestamps
     end

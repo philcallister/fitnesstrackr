@@ -1,4 +1,18 @@
 <% content_for :content do -%>
+  <script type="text/javascript">
+  $(document).ready(function() {
+    // measurement date
+    $("#measurement-datepicker").datepicker();
+
+    // attach date to "Edit" measurement
+    $("#measurement-edit").bind("click", function(e)
+    {
+      document.location.href = e.target.href + "?measure_date=" + $("#measurement-datepicker").val();
+      return false;
+    });
+
+  });
+  </script>
   <div id="dashboard" class="container_12 clearfix content">
     <div id="goal" class="container_12 clearfix">
       <div id="" class="grid_12 dashboard-section" style="margin-top: 10px;">
@@ -65,9 +79,8 @@
         <hr />
         <div style="margin-top: 5px; padding: 10px; font-size: 1.25em;">
           <span class="dashboard-marker">Measurements</span>
-          <span class="edit"><%= link_to 'Show', new_measurement_path %></span>
-          <span class="edit"><%= link_to 'Edit', new_measurement_path %></span>
-          <span class="edit"><%= link_to 'Add', new_measurement_path %></span>
+          <span id="measurement-edit" class="edit"><%= link_to 'Edit', new_measurement_path %></span>
+          <span class="edit"><input id="measurement-datepicker" type="text" value="<%= Date.today.strftime('%m/%d/%Y') %>" style="font-size: 0.75em; width: 90px; margin: -3px" /></span>
         </div>
         <div style="font-size: 1.25em;">
           <ul class="item">
@@ -78,11 +91,11 @@
         <hr />
         <div style="margin-top: 5px; padding: 10px; font-size: 1.25em;">
           <span class="dashboard-marker">Calculations</span>
-          <span class="edit"><%= link_to 'Show', new_measurement_path %></span>
+          <span id="edit" class="edit"><%= link_to 'Show', new_measurement_path %></span>
         </div>
         <div style="font-size: 1.25em;">
           <ul class="item">
-            <li><div class="dashboard-item-calc-left">BMI</div><div id="bmi-edit" class="dashboard-item-calc-right"><%= current_user.measurements.recent ? current_user.measurements.recent.bmi : "None" %></div></li>
+            <li><div class="dashboard-item-calc-left">BMI</div><div id="bmi-edit" class="dashboard-item-calc-right">None</div></li>
           </ul>
         </div>
       </div>

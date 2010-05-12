@@ -327,6 +327,28 @@ a.button-landing:hover, a.button-landing:focus {
   color: #111;
 }
 
+a.button-default {
+  color: #333;
+  border: 1px solid #aaa;
+  background: #e2e2e2 url(/images/button-big.png) repeat-x scroll 0 0;
+  margin: 0px 10px 0 0;
+  font-size: 1.25em;
+  font-weight: bold;
+  letter-spacing: 0.02em;
+  padding: 5px 20px;
+  text-align: center;
+  text-shadow: 0 1px 0 #eee;
+  text-decoration: none;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+
+a.button-default:hover, a.button-default:focus {
+  background-position: 0 -10px;
+  color: #111;
+  cursor: pointer;
+}
+
 /******************************************************************************/
 /* Landing Information                                                        */
 #detail {
@@ -568,8 +590,10 @@ a.button-big:hover, a.button-big:focus {
 }
 .meter-value {
   background: #99CC22 url(/images/progress-bar.png) repeat-x scroll 0 0;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
+  -moz-border-radius-bottomLeft: 10px;
+  -moz-border-radius-topLeft: 10px;
+  -webkit-border-bottom-left-radius: 10px;
+  -webkit-border-top-left-radius: 10px;
 }
 
 .meter-text {

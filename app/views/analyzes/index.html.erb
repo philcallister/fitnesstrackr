@@ -1,0 +1,66 @@
+<% content_for :content do -%>
+  <%
+     topValue = 0
+     bottomValue = 0
+     if @measurement_type == Measurement::BMI
+       max = current_user.measurements.max { |x,y| x.weight.to_i <=> y.weight.to_i }.weight.to_i
+       topValue = (((max.to_f / (current_user.height.to_f * current_user.height.to_f) * 703) * 100).round * 0.01).ceil
+       min = current_user.measurements.min { |x,y| x.weight.to_i <=> y.weight.to_i }.weight.to_i
+       bottomValue = (((min.to_f / (current_user.height.to_f * current_user.height.to_f) * 703) * 100).round * 0.01).floor
+     elsif @measurement_type == Measurement::WAIST
+       topValue = current_user.measurements.max { |x,y| x.waist.to_i <=> y.waist.to_i }.waist.to_i + 1
+       bottomValue = current_user.measurements.min { |x,y| x.waist.to_i <=> y.waist.to_i }.waist.to_i - 1
+     else
+       topValue = current_user.measurements.max { |x,y| x.weight.to_i <=> y.weight.to_i }.weight.to_i + 1
+       bottomValue = current_user.measurements.min { |x,y| x.weight.to_i <=> y.weight.to_i }.weight.to_i - 1
+     end
+   -%>
+  <script type="text/javascript">
+  $(document).ready(function() {
+    $('#analyze-chart-data').hide();
+    $('#analyze-chart-data').visualize({ type: 'line', width: '800px', height: '250px', topValue: <%= topValue %>, bottomValue: <%= bottomValue %> });
+  });
+  </script>
+  <div id="analyze" class="container_12 clearfix content">
+    <div id="analyze-chart" class="container_12 clearfix">
+      <div class="grid_12 dashboard-section" style="margin-top: 10px; margin-bottom: 10px; padding-bottom: 10px;">
+        <div style="margin: 30px 0 0 30px;">
+          <%= link_to 'Weight', analyzes_path(:mt => Measurement::WEIGHT), :class => "button-default" %>
+          <%= link_to 'Waist', analyzes_path(:mt => Measurement::WAIST), :class => "button-default" %>
+          <%= link_to 'BMI', analyzes_path(:mt => Measurement::BMI), :class => "button-default" %>
+        </div>
+        <table id="analyze-chart-data">
+          <caption>Measurement Trends</caption>
+            <thead>
+              <tr>
+                <td></td>
+                <% current_user.measurements.each do |m| -%>
+                  <th scope="col"><%= m.measure_date.strftime("%b-%d") %></th>
+                <% end -%>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <% if @measurement_type == Measurement::BMI -%>
+                  <th scope="row">BMI</th>
+                  <% current_user.measurements.each do |m| -%>
+                    <td><%= ((m.weight.to_f / (current_user.height.to_f * current_user.height.to_f) * 703) * 100).round * 0.01 %></td>
+                  <% end -%>
+                <% elsif @measurement_type == Measurement::WAIST -%>
+                  <th scope="row">Waist</th>
+                  <% current_user.measurements.each do |m| -%>
+                    <td><%= m.waist %></td>
+                  <% end -%>
+                <% else -%>
+                  <th scope="row">Weight</th>
+                  <% current_user.measurements.each do |m| -%>
+                    <td><%= m.weight %></td>
+                  <% end -%>
+                <% end -%>
+              </tr>
+            </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+<% end -%>
