@@ -2,23 +2,37 @@
   <%
      topValue = 0
      bottomValue = 0
+     colors = nil
      if @measurement_type == Measurement::BMI
        max = current_user.measurements.max { |x,y| x.weight.to_i <=> y.weight.to_i }.weight.to_i
        topValue = (((max.to_f / (current_user.height.to_f * current_user.height.to_f) * 703) * 100).round * 0.01).ceil
        min = current_user.measurements.min { |x,y| x.weight.to_i <=> y.weight.to_i }.weight.to_i
        bottomValue = (((min.to_f / (current_user.height.to_f * current_user.height.to_f) * 703) * 100).round * 0.01).floor
+       colors = ['#92d5ea']
      elsif @measurement_type == Measurement::WAIST
        topValue = current_user.measurements.max { |x,y| x.waist.to_i <=> y.waist.to_i }.waist.to_i + 1
        bottomValue = current_user.measurements.min { |x,y| x.waist.to_i <=> y.waist.to_i }.waist.to_i - 1
+       colors = ['#666699']
+     elsif @measurement_type == Measurement::CARDIO
+       topValue = current_user.measurements.max { |x,y| x.bp_systolic.to_i <=> y.bp_systolic.to_i }.bp_systolic.to_i + 1
+       bvDiastolic = current_user.measurements.min { |x,y| x.bp_diastolic.to_i <=> y.bp_diastolic.to_i }.bp_diastolic.to_i - 1
+       bvResting = current_user.measurements.min { |x,y| x.resting_hr.to_i <=> y.resting_hr.to_i }.resting_hr.to_i - 1
+       bottomValue = (bvDiastolic < bvResting) ? bvDiastolic : bvResting
+       colors = ['#92d5ea', '#666699', '#be1e2d']
      else
        topValue = current_user.measurements.max { |x,y| x.weight.to_i <=> y.weight.to_i }.weight.to_i + 1
        bottomValue = current_user.measurements.min { |x,y| x.weight.to_i <=> y.weight.to_i }.weight.to_i - 1
+       colors = ['#be1e2d']
      end
    -%>
   <script type="text/javascript">
   $(document).ready(function() {
+    lineColors = []
+    <% colors.each do |color| -%>
+      lineColors.push('<%= color %>');
+    <% end -%>
     $('#analyze-chart-data').hide();
-    $('#analyze-chart-data').visualize({ type: 'line', width: '800px', height: '250px', topValue: <%= topValue %>, bottomValue: <%= bottomValue %> });
+    $('#analyze-chart-data').visualize({ type: 'line', width: '800px', height: '250px', topValue: <%= topValue %>, bottomValue: <%= bottomValue %>, colors: lineColors });
   });
   </script>
   <div id="analyze" class="container_12 clearfix content">
@@ -28,6 +42,7 @@
           <%= link_to 'Weight', analyzes_path(:mt => Measurement::WEIGHT), :class => "button-default" %>
           <%= link_to 'Waist', analyzes_path(:mt => Measurement::WAIST), :class => "button-default" %>
           <%= link_to 'BMI', analyzes_path(:mt => Measurement::BMI), :class => "button-default" %>
+          <%= link_to 'Cardio', analyzes_path(:mt => Measurement::CARDIO), :class => "button-default" %>
         </div>
         <table id="analyze-chart-data">
           <caption>Measurement Trends</caption>
@@ -40,24 +55,47 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
                 <% if @measurement_type == Measurement::BMI -%>
-                  <th scope="row">BMI</th>
-                  <% current_user.measurements.each do |m| -%>
-                    <td><%= ((m.weight.to_f / (current_user.height.to_f * current_user.height.to_f) * 703) * 100).round * 0.01 %></td>
-                  <% end -%>
+                  <tr>
+                    <th scope="row">BMI</th>
+                    <% current_user.measurements.each do |m| -%>
+                      <td><%= ((m.weight.to_f / (current_user.height.to_f * current_user.height.to_f) * 703) * 100).round * 0.01 %></td>
+                    <% end -%>
+                  </tr>
                 <% elsif @measurement_type == Measurement::WAIST -%>
-                  <th scope="row">Waist</th>
-                  <% current_user.measurements.each do |m| -%>
-                    <td><%= m.waist %></td>
-                  <% end -%>
+                  <tr>
+                    <th scope="row">Waist</th>
+                    <% current_user.measurements.each do |m| -%>
+                      <td><%= m.waist %></td>
+                    <% end -%>
+                  </tr>
+                <% elsif @measurement_type == Measurement::CARDIO -%>
+                  <tr>
+                    <th scope="row">Diastolic</th>
+                    <% current_user.measurements.each do |m| -%>
+                      <td><%= m.bp_diastolic %></td>
+                    <% end -%>
+                  </tr>
+                  <tr>
+                    <th scope="row">Systolic</th>
+                    <% current_user.measurements.each do |m| -%>
+                      <td><%= m.bp_systolic %></td>
+                    <% end -%>
+                  </tr>
+                  <tr>
+                    <th scope="row">Resting Heart Rate</th>
+                    <% current_user.measurements.each do |m| -%>
+                      <td><%= m.resting_hr %></td>
+                    <% end -%>
+                  </tr>
                 <% else -%>
-                  <th scope="row">Weight</th>
-                  <% current_user.measurements.each do |m| -%>
-                    <td><%= m.weight %></td>
-                  <% end -%>
+                  <tr>
+                    <th scope="row">Weight</th>
+                    <% current_user.measurements.each do |m| -%>
+                      <td><%= m.weight %></td>
+                    <% end -%>
+                  </tr>
                 <% end -%>
-              </tr>
             </tbody>
         </table>
       </div>
