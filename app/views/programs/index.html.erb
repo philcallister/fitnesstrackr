@@ -1,28 +1,66 @@
 <% content_for :content do -%>
-  <div class="container_12 clearfix">
-    <div class="grid_12">
-      <h1>Listing Programs</h1>
-      <table>
-        <tr>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Actions</th>
-        </tr>
-        <% @programs.each do |program| %>
-          <tr>
-            <td><%= h program.name %></td>
-            <td><%= h program.description %></td>
-            <td>
-              <%= link_to 'Show', program %>&nbsp;&nbsp;|&nbsp;
-              <%= link_to 'Edit', edit_program_path(program) %>&nbsp;&nbsp;|&nbsp;
-              <%= link_to 'Destroy', program, :confirm => 'Are you sure?', :method => :delete %>&nbsp;&nbsp;|&nbsp;
-              <%= link_to 'Workout Blocks', program_workout_blocks_path(program) %>
-            </td>
-          </tr>
-        <% end %>
-      </table>
-      <br />
-      <%= link_to 'New Program', new_program_path %>
+  <script type="text/javascript">
+  $(document).ready(function()
+  {
+    $("#workout-block").sortable();
+    $("#workout-plan").sortable();
+    $("#exercise-plan").sortable();
+  });
+  </script>
+  <div class="container_12 clearfix content">
+    <div id="program" class="container_12 clearfix">
+      <div id="" class="grid_12 dashboard-section" style="margin-top: 10px;">
+        <div style="padding: 10px; font-size: 1.25em;">
+          <span class="dashboard-marker">Interval Training</span>
+          <span class="edit"><%= link_to 'Edit', edit_program_path(1) %><!-- TODO: Use program id here --></span>
+        </div>
+        <hr />
+        <div style="padding: 5px 10px 10px 10px; font-size: 1.1em; text-shadow: 0 1px 0 #fff;">This form of training involves alternating periods of activity and recovery. The advantage of this form of training is that it provides greater amounts of exposure to intensive training without incurring excessive fatigue. Greater recovery will occur if you remain walking or moving throughout. This increases the body's ability to remove lactic acid from the muscles, take it back to the liver, and convert it to energy.</div>
+      </div>
+    </div>
+    <div id="workout" class="container_12 clearfix" style="margin-bottom: 10px;">
+      <div class="grid_4 dashboard-section" style="height: 400px; margin: 10px 9px 0px 9px;">
+        <div style="padding: 10px; font-size: 1.25em;">
+          <span class="dashboard-marker">Workout Blocks</span>
+        </div>
+        <ul id="workout-block" style="list-style-type: none; margin-left: 10px;">
+          <li style="font-size: 1.5em; border-top: 1px solid #5599bb; padding: 10px; background-color: #5599bb; color: #fff;">Week 1</li>
+          <li style="font-size: 1.5em; border-top: 1px solid #5599bb; padding: 10px; background-color: #c0deed;">Week 2</li>
+          <li style="font-size: 1.5em; border-top: 1px solid #5599bb; padding: 10px; background-color: #c0deed;">Week 3</li>
+          <li style="font-size: 1.5em; border-top: 1px solid #5599bb; padding: 10px; background-color: #c0deed;">Week 4</li>
+          <li style="font-size: 1.5em; border-top: 1px solid #5599bb; padding: 10px; background-color: #c0deed;">Week 5</li>
+          <li style="font-size: 1.5em; border-top: 1px solid #5599bb; padding: 10px; background-color: #c0deed;">Week 6</li>
+          <li style="font-size: 1.5em; border-top: 1px solid #5599bb; padding: 10px; background-color: #c0deed;">Week 7</li>
+          <li style="font-size: 1.5em; border-top: 1px solid #5599bb; border-bottom: 1px solid #5599bb; padding: 10px; background-color: #c0deed;">Week 8</li>
+        </ul>
+      </div>
+      <div class="grid_4 dashboard-section" style="height: 400px; margin: 10px 9px 0px 9px;">
+        <div style="padding: 10px; font-size: 1.25em;">
+          <span class="dashboard-marker">Workout Plans</span>
+        </div>
+        <ul id="workout-plan" style="list-style-type: none; margin-left: 10px;">
+          <li style="font-size: 1.5em; border-top: 1px solid #5599bb; padding: 10px; background-color: #c0deed;">Cardio Kick</li>
+          <li style="font-size: 1.5em; border-top: 1px solid #5599bb; padding: 10px; background-color: #c0deed;">Strength (Legs)</li>
+          <li style="font-size: 1.5em; border-top: 1px solid #5599bb; padding: 10px; background-color: #c0deed;">Cardio Swim</li>
+          <li style="font-size: 1.5em; border-top: 1px solid #5599bb; padding: 10px; background-color: #5599bb; color: #fff;">Strength (Chest/Back)</li>
+          <li style="font-size: 1.5em; border-top: 1px solid #5599bb; border-bottom: 1px solid #5599bb; padding: 10px; background-color: #c0deed;">5K Run</li>
+        </ul>
+      </div>
+      <div class="grid_4 dashboard-section" style="height: 400px; margin: 10px 9px 0px 9px;">
+        <div style="padding: 10px; font-size: 1.25em;">
+          <span class="dashboard-marker">Excercise Plans</span>
+        </div>
+        <ul id="exercise-plan" style="list-style-type: none; margin-left: 10px;">
+          <li style="font-size: 1.5em; border-top: 1px solid #5599bb; padding: 10px; background-color: #c0deed;">Bench Press</li>
+          <li style="font-size: 1.5em; border-top: 1px solid #5599bb; padding: 10px; background-color: #c0deed;">Shoulder Press</li>
+          <li style="font-size: 1.5em; border-top: 1px solid #5599bb; padding: 10px; background-color: #c0deed;">Lat Pulldown</li>
+          <li style="font-size: 1.5em; border-top: 1px solid #5599bb; padding: 10px; background-color: #c0deed;">Low Row</li>
+          <li style="font-size: 1.5em; border-top: 1px solid #5599bb; padding: 10px; background-color: #c0deed;">Shrugs</li>
+          <li style="font-size: 1.5em; border-top: 1px solid #5599bb; padding: 10px; background-color: #c0deed;">Machine Fly</li>
+          <li style="font-size: 1.5em; border-top: 1px solid #5599bb; border-bottom: 1px solid #5599bb; padding: 10px; background-color: #c0deed;">High Row</li>
+        </ul>
+      </div>
+      </div>
     </div>
   </div>
 <% end %>

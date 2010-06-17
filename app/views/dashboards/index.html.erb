@@ -1,8 +1,9 @@
 <% content_for :content do -%>
   <script type="text/javascript">
-  $(document).ready(function() {
+  $(document).ready(function()
+  {
     // measurement date
-    $("#measurement-datepicker").datepicker();
+    $("#measurement-datepicker").datepicker({ maxDate: '+0' });
 
     // attach date to "Edit" measurement
     $("#measurement-edit").bind("click", function(e)
@@ -10,7 +11,6 @@
       document.location.href = e.target.href + "?measure_date=" + $("#measurement-datepicker").val();
       return false;
     });
-
   });
   </script>
   <div id="dashboard" class="container_12 clearfix content">
@@ -101,13 +101,13 @@
       </div>
       <div id="" class="grid_4 dashboard-section" style="height: 315px; margin: 10px 9px;">
         <div class="" style="margin-top: 5px; padding: 10px; font-size: 1.25em;">
-          <span class="dashboard-marker">Programs</span>
-          <span class="edit"><%= link_to 'Manage', new_measurement_path %></span>
+          <span class="dashboard-marker">Program</span>
+          <span class="edit"><%= link_to 'Manage', programs_path %></span>
         </div>
         <hr />
         <div class="" style="margin-top: 5px; padding: 10px; text-shadow: 0 1px 0 #fff;">
-          <span style="font-size: 1.25em;"><b>Interval training</b></span><br /><br />
-          <span>This form of training involves alternating periods of activity and recovery. The advantage of this form of training is that it provides greater amounts of exposure to intensive training without incurring excessive fatigue. Greater recovery will occur if you remain walking or moving throughout. This increases the body's ability to remove lactic acid from the muscles, take it back to the liver, and convert it to energy.</span>
+          <div style="font-size: 1.25em; padding-bottom: 10px;"><b>Interval Training</b></div>
+          <div>This form of training involves alternating periods of activity and recovery. The advantage of this form of training is that it provides greater amounts of exposure to intensive training without incurring excessive fatigue. Greater recovery will occur if you remain walking or moving throughout. This increases the body's ability to remove lactic acid from the muscles, take it back to the liver, and convert it to energy.</div>
         </div>
       </div>
       <div id="" class="grid_4 dashboard-section" style="height: 315px; margin: 10px 9px;">
