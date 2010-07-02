@@ -6,6 +6,7 @@ class Program < ActiveRecord::Base
   validates_length_of :description, :within => 1..255
 
   # Associations
+  belongs_to :user
   has_many :workout_blocks, :order => 'workout_block_position'
 
 end

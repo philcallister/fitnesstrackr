@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   validates_length_of :goal, :maximum => 100, :allow_nil => true, :allow_blank => true
 
   # Associations
+  has_many :programs
   has_many :measurements do
     def find_date(date)
       find_by_measure_date(date)

@@ -10,6 +10,7 @@ class ProgramTest < ActiveSupport::TestCase
   should_not_allow_values_for :description, nil
 
   # Associations
+  should_belong_to :user
   should_have_many :workout_blocks
   
   ##############################################################################
