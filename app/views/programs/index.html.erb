@@ -25,11 +25,20 @@
     <div id="program" class="container_12 clearfix">
       <div id="" class="grid_12 dashboard-section" style="margin-top: 10px;">
         <div style="padding: 10px; font-size: 1.25em;">
-          <span class="dashboard-marker">Interval Training</span>
-          <span class="edit"><%= link_to 'Edit', edit_program_path(1) %><!-- TODO: Use program id here --></span>
+          <% if @program.nil? -%>
+            <span class="dashboard-marker">Program</span>
+            <span class="edit"><%= link_to 'Add', new_program_path %></span>
+          <% else -%>
+            <span class="dashboard-marker"><%= @program.name %></span>
+            <span class="edit"><%= link_to 'Edit', edit_program_path(@program) %></span>
+          <% end -%>
         </div>
         <hr />
-        <div style="padding: 5px 10px 10px 10px; font-size: 1.1em; text-shadow: 0 1px 0 #fff;">This form of training involves alternating periods of activity and recovery. The advantage of this form of training is that it provides greater amounts of exposure to intensive training without incurring excessive fatigue. Greater recovery will occur if you remain walking or moving throughout. This increases the body's ability to remove lactic acid from the muscles, take it back to the liver, and convert it to energy.</div>
+        <% if @program.nil? -%>
+          <div style="padding: 5px 10px 10px 10px; font-size: 1.1em; text-shadow: 0 1px 0 #fff; color: #dd0000;">You haven't created a program.&nbsp;<%= link_to 'Add', new_program_path %> a program to get yourself on the right fitness track!</div>
+        <% else -%>
+          <div style="padding: 5px 10px 10px 10px; font-size: 1.1em; text-shadow: 0 1px 0 #fff;"><%= @program.description %></div>
+        <% end -%>
       </div>
     </div>
     <div id="program-workout" class="container_12 clearfix" style="margin-bottom: 10px;">

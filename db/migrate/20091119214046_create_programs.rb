@@ -4,7 +4,7 @@ class CreatePrograms < ActiveRecord::Migration
     create_table :programs do |t|
       t.references :user
       t.string     :name,        :limit => 50,  :null => false
-      t.string     :description, :limit => 255, :null => false
+      t.string     :description, :limit => 500, :null => false
 
       t.timestamps
     end

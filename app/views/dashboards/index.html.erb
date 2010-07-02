@@ -106,8 +106,13 @@
         </div>
         <hr />
         <div class="" style="margin-top: 5px; padding: 10px; text-shadow: 0 1px 0 #fff;">
-          <div style="font-size: 1.25em; padding-bottom: 10px;"><b>Interval Training</b></div>
-          <div>This form of training involves alternating periods of activity and recovery. The advantage of this form of training is that it provides greater amounts of exposure to intensive training without incurring excessive fatigue. Greater recovery will occur if you remain walking or moving throughout. This increases the body's ability to remove lactic acid from the muscles, take it back to the liver, and convert it to energy.</div>
+          <% if current_user.programs.first.nil? -%>
+            <div style="font-size: 1.25em; padding-bottom: 10px;"><b>No Program</b></div>
+            <div style="color: #dd0000;">You haven't created a program.&nbsp;<%= link_to 'Add', new_program_path %> a program to get yourself on the right fitness track!</div>
+          <% else -%>
+            <div style="font-size: 1.25em; padding-bottom: 10px;"><b><%= current_user.programs.first.name %></b></div>
+            <div><%= current_user.programs.first.description %></div>
+          <% end -%>
         </div>
       </div>
       <div id="" class="grid_4 dashboard-section" style="height: 315px; margin: 10px 9px;">

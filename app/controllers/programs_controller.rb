@@ -5,11 +5,11 @@ class ProgramsController < ApplicationController
   # GET /programs
   # GET /programs.xml
   def index
-    @programs = Program.all
+    @program = current_user.programs.first
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @programs }
+      format.xml  { render :xml => @program }
     end
   end
 
@@ -42,6 +42,7 @@ class ProgramsController < ApplicationController
   # POST /programs.xml
   def create
     @program = Program.new(params[:program])
+    @program.user = current_user
 
     respond_to do |format|
       if @program.save

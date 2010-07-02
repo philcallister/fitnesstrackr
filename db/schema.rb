@@ -86,8 +86,8 @@ ActiveRecord::Schema.define(:version => 20100313044628) do
 
   create_table "programs", :force => true do |t|
     t.integer  "user_id"
-    t.string   "name",        :limit => 50, :null => false
-    t.string   "description",               :null => false
+    t.string   "name",        :limit => 50,  :null => false
+    t.string   "description", :limit => 500, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
