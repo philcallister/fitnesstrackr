@@ -16,8 +16,9 @@ class WorkoutBlocksController < ApplicationController
   # GET /workout_blocks/1
   # GET /workout_blocks/1.xml
   def show
+    @program = @workout_block.program
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render :template => 'programs/index' }
       format.xml  { render :xml => @workout_block }
     end
   end

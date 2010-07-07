@@ -21,6 +21,8 @@
     );
   });
   </script>
+
+  <!-- Program -->
   <div class="container_12 clearfix content">
     <div id="program" class="container_12 clearfix">
       <div id="" class="grid_12 dashboard-section" style="margin-top: 10px;">
@@ -35,47 +37,92 @@
         </div>
         <hr />
         <% if @program.nil? -%>
-          <div style="padding: 5px 10px 10px 10px; font-size: 1.1em; text-shadow: 0 1px 0 #fff; color: #dd0000;">You haven't created a program.&nbsp;<%= link_to 'Add', new_program_path %> a program to get yourself on the right fitness track!</div>
+          <div style="padding: 5px 10px 10px 10px; font-size: 1.3em; text-shadow: 0 1px 0 #fff; color: #bb0000;">You haven't created a program.&nbsp;<%= link_to 'Add', new_program_path %> a program to get yourself on the right fitness track!</div>
         <% else -%>
           <div style="padding: 5px 10px 10px 10px; font-size: 1.1em; text-shadow: 0 1px 0 #fff;"><%= @program.description %></div>
         <% end -%>
       </div>
     </div>
     <div id="program-workout" class="container_12 clearfix" style="margin-bottom: 10px;">
-      <div class="grid_4 dashboard-section" style="height: 400px; margin: 10px 9px 0px 9px;">
+
+      <!-- Workout Periods -->
+      <div class="grid_4 dashboard-section" style="min-height: 400px; margin: 10px 9px 0px 9px;">
         <div style="padding: 10px; font-size: 1.25em;">
           <span class="dashboard-marker">Workout Periods</span>
-          <span class="edit"><%= link_to 'Add', edit_program_path(1) %><!-- TODO: Use program id here --></span>
-        </div>
-        <ul id="workout-block" style="list-style-type: none; margin-left: 10px; margin-right: 10px; padding: 0;">
-          <li class="selected">Week 1<span class="menu"><%= image_tag "edit.png", :class => "menu-edit" %><%= image_tag "delete.png", :class => "delete" %><%= image_tag "drag.png", :class => "drag" %></span></li>
-          <li>Week 2<span class="menu"><%= image_tag "edit.png", :class => "menu-edit" %><%= image_tag "delete.png", :class => "delete" %><%= image_tag "drag.png", :class => "drag" %></span></li>
-          <li>Week 3<span class="menu"><%= image_tag "edit.png", :class => "menu-edit" %><%= image_tag "delete.png", :class => "delete" %><%= image_tag "drag.png", :class => "drag" %></span></li>
-          <li>Week 4<span class="menu"><%= image_tag "edit.png", :class => "menu-edit" %><%= image_tag "delete.png", :class => "delete" %><%= image_tag "drag.png", :class => "drag" %></span></li>
-          <li>Week 5<span class="menu"><%= image_tag "edit.png", :class => "menu-edit" %><%= image_tag "delete.png", :class => "delete" %><%= image_tag "drag.png", :class => "drag" %></span></li>
-          <li>Week 6<span class="menu"><%= image_tag "edit.png", :class => "menu-edit" %><%= image_tag "delete.png", :class => "delete" %><%= image_tag "drag.png", :class => "drag" %></span></li>
-          <li>Week 7<span class="menu"><%= image_tag "edit.png", :class => "menu-edit" %><%= image_tag "delete.png", :class => "delete" %><%= image_tag "drag.png", :class => "drag" %></span></li>
-          <li>Week 8<span class="menu"><%= image_tag "edit.png", :class => "menu-edit" %><%= image_tag "delete.png", :class => "delete" %><%= image_tag "drag.png", :class => "drag" %></span></li>
-        </ul>
+          <% unless @program.nil? -%>
+            <span class="edit"><%= link_to 'Add', new_program_workout_block_path(@program) %></span>
+            </div>
+            <% unless @program.workout_blocks.nil? || @program.workout_blocks.empty? %>
+              <hr />
+              <ul id="workout-block" style="list-style-type: none; margin-left: 10px; margin-right: 10px; padding: 0;">
+                <% workout_block = (@workout_block.nil?) ? @program.workout_blocks.first : @workout_block  %>
+                <% @program.workout_blocks.each do |wb| -%>
+                  <%  if workout_block == wb -%>
+                    <li class="selected"><%= link_to wb.name, workout_block_path(wb) %><span class="menu"><%= image_tag "edit.png", :class => "menu-edit" %><%= image_tag "delete.png", :class => "delete" %><%= image_tag "drag.png", :class => "drag" %></span></li>
+                  <% else -%>
+                    <li><%= link_to wb.name, workout_block_path(wb) %><span class="menu"><%= image_tag "edit.png", :class => "menu-edit" %><%= image_tag "delete.png", :class => "delete" %><%= image_tag "drag.png", :class => "drag" %></span></li>
+                  <% end -%>
+                <% end -%>
+              </ul>
+            <% else %>
+              <hr />
+              <div style="color: #bb0000; padding: 5px 10px 10px 10px; font-size: 1.3em;">You haven't added a workout period. <%= link_to 'Add', new_program_workout_block_path(@program) %> one now to get this started!</div>
+            <% end %>
+          <% else -%>
+            </div>
+            <hr />
+            <div style="color: #bb0000; padding: 5px 10px 10px 10px; font-size: 1.3em;">You'll need to <%= link_to 'add a program', new_program_path %> before adding workout periods.</div>
+          <% end -%>
       </div>
-      <div class="grid_4 dashboard-section" style="height: 400px; margin: 10px 9px 0px 9px;">
+
+      <!-- Workout Plans -->
+      <div class="grid_4 dashboard-section" style="min-height: 400px; margin: 10px 9px 0px 9px;">
         <div style="padding: 10px; font-size: 1.25em;">
           <span class="dashboard-marker">Workout Plans</span>
-          <span class="edit"><%= link_to 'Add', edit_program_path(1) %><!-- TODO: Use program id here --></span>
-        </div>
-        <ul id="workout-plan" style="list-style-type: none; margin-left: 10px; margin-right: 10px; padding: 0;">
-          <li>Cardio Kick<span class="menu"><%= image_tag "edit.png", :class => "menu-edit" %><%= image_tag "delete.png", :class => "delete" %><%= image_tag "drag.png", :class => "drag" %></span></li>
-          <li>Strength (Legs)<span class="menu"><%= image_tag "edit.png", :class => "menu-edit" %><%= image_tag "delete.png", :class => "delete" %><%= image_tag "drag.png", :class => "drag" %></span></li>
-          <li>Cardio Swim<span class="menu"><%= image_tag "edit.png", :class => "menu-edit" %><%= image_tag "delete.png", :class => "delete" %><%= image_tag "drag.png", :class => "drag" %></span></li>
-          <li class="selected">Strength (Chest)<span class="menu"><%= image_tag "edit.png", :class => "menu-edit" %><%= image_tag "delete.png", :class => "delete" %><%= image_tag "drag.png", :class => "drag" %></span></li>
-          <li>5K Run<span class="menu"><%= image_tag "edit.png", :class => "menu-edit" %><%= image_tag "delete.png", :class => "delete" %><%= image_tag "drag.png", :class => "drag" %></span></li>
-        </ul>
+          <% unless @program.nil? -%>
+            <% unless @program.workout_blocks.nil? || @program.workout_blocks.empty? %>
+              <% workout_block = (@workout_block.nil?) ? @program.workout_blocks.first : @workout_block %>
+              <span class="edit"><%= link_to 'Add', new_workout_block_workout_plan_path(workout_block) %></span>
+              </div>
+              <% unless workout_block.nil? || (workout_block.workout_plans.nil? || workout_block.workout_plans.empty?) -%>
+                <% workout_plan = (@workout_plan.nil?) ? workout_block.workout_plans.first : @workout_plan %>
+                <hr />
+                <ul id="workout-block" style="list-style-type: none; margin-left: 10px; margin-right: 10px; padding: 0;">
+                  <% workout_block.workout_plans.each_with_index do |wp, i| -%>
+                    <%  if workout_plan == wp -%>
+                      <li class="selected"><%= link_to wp.name, workout_plan_path(wp) %><span class="menu"><%= image_tag "edit.png", :class => "menu-edit" %><%= image_tag "delete.png", :class => "delete" %><%= image_tag "drag.png", :class => "drag" %></span></li>
+                    <% else -%>
+                      <li><%= link_to wp.name, workout_block_path(wp) %><span class="menu"><%= image_tag "edit.png", :class => "menu-edit" %><%= image_tag "delete.png", :class => "delete" %><%= image_tag "drag.png", :class => "drag" %></span></li>
+                    <% end -%>
+                  <% end -%>
+                </ul>
+              <% else -%>
+                <hr />
+                <% if workout_block -%>
+                  <div style="color: #bb0000; padding: 5px 10px 10px 10px; font-size: 1.3em;">You haven't added a workout plan. <%= link_to 'Add', new_workout_block_workout_plan_path(workout_block) %> one now to get this started!</div>
+                <% else -%>
+                  <div style="color: #bb0000; padding: 5px 10px 10px 10px; font-size: 1.3em;">You haven't added a workout plan. <%= link_to 'Add', new_workout_block_workout_plan_path(@program.workout_blocks.first) %> one now to get this started!</div>
+                <% end -%>
+              <% end -%>
+            <% else -%>
+              </div>
+              <hr />
+              <div style="color: #bb0000; padding: 5px 10px 10px 10px; font-size: 1.3em;">You'll need to <%= link_to 'add a workout period', new_program_workout_block_path(@program) %> before adding workout plans.</div>
+            <% end -%>
+          <% else -%>
+            </div>
+            <hr />
+            <div style="color: #bb0000; padding: 5px 10px 10px 10px; font-size: 1.3em;">You'll need to <%= link_to 'add a program', new_program_path %> before adding workout plans.</div>
+          <% end -%>
       </div>
-      <div class="grid_4 dashboard-section" style="height: 400px; margin: 10px 9px 0px 9px;">
+
+      <!-- Excercise Plans -->
+      <div class="grid_4 dashboard-section" style="min-height: 400px; margin: 10px 9px 0px 9px;">
         <div style="padding: 10px; font-size: 1.25em;">
           <span class="dashboard-marker">Excercise Plans</span>
           <span class="edit"><%= link_to 'Add', edit_program_path(1) %><!-- TODO: Use program id here --></span>
         </div>
+        <hr />
         <ul id="exercise-plan" style="list-style-type: none; margin-left: 10px; margin-right: 10px; padding: 0;">
           <li>Bench Press<span class="menu"><%= image_tag "edit.png", :class => "menu-edit" %><%= image_tag "delete.png", :class => "delete" %><%= image_tag "drag.png", :class => "drag" %></span></li>
           <li>Shoulder Press<span class="menu"><%= image_tag "edit.png", :class => "menu-edit" %><%= image_tag "delete.png", :class => "delete" %><%= image_tag "drag.png", :class => "drag" %></span></li>

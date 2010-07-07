@@ -18,7 +18,7 @@
       <div id="" class="grid_12 dashboard-section" style="margin-top: 10px;">
         <div style="font-size: 1.25em; margin: 15px 10px 15px 10px;">
           <% if current_user.goal.nil? || current_user.goal.blank? -%>
-            <span class="dashboard-header">Goal</span><span class="dashboard-header-copy" style="color: #dd0000;">You haven't set a goal.&nbsp;&nbsp;Set a goal to help keep yourself motivated!</span>
+            <span class="dashboard-header">Goal</span><span class="dashboard-header-copy" style="color: #bb0000;">You haven't set a goal.&nbsp;&nbsp;Set a goal to help keep yourself motivated!</span>
           <% else -%>
             <span class="dashboard-header">Goal</span><span class="dashboard-header-copy"><%= current_user.goal %></span>
           <% end -%>
@@ -108,10 +108,12 @@
         <div class="" style="margin-top: 5px; padding: 10px; text-shadow: 0 1px 0 #fff;">
           <% if current_user.programs.first.nil? -%>
             <div style="font-size: 1.25em; padding-bottom: 10px;"><b>No Program</b></div>
-            <div style="color: #dd0000;">You haven't created a program.&nbsp;<%= link_to 'Add', new_program_path %> a program to get yourself on the right fitness track!</div>
+            <div style="font-size: 1.3em; color: #bb0000;">You haven't created a program.&nbsp;<%= link_to 'Add', new_program_path %> a program to get yourself on the right fitness track!</div>
           <% else -%>
             <div style="font-size: 1.25em; padding-bottom: 10px;"><b><%= current_user.programs.first.name %></b></div>
             <div><%= current_user.programs.first.description %></div>
+            <!-- Interval Training -->
+            <!-- This form of training involves alternating periods of activity and recovery. The advantage of this form of training is that it provides greater amounts of exposure to intensive training without incurring excessive fatigue. Greater recovery will occur if you remain walking or moving throughout. This increases the body's ability to remove lactic acid from the muscles, take it back to the liver, and convert it to energy. -->
           <% end -%>
         </div>
       </div>
