@@ -2,12 +2,13 @@
   <div id="header" class="container_12 clearfix">
     <div class="grid_4">
       <div id="logo">
-        <img src="/images/logo.png" alt="logo" style="padding-top: 0.25em;" />
+        <%= link_to image_tag("/images/logo.png", :alt => "get2fit", :title => "get2fit", :style => "border: 0; padding-top: 0.25em;"), root_path %>
       </div>
     </div>
     <div class="grid_8">
       <div id="nav">
         <ul>
+          <li><%= link_to 'Home', dashboards_path %></li>
           <li><a href="#">Mobile</a></li>
         </ul>
       </div>

@@ -46,13 +46,18 @@ class WorkoutBlocksController < ApplicationController
     @workout_block = WorkoutBlock.new(params[:workout_block])
 
     respond_to do |format|
-      if @workout_block.save
-        flash[:notice] = 'Workout Block was successfully created.'
-        format.html { redirect_to(@workout_block) }
-        format.xml  { render :xml => @workout_block, :status => :created, :location => @workout_block }
+      unless params[:commit] == 'Cancel'
+        if @workout_block.save
+          flash[:notice] = 'Workout Period was successfully created.'
+          format.html { redirect_to(@workout_block) }
+          format.xml  { render :xml => @workout_block, :status => :created, :location => @workout_block }
+        else
+          format.html { render :action => "new" }
+          format.xml  { render :xml => @workout_block.errors, :status => :unprocessable_entity }
+        end
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @workout_block.errors, :status => :unprocessable_entity }
+        format.html { redirect_to programs_path }
+        format.xml  { head :ok }
       end
     end
   end
@@ -74,7 +79,7 @@ class WorkoutBlocksController < ApplicationController
     @workout_block.destroy
 
     respond_to do |format|
-      format.html { redirect_to(program_workout_blocks_url(program)) }
+      format.html { redirect_to programs_path }
       format.xml  { head :ok }
     end
   end
@@ -98,13 +103,18 @@ class WorkoutBlocksController < ApplicationController
 
   def update_all
     respond_to do |format|
-      if @workout_block.update_attributes(params[:workout_block])
-        flash[:notice] = 'Workout Block was successfully updated.'
-        format.html { redirect_to(@workout_block) }
-        format.xml  { head :ok }
+      unless params[:commit] == 'Cancel'
+        if @workout_block.update_attributes(params[:workout_block])
+          flash[:notice] = 'Workout Period was successfully updated.'
+          format.html { redirect_to(@workout_block) }
+          format.xml  { head :ok }
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @workout_block.errors, :status => :unprocessable_entity }
+        end
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @workout_block.errors, :status => :unprocessable_entity }
+        format.html { redirect_to programs_path }
+        format.xml  { head :ok }
       end
     end
   end
@@ -115,7 +125,7 @@ class WorkoutBlocksController < ApplicationController
     else
       @workout_block.move_lower
     end
-    flash[:notice] = 'Workout Block was successfully moved.'
+    flash[:notice] = 'Workout Period was successfully moved.'
     respond_to do |format|
       format.html { redirect_to(program_workout_blocks_path(@workout_block.program)) }
       format.xml  { head :ok }

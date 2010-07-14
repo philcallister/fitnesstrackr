@@ -227,11 +227,15 @@ a:hover { color: #fff; background-color:#000; }
   height: 65px;
 }
 
+#logo a:hover {
+  background-color: transparent;
+}
+
 #nav {
   height: 60px;
   float: right;
 }
-
+  
 #nav ul {
   list-style-image: none;
   list-style-position: outside;
@@ -576,7 +580,7 @@ a.button-big:hover, a.button-big:focus {
 }
 
 /******************************************************************************/
-/* Programs                                                             */
+/* Programs                                                                   */
 #program-workout li {
   background-color: #c0deed;
   border: 1px solid #5599bb;
@@ -607,11 +611,20 @@ a.button-big:hover, a.button-big:focus {
 }
 #program-workout li img.delete {
   padding-right: 7px;
-  cursor: pointer;
+  border: none;
 }
 #program-workout li img.menu-edit {
   padding-right: 7px;
-  cursor: pointer;
+  border: none;
+}
+#program-workout li a, #program-workout li a:visited, #program-workout li a:focus {
+  color: #002233;
+  text-decoration: underline;
+}
+#program-workout li a:hover {
+  color: #fff;
+  background-color: transparent;
+  text-decoration: underline;
 }
 
 /******************************************************************************/

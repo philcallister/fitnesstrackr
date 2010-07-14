@@ -31,7 +31,7 @@
             <span class="dashboard-marker">Program</span>
             <span class="edit"><%= link_to 'Add', new_program_path %></span>
           <% else -%>
-            <span class="dashboard-marker"><%= @program.name %></span>
+            <span class="dashboard-header">Program</span><span class="dashboard-header-copy"><%= @program.name %></span>
             <span class="edit"><%= link_to 'Edit', edit_program_path(@program) %></span>
           <% end -%>
         </div>
@@ -58,9 +58,20 @@
                 <% workout_block = (@workout_block.nil?) ? @program.workout_blocks.first : @workout_block  %>
                 <% @program.workout_blocks.each do |wb| -%>
                   <%  if workout_block == wb -%>
-                    <li class="selected"><%= link_to wb.name, workout_block_path(wb) %><span class="menu"><%= image_tag "edit.png", :class => "menu-edit" %><%= image_tag "delete.png", :class => "delete" %><%= image_tag "drag.png", :class => "drag" %></span></li>
+                    <li class="selected">
+                      <div>
+                        <%= wb.name %>
+                        <span class="menu"><%= link_to image_tag("edit.png", :class => "menu-edit", :title => "Edit"), edit_workout_block_path(wb) %><%= link_to image_tag("delete.png", :class => "delete", :title => "Delete"), workout_block_path(wb), :method => :delete, :confirm => "Delete this workout period?" %><%= image_tag "drag.png", :class => "drag", :title => "Move" %></span>
+                      </div>
+                      <hr style="margin-top: 8px; margin-bottom: 8px;"/>
+                      <div style="color: #C0DEED; font-size: 0.8em;">
+                        <%= wb.description %>
+                      </div>
+                    </li>
                   <% else -%>
-                    <li><%= link_to wb.name, workout_block_path(wb) %><span class="menu"><%= image_tag "edit.png", :class => "menu-edit" %><%= image_tag "delete.png", :class => "delete" %><%= image_tag "drag.png", :class => "drag" %></span></li>
+                    <li><%= link_to wb.name, workout_block_path(wb) %>
+                      <span class="menu"><%= link_to image_tag("edit.png", :class => "menu-edit", :title => "Edit"), edit_workout_block_path(wb) %><%= link_to image_tag("delete.png", :class => "delete", :title => "Delete"), workout_block_path(wb), :method => :delete, :confirm => "Delete this workout period?" %><%= image_tag "drag.png", :class => "drag", :title => "Move" %></span>
+                    </li>
                   <% end -%>
                 <% end -%>
               </ul>
@@ -87,12 +98,23 @@
               <% unless workout_block.nil? || (workout_block.workout_plans.nil? || workout_block.workout_plans.empty?) -%>
                 <% workout_plan = (@workout_plan.nil?) ? workout_block.workout_plans.first : @workout_plan %>
                 <hr />
-                <ul id="workout-block" style="list-style-type: none; margin-left: 10px; margin-right: 10px; padding: 0;">
+                <ul id="workout-plan" style="list-style-type: none; margin-left: 10px; margin-right: 10px; padding: 0;">
                   <% workout_block.workout_plans.each_with_index do |wp, i| -%>
                     <%  if workout_plan == wp -%>
-                      <li class="selected"><%= link_to wp.name, workout_plan_path(wp) %><span class="menu"><%= image_tag "edit.png", :class => "menu-edit" %><%= image_tag "delete.png", :class => "delete" %><%= image_tag "drag.png", :class => "drag" %></span></li>
+                      <li class="selected">
+                        <div>
+                          <%= wp.name %>
+                          <span class="menu"><%= link_to image_tag("edit.png", :class => "menu-edit", :title => "Edit"), edit_workout_plan_path(wp) %><%= link_to image_tag("delete.png", :class => "delete", :title => "Delete"), workout_plan_path(wp), :method => :delete, :confirm => "Delete this workout plan?" %><%= image_tag "drag.png", :class => "drag", :title => "Move" %></span>
+                        </div>
+                        <hr style="margin-top: 8px; margin-bottom: 8px;"/>
+                        <div style="color: #C0DEED; font-size: 0.8em;">
+                          <%= wp.description %>
+                        </div>
+                      </li>
                     <% else -%>
-                      <li><%= link_to wp.name, workout_block_path(wp) %><span class="menu"><%= image_tag "edit.png", :class => "menu-edit" %><%= image_tag "delete.png", :class => "delete" %><%= image_tag "drag.png", :class => "drag" %></span></li>
+                      <li><%= link_to wp.name, workout_plan_path(wp) %>
+                        <span class="menu"><%= link_to image_tag("edit.png", :class => "menu-edit", :title => "Edit"), edit_workout_plan_path(wp) %><%= link_to image_tag("delete.png", :class => "delete", :title => "Delete"), workout_plan_path(wp), :method => :delete, :confirm => "Delete this workout plan?" %><%= image_tag "drag.png", :class => "drag", :title => "Move" %></span>
+                      </li>
                     <% end -%>
                   <% end -%>
                 </ul>

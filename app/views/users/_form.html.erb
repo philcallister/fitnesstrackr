@@ -1,3 +1,9 @@
+<script type="text/javascript">
+  $(document).ready(function()
+  {
+    $(".goal-date").datepicker();
+  });
+</script>
 <% if @account_type == User::ALL || @account_type == User::MAIN %>
   <h1>Account</h1>
   <div class="account-form">
@@ -23,10 +29,10 @@
     <%= form.text_area :goal, :rows => 2, :cols => 43 %><br />
     <br />
     <%= form.label :goal_start_date %><br />
-    <%= form.text_field :goal_start_date %><br />
+    <%= form.text_field :goal_start_date, :class => 'goal-date', :value => @user.goal_start_date.strftime('%m/%d/%Y') %><br />
     <br />
     <%= form.label :goal_end_date %><br />
-    <%= form.text_field :goal_end_date %><br />
+    <%= form.text_field :goal_end_date, :class => 'goal-date', :value => @user.goal_end_date.strftime('%m/%d/%Y') %><br />
     <br />
   </div>
 <% end %>

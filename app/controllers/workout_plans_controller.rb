@@ -16,8 +16,10 @@ class WorkoutPlansController < ApplicationController
   # GET /workout_plans/1
   # GET /workout_plans/1.xml
   def show
+    @workout_block = @workout_plan.workout_block if @workout_plan
+    @program = @workout_block.program if @workout_block
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render :template => 'programs/index' }
       format.xml  { render :xml => @workout_plan }
     end
   end
@@ -45,13 +47,18 @@ class WorkoutPlansController < ApplicationController
     @workout_plan = WorkoutPlan.new(params[:workout_plan])
 
     respond_to do |format|
-      if @workout_plan.save
-        flash[:notice] = 'Workout Plan was successfully created.'
-        format.html { redirect_to(@workout_plan) }
-        format.xml  { render :xml => @workout_plan, :status => :created, :location => @workout_plan }
+      unless params[:commit] == 'Cancel'
+        if @workout_plan.save
+          flash[:notice] = 'Workout Plan was successfully created.'
+          format.html { redirect_to(@workout_plan) }
+          format.xml  { render :xml => @workout_plan, :status => :created, :location => @workout_plan }
+        else
+          format.html { render :action => "new" }
+          format.xml  { render :xml => @workout_plan.errors, :status => :unprocessable_entity }
+        end
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @workout_plan.errors, :status => :unprocessable_entity }
+        format.html { redirect_to programs_path }
+        format.xml  { head :ok }
       end
     end
   end
@@ -73,7 +80,7 @@ class WorkoutPlansController < ApplicationController
     @workout_plan.destroy
 
     respond_to do |format|
-      format.html { redirect_to(workout_block_workout_plans_url(workout_block)) }
+      format.html { redirect_to programs_path }
       format.xml  { head :ok }
     end
   end
@@ -97,13 +104,18 @@ class WorkoutPlansController < ApplicationController
 
   def update_all
     respond_to do |format|
-      if @workout_plan.update_attributes(params[:workout_plan])
-        flash[:notice] = 'Workout Plan was successfully updated.'
-        format.html { redirect_to(@workout_plan) }
-        format.xml  { head :ok }
+      unless params[:commit] == 'Cancel'
+        if @workout_plan.update_attributes(params[:workout_plan])
+          flash[:notice] = 'Workout Plan was successfully updated.'
+          format.html { redirect_to(@workout_plan) }
+          format.xml  { head :ok }
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @workout_plan.errors, :status => :unprocessable_entity }
+        end
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @workout_plan.errors, :status => :unprocessable_entity }
+        format.html { redirect_to programs_path }
+        format.xml  { head :ok }
       end
     end
   end
