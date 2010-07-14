@@ -29,10 +29,18 @@
     <%= form.text_area :goal, :rows => 2, :cols => 43 %><br />
     <br />
     <%= form.label :goal_start_date %><br />
-    <%= form.text_field :goal_start_date, :class => 'goal-date', :value => @user.goal_start_date.strftime('%m/%d/%Y') %><br />
+    <% if @user.goal_start_date %>
+      <%= form.text_field :goal_start_date, :class => 'goal-date', :value => @user.goal_start_date.strftime('%m/%d/%Y') %><br />
+    <% else %>
+      <%= form.text_field :goal_start_date, :class => 'goal-date' %><br />
+    <% end %>
     <br />
     <%= form.label :goal_end_date %><br />
-    <%= form.text_field :goal_end_date, :class => 'goal-date', :value => @user.goal_end_date.strftime('%m/%d/%Y') %><br />
+    <% if @user.goal_end_date %>
+      <%= form.text_field :goal_end_date, :class => 'goal-date', :value => @user.goal_end_date.strftime('%m/%d/%Y') %><br />
+    <% else %>
+      <%= form.text_field :goal_end_date, :class => 'goal-date' %><br />
+    <% end %>
     <br />
   </div>
 <% end %>
