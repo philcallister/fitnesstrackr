@@ -2,6 +2,7 @@
   $(document).ready(function()
   {
     $(".goal-date").datepicker();
+    $(".personal-date").datepicker({ changeYear: true, changeMonth: true, yearRange: '-100:+0'});
   });
 </script>
 <% if @account_type == User::ALL || @account_type == User::MAIN %>
@@ -49,7 +50,11 @@
   <h1>Personal</h1>
   <div class="account-form">
     <%= form.label :birthday %><br />
-    <%= form.text_field :birthday %><br />
+    <% if @user.birthday %>
+      <%= form.text_field :birthday, :class => 'personal-date', :value => @user.birthday.strftime('%m/%d/%Y') %><br />
+    <% else %>
+      <%= form.text_field :birthday, :class => 'personal-date' %><br />
+    <% end %>
     <br />
     <%= form.label :height %><br />
     <%= form.text_field :height %><br />
