@@ -96,7 +96,12 @@
         </div>
         <div style="font-size: 1.25em;">
           <ul class="item">
-            <li><div class="dashboard-item-calc-left">BMI</div><div id="bmi-edit" class="dashboard-item-calc-right">None</div></li>
+            <% recent_weight = current_user.measurements.recent.weight %>
+            <% if recent_weight && current_user.height %>
+              <li><div class="dashboard-item-calc-left">BMI</div><div id="bmi-edit" class="dashboard-item-calc-right"><%=  ((recent_weight.to_f / (current_user.height.to_f * current_user.height.to_f) * 703) * 100).round * 0.01 %></div></li>
+            <% else %>
+              <li><div class="dashboard-item-calc-left">BMI</div><div id="bmi-edit" class="dashboard-item-calc-right">None</div></li>
+            <% end %>
           </ul>
         </div>
       </div>

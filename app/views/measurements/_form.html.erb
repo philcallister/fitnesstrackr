@@ -1,7 +1,17 @@
+<script type="text/javascript">
+  $(document).ready(function()
+  {
+    $(".measurement-date").datepicker({ maxDate: '+0' });
+  });
+</script>
 <h1>Measurement Date</h1>
 <div class="account-form">
   <%= form.label :measure_date, "Date" %><br />
-  <%= form.text_field :measure_date %><br />
+  <% if @measurement.measure_date %>
+    <%= form.text_field :measure_date, :class => "measurement-date", :value => @measurement.measure_date.strftime("%m/%d/%Y") %><br />
+  <% else %>
+    <%= form.text_field :measure_date, :class => "measurement-date" %><br />
+  <% end %>
 <br />
 </div>
 
