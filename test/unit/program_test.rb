@@ -37,6 +37,14 @@ class ProgramTest < ActiveSupport::TestCase
         @program.workout_blocks << WorkoutBlock.make(:program => nil)
         assert_equal 4, @program.workout_blocks.length
       end
+      should "delete all workout blocks" do
+        workout_blocks = @program.workout_blocks
+        @program.destroy
+        workout_blocks.each do |wb|
+          deleted_workout_block = WorkoutBlock.find(wb.id)
+          assert_nil deleted_workout_block
+        end
+      end
     end
   end
 

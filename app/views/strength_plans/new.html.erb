@@ -1,26 +1,13 @@
 <% content_for :content do -%>
-  <div class="container_12 clearfix">
-    <div class="grid_12">
-      <h1>New Strength Plan</h1>
-      <% if @workout_plan -%>
-        <h2><%= h @workout_plan.workout_block.program.name %>&nbsp;>&nbsp;<%= h @workout_plan.workout_block.name %>&nbsp;>&nbsp;<%= h @workout_plan.name %></h2>
-      <% end -%>
-      <% form_for(@strength_plan) do |f| %>
+  <div class="container_12 clearfix content">
+    <div class="prefix_2 grid_8 suffix_2" style="padding-bottom: 15px;">
+      <% form_for @strength_plan do |f| %>
         <%= f.error_messages %>
         <%= hidden_field_tag 'workout_plan_id', @workout_plan.id %><br />
-        Exercise<br />
-        <%= f.select('exercise_id', options_from_collection_for_select(@exercises, :id, :name),
-                     {:prompt => '-Select Exercise'}) %><br />
-        Notes<br />
-        <%= f.text_field :notes %><br />
-        <p>
-          <%= f.submit 'Create' %>
-        </p>
+        <%= render :partial => "form", :object => f %><br />
+        <%= f.submit "Add" %>
+        <%= submit_tag "Cancel" %>
       <% end %>
-      <br />
-      <% if @workout_plan %>
-        <%= link_to 'Back', workout_plan_exercise_plans_path(@workout_plan) %>
-      <% end -%>
     </div>
   </div>
 <% end %>

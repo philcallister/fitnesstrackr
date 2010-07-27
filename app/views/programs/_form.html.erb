@@ -1,0 +1,22 @@
+<script type="text/javascript">
+  $(document).ready(function()
+  {
+    $(".start-date").datepicker();
+  });
+</script>
+<h1>Program</h1>
+<div class="account-form">
+  <%= form.label :start_date %><br />
+  <% if @program.start_date %>
+    <%= form.text_field :start_date, :class => "start-date", :value => @program.start_date.strftime('%m/%d/%Y') %><br />
+  <% else %>
+    <%= form.text_field :start_date, :class => "start-date" %><br />
+  <% end %>
+  <br />
+  <%= form.label :name %><br />
+  <%= form.text_field :name %><br />
+  <br />
+  <%= form.label :description %><br />
+  <%= form.text_area :description, :rows => 8, :cols => 43 %><br />
+  <br />
+</div>

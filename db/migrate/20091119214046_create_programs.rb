@@ -5,6 +5,7 @@ class CreatePrograms < ActiveRecord::Migration
       t.references :user
       t.string     :name,        :limit => 50,  :null => false
       t.string     :description, :limit => 500, :null => false
+      t.date       :start_date
 
       t.timestamps
     end

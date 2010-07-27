@@ -2,16 +2,18 @@ class StrengthPlansController < ApplicationController
   
   before_filter :find_workout_plan, :only => [:new, :create]
   before_filter :find_strength_plan, :only => [:show, :edit, :update, :destroy]
-  before_filter :find_exercises, :only => [:new, :edit]
+  before_filter :find_strength_exercises, :only => [:new, :edit]
 
   # GET /strength_plans/1
   # GET /strength_plans/1.xml
   def show
     @workout_plan = @strength_plan.workout_plans.first
+    @workout_block = @workout_plan.workout_block
+    @program = @workout_block.program
     respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @strength_plan }
-    end
+      format.html { render :template => 'programs/index' }
+      format.xml  { render :xml => @workout_plan }
+   end
   end
 
   # GET /strength_plans/new
@@ -27,7 +29,6 @@ class StrengthPlansController < ApplicationController
 
   # GET /strength_plans/1/edit
   def edit
-    @workout_plan = @strength_plan.workout_plans.first
     # edit.html.erb
   end
 
@@ -38,13 +39,18 @@ class StrengthPlansController < ApplicationController
     @strength_plan.workout_plans << @workout_plan
 
     respond_to do |format|
-      if @strength_plan.save
-        flash[:notice] = 'Strength Plan was successfully created.'
-        format.html { redirect_to(@strength_plan) }
-        format.xml  { render :xml => @strength_plan, :status => :created, :location => @strength_plan }
+      unless params[:commit] == 'Cancel'
+        if @strength_plan.save
+          flash[:notice] = 'Strength Plan was successfully created.'
+          format.html { redirect_to(@strength_plan) }
+          format.xml  { render :xml => @strength_plan, :status => :created, :location => @strength_plan }
+        else
+          format.html { render :action => "new" }
+          format.xml  { render :xml => @strength_plan.errors, :status => :unprocessable_entity }
+        end
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @strength_plan.errors, :status => :unprocessable_entity }
+        format.html { redirect_to programs_path }
+        format.xml  { head :ok }
       end
     end
   end
@@ -62,13 +68,14 @@ class StrengthPlansController < ApplicationController
   # DELETE /strength_plans/1
   # DELETE /strength_plans/1.xml
   def destroy
-    workout_plan = @strength_plan.workout_plans.first
+    @workout_plan = @strength_plan.workout_plans.first
+    @workout_block = @workout_plan.workout_block
+    @program = @workout_block.program
     @strength_plan.destroy
-
     respond_to do |format|
-      format.html { redirect_to(workout_plan_exercise_plans_url(workout_plan)) }
-      format.xml  { head :ok }
-    end
+      format.html { render :template => 'programs/index' }
+      format.xml  { render head :ok }
+   end
   end
 
 
@@ -88,16 +95,24 @@ class StrengthPlansController < ApplicationController
     end
   end
 
+  def find_strength_exercises
+    @exercises = Exercise.find_all_by_kind(Exercise::STRENGTH)
+  end
+
   def update_all
-    @workout_plan = @strength_plan.workout_plans.first
     respond_to do |format|
-      if @strength_plan.update_attributes(params[:strength_plan])
-        flash[:notice] = 'Strength Plan was successfully updated.'
-        format.html { redirect_to(@strength_plan) }
-        format.xml  { head :ok }
+      unless params[:commit] == 'Cancel'
+        if @strength_plan.update_attributes(params[:strength_plan])
+          flash[:notice] = 'Strength Plan was successfully updated.'
+          format.html { redirect_to(@strength_plan) }
+          format.xml  { head :ok }
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @strength_plan.errors, :status => :unprocessable_entity }
+        end
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @strength_plan.errors, :status => :unprocessable_entity }
+        format.html { redirect_to programs_path }
+        format.xml  { head :ok }
       end
     end
   end

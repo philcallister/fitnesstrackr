@@ -1,0 +1,13 @@
+<h1>Workout Block</h1>
+<div class="account-form">
+  <% if @auto %>
+    <span style="font-size: 1.5em">Create workout periods from your <strong>Goal Dates</strong>.</span>
+  <% else %>
+    <%= form.label :name %><br />
+    <%= form.text_field :name %><br />
+    <br />
+    <%= form.label :description %><br />
+    <%= form.text_area :description, :rows => 8, :cols => 43 %><br />
+    <br />
+  <% end %>
+</div>

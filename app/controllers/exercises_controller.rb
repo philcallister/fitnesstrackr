@@ -1,5 +1,7 @@
 class ExercisesController < ApplicationController
 
+  KINDS = [ {:name => "Cardio", :id => Exercise::CARDIO}, {:name => "Strength", :id => Exercise::STRENGTH}, {:name => "Single", :id => Exercise::SINGLE} ].freeze
+
   # GET /exercises
   # GET /exercises.xml
   def index
@@ -26,7 +28,7 @@ class ExercisesController < ApplicationController
   # GET /exercises/new.xml
   def new
     @exercise = Exercise.new
-    @kinds = [ ["Cardio", 0], ["Strength", 1], ["Single", 2]]
+    @kinds = KINDS
 
     respond_to do |format|
       format.html # new.html.erb
@@ -51,6 +53,7 @@ class ExercisesController < ApplicationController
         format.html { redirect_to(@exercise) }
         format.xml  { render :xml => @exercise, :status => :created, :location => @exercise }
       else
+        @kinds = KINDS
         format.html { render :action => "new" }
         format.xml  { render :xml => @exercise.errors, :status => :unprocessable_entity }
       end

@@ -23,6 +23,9 @@ ActionController::Routing::Routes.draw do |map|
     workout_plan.resources :cardio_plans, :only => [:new]
   end
 
+  # Exercise Plans
+  map.resources :exercise_plans, :only => [:index, :show]
+
   # Strength Plans
   map.resources :strength_plans, :except => [:index, :new] do |strength_plan|
     #strength_plan.resources :strength_plan_sets, :only => [:index, :new]

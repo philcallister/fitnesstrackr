@@ -76,7 +76,6 @@ class WorkoutPlansController < ApplicationController
   # DELETE /workout_plans/1
   # DELETE /workout_plans/1.xml
   def destroy
-    workout_block = @workout_plan.workout_block
     @workout_plan.destroy
 
     respond_to do |format|

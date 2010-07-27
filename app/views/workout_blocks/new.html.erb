@@ -3,6 +3,9 @@
     <div class="prefix_2 grid_8 suffix_2" style="padding-bottom: 15px;">
       <% form_for @workout_block do |f| %>
         <%= f.error_messages %>
+        <% if @auto %>
+          <%= f.hidden_field :auto, :value => @auto %>
+        <% end %>
         <%= f.hidden_field :program_id %><br />
         <%= render :partial => "form", :object => f %><br />
         <%= f.submit "Add" %>

@@ -7,6 +7,6 @@ class Program < ActiveRecord::Base
 
   # Associations
   belongs_to :user
-  has_many :workout_blocks, :order => 'workout_block_position'
+  has_many :workout_blocks, :order => 'workout_block_position' , :dependent => :delete_all
 
 end

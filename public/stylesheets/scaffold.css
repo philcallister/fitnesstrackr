@@ -436,6 +436,15 @@ a.button-default:hover, a.button-default:focus {
   box-shadow: 0px 2px 2px #999;
 }
 
+.dashboard-section-empty {
+  color:#999999;
+  font-size:2em;
+  font-weight:bold;
+  padding:133px 0;
+  text-align:center;
+  text-shadow:1px 2px 0 #f9f9f9;
+}
+
 .dashboard-header {
   background-color: #ff8c15;
   color: #fff;
@@ -626,6 +635,49 @@ a.button-big:hover, a.button-big:focus {
   background-color: transparent;
   text-decoration: underline;
 }
+
+#program-workout .edit-drop {
+  color: #002233;
+  float: right;
+  padding: 2px 3px;
+  margin-top: -3px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#program-workout ul.edit-drop-menu {
+  list-style: none;
+  position: absolute; /* Important -- don't interfere with layout */
+  left: 0; top: 29px;
+  background: #57585a;
+  margin: 0 0 0 185px;
+  padding: 0;
+  border: 1px solid #aaa;
+  display: none;
+  float: left;
+  width: 101px;
+}
+#program-workout ul.edit-drop-menu li {
+  margin: 0; padding: 0;
+  border-top: 1px solid #444;
+  border-bottom: 1px solid #555;
+  clear: both;
+  width: 100px;
+}
+#program-workout ul.edit-drop-menu li a {
+  float: left;
+  width: 75px;
+  background: #57585a url(/images/drop-menu-bg.png) no-repeat 10px center;
+  padding: 5px 5px 5px 20px;
+  color: #d2d2d2;
+  text-decoration: none;
+  font-size: 0.8em;
+}
+#program-workout ul.edit-drop-menu li a:hover {
+  color: #fff;
+  background: #222 url(/images/drop-menu-bg.png) no-repeat 10px center;
+}
+
 
 /******************************************************************************/
 /* Progress Meter                                                             */

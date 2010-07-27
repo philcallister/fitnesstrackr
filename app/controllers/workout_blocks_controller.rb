@@ -26,9 +26,11 @@ class WorkoutBlocksController < ApplicationController
   # GET /workout_blocks/new
   # GET /workout_blocks/new.xml
   def new
+    if params[:auto] && params[:auto] == "true"
+      @auto = true
+    end
     @workout_block = WorkoutBlock.new
     @workout_block.program = @program
-
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @workout_block }
@@ -43,22 +45,10 @@ class WorkoutBlocksController < ApplicationController
   # POST /workout_blocks
   # POST /workout_blocks.xml
   def create
-    @workout_block = WorkoutBlock.new(params[:workout_block])
-
-    respond_to do |format|
-      unless params[:commit] == 'Cancel'
-        if @workout_block.save
-          flash[:notice] = 'Workout Period was successfully created.'
-          format.html { redirect_to(@workout_block) }
-          format.xml  { render :xml => @workout_block, :status => :created, :location => @workout_block }
-        else
-          format.html { render :action => "new" }
-          format.xml  { render :xml => @workout_block.errors, :status => :unprocessable_entity }
-        end
-      else
-        format.html { redirect_to programs_path }
-        format.xml  { head :ok }
-      end
+    if params[:workout_block][:auto] && params[:workout_block][:auto] == "true"
+      create_auto
+    else
+      create_single
     end
   end
 
@@ -75,7 +65,6 @@ class WorkoutBlocksController < ApplicationController
   # DELETE /workout_blocks/1
   # DELETE /workout_blocks/1.xml
   def destroy
-    program = @workout_block.program
     @workout_block.destroy
 
     respond_to do |format|
@@ -98,6 +87,49 @@ class WorkoutBlocksController < ApplicationController
   def find_workout_block
     if params[:id]
       @workout_block = WorkoutBlock.find(params[:id])
+    end
+  end
+
+  def create_single
+    @workout_block = WorkoutBlock.new(params[:workout_block])
+
+    respond_to do |format|
+      unless params[:commit] == 'Cancel'
+        if @workout_block.save
+          flash[:notice] = 'Workout Period was successfully created.'
+          format.html { redirect_to(@workout_block) }
+          format.xml  { render :xml => @workout_block, :status => :created, :location => @workout_block }
+        else
+          format.html { render :action => "new" }
+          format.xml  { render :xml => @workout_block.errors, :status => :unprocessable_entity }
+        end
+      else
+        format.html { redirect_to programs_path }
+        format.xml  { head :ok }
+      end
+    end
+  end
+
+  def create_auto
+    current_date = current_user.goal_start_date
+    end_date = current_user.goal_end_date
+    respond_to do |format|
+      if current_date
+        while current_date < end_date
+          wb = WorkoutBlock.new(:name => WorkoutBlock::REPLACE_WITH_DATE, :description => WorkoutBlock::NO_DESCRIPTION)
+          @program.workout_blocks << wb
+          current_date = current_date + 7.days
+        end
+        if @program.save
+          flash[:notice] = 'Workout Periods were successfully created.'
+          format.html { redirect_to programs_path }
+          format.xml  { head :ok }
+        end
+      else
+        flash[:error] = "You haven't created a goal."
+        format.html { render :action => "new" }
+        format.xml  { render :xml => nil, :status => :unprocessable_entity }
+      end
     end
   end
 

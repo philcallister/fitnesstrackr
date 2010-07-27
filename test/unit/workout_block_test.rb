@@ -33,6 +33,14 @@ class WorkoutBlockTest < ActiveSupport::TestCase
       should "have 4 workout plans" do
         assert_equal 4, @workout_block.workout_plans.length
       end
+      should "delete all workout plans" do
+        workout_plans = @workout_block.workout_plans
+        @workout_block.destroy
+        workout_plans.each do |wp|
+          deleted_workout_plan = WorkoutPlan.find(wp.id)
+          assert_nil deleted_workout_plan
+        end
+      end
     end
   end
 

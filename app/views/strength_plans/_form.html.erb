@@ -1,0 +1,8 @@
+<h1>Strength Exercise Plan</h1>
+<div class="account-form">
+  <%= form.label :exercise %><br />
+  <%= form.select('exercise_id', options_from_collection_for_select(@exercises, :id, :name, @strength_plan.exercise),
+                  {:prompt => '-Select Exercise'}) %><br /><br />
+  <%= form.label :notes %><br />
+  <%= form.text_area :notes, :rows => 8, :cols => 43 %><br />
+</div>
