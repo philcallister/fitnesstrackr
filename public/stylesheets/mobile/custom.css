@@ -1,0 +1,12 @@
+.info-confirm {
+  color: #eee;
+  font-size: 1.25em;
+  font-weight: bold;
+  border: 2px solid #eee;
+  margin: 12px;
+  padding: 10px 20px;;
+  background-color: #5599BB;
+  text-shadow: 0 1px 0 #222;
+  -webkit-border-radius: 10px;
+}
+

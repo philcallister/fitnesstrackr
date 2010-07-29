@@ -1,0 +1,26 @@
+<% content_for :content do -%>
+  <% form_for @user_session, :url => user_session_path, :html => { :class => "form" } do |f| %>
+    <div class="toolbar">
+      <h1>Login</h1>
+    </div>
+    <div style="background-color: #c0deed; padding: 7px 0px 2px 10px;">
+      <img src="/images/logo.png" title="get2fit" alt="get2fit" border="0" />
+    </div>
+    <ul class="rounded">
+      <li><%= f.text_field :login, :value => "", :placeholder => "User" %></li>
+      <li><%= f.password_field :password, :value => "", :placeholder => "Password" %></li>
+    </ul>
+    <a style="margin:0 10px; color:rgba(0,0,0,.9)" href="#" class="submit whiteButton">Login</a>
+  <% end %>
+  <div id="logout" class="selectable">
+    <div class="toolbar">
+      <h1>Logout</h1>
+      <a href="#" class="back">Back</a>
+    </div>
+    <div style="background-color: #c0deed; padding: 7px 0px 2px 10px;">
+      <img src="/images/logo.png" title="get2fit" alt="get2fit" border="0" />
+    </div>
+    <div class="info-confirm">Are you sure?</div>
+    <%= link_to 'Logout', user_session_path(:format => "touch"), :method => :delete, :style => "margin:0 10px; color:rgba(0,0,0,.9)", :class => "submit whiteButton" %>
+  </div>
+<% end %>

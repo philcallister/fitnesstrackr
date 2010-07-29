@@ -1,0 +1,21 @@
+<div>
+  <div class="toolbar">
+    <h1>Workout Plans</h1>
+    <a class="button slideup" id="infoButton" href="#logout">Logout</a>
+  </div>
+  <div style="background-color: #c0deed; padding: 7px 0px 2px 10px;">
+    <img src="/images/logo.png" title="get2fit" alt="get2fit" border="0" />
+  </div>
+  <ul class="edgetoedge">
+    <li class="sep"><%= @workout_block.name %></li>
+    <li class="sep"><%= @workout_plan.name %></li>
+    <% @exercise_plans.each do |ep| %>
+      <li>
+        <a href="#">
+          <div><%= ep.exercise.name %></div>
+          <div style="font-size: 0.75em; color: #555;"><%= ep.notes %></div>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+</div>

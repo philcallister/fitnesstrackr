@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>get2fit &beta;</title>
+    <style type="text/css" media="screen">@import "/stylesheets/jqtouch/jqtouch.min.css";</style>
+    <style type="text/css" media="screen">@import "/themes/jqt/theme.min.css";</style>
+    <style type="text/css" media="screen">@import "/stylesheets/mobile/custom.css";</style>
+    <script src="/javascripts/jquery-1.4.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/javascripts/jqtouch/jqtouch.min.js" type="application/x-javascript" charset="utf-8"></script>
+    <script type="text/javascript" charset="utf-8">
+      var jQT = new $.jQTouch({
+          icon: '/images/mobile/jqtouch.png',
+          addGlossToIcon: false,
+          startupScreen: '/images/mobile/startup.png',
+          statusBar: 'black',
+          preloadImages: [
+              '/images/logo.png',
+              '/themes/jqt/img/back_button.png',
+              '/themes/jqt/img/back_button_clicked.png',
+              '/themes/jqt/img/button_clicked.png'
+              ]
+      });
+      
+      // Orientation callback event
+      $(function(){
+        $('body').bind('turn', function(e, data){
+            $('#orient').html('Orientation: ' + data.orientation);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <%= yield(:content)%>
+  </body>
+</html>

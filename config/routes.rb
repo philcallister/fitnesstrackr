@@ -1,10 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
 
-  # TODO: Total Hack testing here...remove this
-  map.connect 'mobile.:format',
-              :controller => 'mobile',
-              :action => 'index'
-
   # User/Account
   map.resource :user_session
   map.resource :account, :controller => 'users'
@@ -47,6 +42,10 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :exercises
   map.resources :dashboards, :only => [:index]
   map.resources :analyzes, :only => [:index]
+
+  map.mobile '/mobile',
+              :controller => 'mobile',
+              :action => 'index'
 
   map.root :controller => 'landing',
            :action => 'index'
