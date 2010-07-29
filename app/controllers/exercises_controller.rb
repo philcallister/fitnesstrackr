@@ -1,6 +1,6 @@
 class ExercisesController < ApplicationController
 
-  KINDS = [ {:name => "Cardio", :id => Exercise::CARDIO}, {:name => "Strength", :id => Exercise::STRENGTH}, {:name => "Single", :id => Exercise::SINGLE} ].freeze
+  KINDS = [ ["Cardio", Exercise::CARDIO], ["Strength", Exercise::STRENGTH], ["Single", Exercise::SINGLE] ].freeze
 
   # GET /exercises
   # GET /exercises.xml
