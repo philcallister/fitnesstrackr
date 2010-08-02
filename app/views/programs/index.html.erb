@@ -79,9 +79,9 @@
             <% unless @program.workout_blocks.nil? || @program.workout_blocks.empty? %>
               <hr />
               <ul id="workout-block" style="list-style-type: none; margin-left: 10px; margin-right: 10px; padding: 0;">
-                <% workout_block = (@workout_block.nil?) ? @program.workout_blocks.first : @workout_block  %>
+                <% @workout_block = (@workout_block.nil?) ? @program.workout_blocks.first : @workout_block  %>
                 <% @program.workout_blocks.each do |wb| -%>
-                  <%  if workout_block == wb -%>
+                  <%  if @workout_block == wb -%>
                     <li class="selected item-1">
                       <div>
                         <%= wb.name_or_date %>
@@ -124,15 +124,14 @@
           <span class="dashboard-marker">Workout Plans</span>
           <% unless @program.nil? -%>
             <% unless @program.workout_blocks.nil? || @program.workout_blocks.empty? %>
-              <% workout_block = (@workout_block.nil?) ? @program.workout_blocks.first : @workout_block %>
-              <span class="edit"><%= link_to 'Add', new_workout_block_workout_plan_path(workout_block) %></span>
+              <span class="edit"><%= link_to 'Add', new_workout_block_workout_plan_path(@workout_block) %></span>
               </div>
-              <% unless workout_block.nil? || (workout_block.workout_plans.nil? || workout_block.workout_plans.empty?) -%>
-                <% workout_plan = (@workout_plan.nil?) ? workout_block.workout_plans.first : @workout_plan %>
+              <% unless @workout_block.nil? || (@workout_block.workout_plans.nil? || @workout_block.workout_plans.empty?) -%>
+                <% @workout_plan = (@workout_plan.nil?) ? @workout_block.workout_plans.first : @workout_plan %>
                 <hr />
                 <ul id="workout-plan" style="list-style-type: none; margin-left: 10px; margin-right: 10px; padding: 0;">
-                  <% workout_block.workout_plans.each do |wp| -%>
-                    <%  if workout_plan == wp -%>
+                  <% @workout_block.workout_plans.each do |wp| -%>
+                    <%  if @workout_plan == wp -%>
                       <li class="selected item-1">
                         <div>
                           <%= wp.name %>
@@ -178,19 +177,18 @@
           <span class="dashboard-marker">Exercise Plans</span>
           <% unless @workout_block.nil? -%>
             <% unless @workout_block.workout_plans.nil? || @workout_block.workout_plans.empty? %>
-              <% workout_plan = (@workout_plan.nil?) ? @workout_block.workout_plans.first : @workout_plan %>
               <span class="edit-drop">Add</span>
               <ul class="edit-drop-menu">
-                <li><%= link_to 'Strength', new_workout_plan_strength_plan_path(workout_plan) %></li>
-                <li><%= link_to 'Cardio', new_workout_plan_cardio_plan_path(workout_plan) %></li>
+                <li><%= link_to 'Strength', new_workout_plan_strength_plan_path(@workout_plan) %></li>
+                <li><%= link_to 'Cardio', new_workout_plan_cardio_plan_path(@workout_plan) %></li>
               </ul>
               </div>
-              <% unless workout_plan.nil? || (workout_plan.exercise_plans.nil? || workout_plan.exercise_plans.empty?) -%>
-                <% exercise_plan = (@exercise_plan.nil?) ? workout_plan.exercise_plans.first : @exercise_plan %>
+              <% unless @workout_plan.nil? || (@workout_plan.exercise_plans.nil? || @workout_plan.exercise_plans.empty?) -%>
+                <% @exercise_plan = (@exercise_plan.nil?) ? @workout_plan.exercise_plans.first : @exercise_plan %>
                 <hr />
                 <ul id="exercise-plan" style="list-style-type: none; margin-left: 10px; margin-right: 10px; padding: 0;">
-                  <% workout_plan.exercise_plans.each do |ep| -%>
-                    <%  if exercise_plan == ep -%>
+                  <% @workout_plan.exercise_plans.each do |ep| -%>
+                    <%  if @exercise_plan == ep -%>
                       <li class="selected item-1">
                         <div>
                           <%= ep.exercise.name %>
