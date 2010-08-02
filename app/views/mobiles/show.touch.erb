@@ -1,0 +1,25 @@
+<div>
+  <div class="toolbar">
+    <h1>Exercise Plan</h1>
+    <a class="button back" href="#">Back</a>
+    <a class="button slideup" id="infoButton" href="#logout">Logout</a>
+  </div>
+  <div style="background-color: #c0deed; padding: 7px 0px 2px 10px;">
+    <img src="/images/logo.png" title="get2fit" alt="get2fit" border="0" />
+  </div>
+  <% if @strength_plan_sets %>
+    <ul class="edgetoedge">
+      <li class="sep"><%= @exercise_plan.exercise.name %></li>
+      <li class="sep">Sets: Reps&nbsp;<span style="color: #c0deed;">x</span>&nbsp;Weight</li>
+      <% @strength_plan_sets.each do |sps| %>
+        <li>
+          <a href="#">
+            <div><%= sps.reps %>&nbsp;<span style="color: #c0deed;">x</span>&nbsp;<%= sps.weight  %></div>
+          </a>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <div>Start exercise now...</div>
+  <% end %>
+</div>

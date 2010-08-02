@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class MobileControllerTest < ActionController::TestCase
+class MobilesControllerTest < ActionController::TestCase
   # Replace this with your real tests.
   test "the truth" do
     assert true

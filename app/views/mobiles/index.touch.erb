@@ -1,6 +1,6 @@
 <div>
   <div class="toolbar">
-    <h1>Workout Plans</h1>
+    <h1>Workout Plan</h1>
     <a class="button slideup" id="infoButton" href="#logout">Logout</a>
   </div>
   <div style="background-color: #c0deed; padding: 7px 0px 2px 10px;">
@@ -11,9 +11,9 @@
     <li class="sep"><%= @workout_plan.name %></li>
     <% @exercise_plans.each do |ep| %>
       <li>
-        <a href="#">
+        <a href="<%= mobile_path(ep.exercises_workout_plan_ids.first, :format => "touch") %>">
           <div><%= ep.exercise.name %></div>
-          <div style="font-size: 0.75em; color: #555;"><%= ep.notes %></div>
+          <div class="exericse-plan-notes"><%= ep.notes %></div>
         </a>
       </li>
     <% end %>

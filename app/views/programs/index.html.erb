@@ -3,13 +3,14 @@
   $(document).ready(function()
   {
     // create sortable lists
-    $("#workout-block").sortable({ handle: 'img', cursor: 'move' });
-    $("#workout-plan").sortable({ handle: 'img', cursor: 'move' });
-    $("#exercise-plan").sortable({ handle: 'img', cursor: 'move' });
+    $("#workout-block").sortable({ handle: '.drag-1', cursor: 'move' });
+    $("#workout-plan").sortable({ handle: '.drag-1', cursor: 'move' });
+    $("#exercise-plan").sortable({ handle: '.drag-1', cursor: 'move' });
+    $("#exercise-sets").sortable({ handle: '.drag-2', cursor: 'move' });
 
-    // only show sortable images on hover
-    $("#program-workout ul li .menu").hide();
-    $("#program-workout ul li").hover(
+    // only show menu on hover
+    $("#program-workout .menu").hide();
+    $(".item-1").hover(
       function ()
       {
         $(this).find(".menu").show();
@@ -17,6 +18,19 @@
       function ()
       {
         $(this).find(".menu").hide();
+      }
+    );
+
+    // only show 2nd-level sortable menu on hover
+    $("#program-workout .menu-2").hide();
+    $(".exercise-set").hover(
+      function ()
+      {
+        $(this).find(".menu-2").show();
+      },
+      function ()
+      {
+        $(this).find(".menu-2").hide();
       }
     );
 
@@ -68,10 +82,10 @@
                 <% workout_block = (@workout_block.nil?) ? @program.workout_blocks.first : @workout_block  %>
                 <% @program.workout_blocks.each do |wb| -%>
                   <%  if workout_block == wb -%>
-                    <li class="selected">
+                    <li class="selected item-1">
                       <div>
                         <%= wb.name_or_date %>
-                        <span class="menu"><%= link_to image_tag("edit.png", :class => "menu-edit", :title => "Edit"), edit_workout_block_path(wb) %><%= link_to image_tag("delete.png", :class => "delete", :title => "Delete"), workout_block_path(wb), :method => :delete, :confirm => "Delete this workout period?" %><%= image_tag "drag.png", :class => "drag", :title => "Move" %></span>
+                        <span class="menu"><%= link_to image_tag("edit.png", :class => "menu-edit", :title => "Edit"), edit_workout_block_path(wb) %><%= link_to image_tag("delete.png", :class => "delete", :title => "Delete"), workout_block_path(wb), :method => :delete, :confirm => "Delete this workout period?" %><%= image_tag "drag.png", :class => "drag-1", :title => "Move" %></span>
                       </div>
                       <hr style="margin-top: 8px; margin-bottom: 8px;"/>
                       <div style="color: #C0DEED; font-size: 0.8em;">
@@ -79,7 +93,7 @@
                       </div>
                     </li>
                   <% else -%>
-                    <li><%= link_to wb.name_or_date, workout_block_path(wb) %>
+                    <li class="item-1"><%= link_to wb.name_or_date, workout_block_path(wb) %>
                       <span class="menu"><%= link_to image_tag("edit.png", :class => "menu-edit", :title => "Edit"), edit_workout_block_path(wb) %><%= link_to image_tag("delete.png", :class => "delete", :title => "Delete"), workout_block_path(wb), :method => :delete, :confirm => "Delete this workout period?" %><%= image_tag "drag.png", :class => "drag", :title => "Move" %></span>
                     </li>
                   <% end -%>
@@ -119,10 +133,10 @@
                 <ul id="workout-plan" style="list-style-type: none; margin-left: 10px; margin-right: 10px; padding: 0;">
                   <% workout_block.workout_plans.each do |wp| -%>
                     <%  if workout_plan == wp -%>
-                      <li class="selected">
+                      <li class="selected item-1">
                         <div>
                           <%= wp.name %>
-                          <span class="menu"><%= link_to image_tag("edit.png", :class => "menu-edit", :title => "Edit"), edit_workout_plan_path(wp) %><%= link_to image_tag("delete.png", :class => "delete", :title => "Delete"), workout_plan_path(wp), :method => :delete, :confirm => "Delete this workout plan?" %><%= image_tag "drag.png", :class => "drag", :title => "Move" %></span>
+                          <span class="menu"><%= link_to image_tag("edit.png", :class => "menu-edit", :title => "Edit"), edit_workout_plan_path(wp) %><%= link_to image_tag("delete.png", :class => "delete", :title => "Delete"), workout_plan_path(wp), :method => :delete, :confirm => "Delete this workout plan?" %><%= image_tag "drag.png", :class => "drag-1", :title => "Move" %></span>
                         </div>
                         <hr style="margin-top: 8px; margin-bottom: 8px;"/>
                         <div style="color: #C0DEED; font-size: 0.8em;">
@@ -130,8 +144,8 @@
                         </div>
                       </li>
                     <% else -%>
-                      <li><%= link_to wp.name, workout_plan_path(wp) %>
-                        <span class="menu"><%= link_to image_tag("edit.png", :class => "menu-edit", :title => "Edit"), edit_workout_plan_path(wp) %><%= link_to image_tag("delete.png", :class => "delete", :title => "Delete"), workout_plan_path(wp), :method => :delete, :confirm => "Delete this workout plan?" %><%= image_tag "drag.png", :class => "drag", :title => "Move" %></span>
+                      <li class="item-1"><%= link_to wp.name, workout_plan_path(wp) %>
+                        <span class="menu"><%= link_to image_tag("edit.png", :class => "menu-edit", :title => "Edit"), edit_workout_plan_path(wp) %><%= link_to image_tag("delete.png", :class => "delete", :title => "Delete"), workout_plan_path(wp), :method => :delete, :confirm => "Delete this workout plan?" %><%= image_tag "drag.png", :class => "drag-1", :title => "Move" %></span>
                       </li>
                     <% end -%>
                   <% end -%>
@@ -177,26 +191,46 @@
                 <ul id="exercise-plan" style="list-style-type: none; margin-left: 10px; margin-right: 10px; padding: 0;">
                   <% workout_plan.exercise_plans.each do |ep| -%>
                     <%  if exercise_plan == ep -%>
-                      <li class="selected">
+                      <li class="selected item-1">
                         <div>
                           <%= ep.exercise.name %>
                           <% if ep.exercise.kind == Exercise::STRENGTH %>
-                            <span class="menu"><%= link_to image_tag("edit.png", :class => "menu-edit", :title => "Edit"), edit_strength_plan_path(ep) %><%= link_to image_tag("delete.png", :class => "delete", :title => "Delete"), strength_plan_path(ep), :method => :delete, :confirm => "Delete this exercise plan?" %><%= image_tag "drag.png", :class => "drag", :title => "Move" %></span>
+                            <span class="menu"><%= link_to image_tag("edit.png", :class => "menu-edit", :title => "Edit"), edit_strength_plan_path(ep) %><%= link_to image_tag("delete.png", :class => "delete", :title => "Delete"), strength_plan_path(ep), :method => :delete, :confirm => "Delete this exercise plan?" %><%= image_tag "drag.png", :class => "drag-1", :title => "Move" %></span>
                           <% elsif ep.exercise.kind == Exercise::CARDIO %>
-                            <span class="menu"><%= link_to image_tag("edit.png", :class => "menu-edit", :title => "Edit"), edit_cardio_plan_path(ep) %><%= link_to image_tag("delete.png", :class => "delete", :title => "Delete"), cardio_plan_path(ep), :method => :delete, :confirm => "Delete this exercise plan?" %><%= image_tag "drag.png", :class => "drag", :title => "Move" %></span>
+                            <span class="menu"><%= link_to image_tag("edit.png", :class => "menu-edit", :title => "Edit"), edit_cardio_plan_path(ep) %><%= link_to image_tag("delete.png", :class => "delete", :title => "Delete"), cardio_plan_path(ep), :method => :delete, :confirm => "Delete this exercise plan?" %><%= image_tag "drag.png", :class => "drag-1", :title => "Move" %></span>
                           <% end %>
                         </div>
                         <hr style="margin-top: 8px; margin-bottom: 8px;"/>
-                        <div style="color: #C0DEED; font-size: 0.8em;">
-                          <%= ep.exercise.description %>
-                        </div>
+                        <% if ep.exercise.kind == Exercise::STRENGTH %>
+                          <div style="color: #c0deed; font-size: 0.8em;">
+                            <span>Sets (Reps <span style="color: #fff;">x</span> Weight)</span><span style="float: right;"><%= link_to 'Add', new_strength_plan_strength_plan_set_path(ep) %></span>
+                          </div>
+                          <% unless ep.strength_plan_sets.empty? %>
+                            <div id="exercise-sets">
+                            <% ep.strength_plan_sets.each do |sps| %>
+                              <div class="exercise-set">
+                                <span><%= sps.reps %>&nbsp;<span style="color: #ff8c15;">x</span>&nbsp;<%= sps.weight %></span>
+                                <span class="menu-2"><%= link_to image_tag("edit.png", :class => "menu-edit", :title => "Edit"), edit_strength_plan_set_path(sps) %><%= link_to image_tag("delete.png", :class => "delete", :title => "Delete"), strength_plan_set_path(sps), :method => :delete, :confirm => "Delete this set?" %><%= image_tag "drag.png", :class => "drag-2", :title => "Move" %></span>
+                              </div>
+                            <% end %>
+                            </div>
+                          <% else %>
+                            <div style="color: #990000; padding: 5px 10px 10px 10px; font-size: .75em;">
+                              Now that you've added a strength exercise plan, you'll want to <%= link_to 'add', new_strength_plan_strength_plan_set_path(ep.exercises_workout_plan_ids.first) %> some sets to it.
+                            </div>
+                          <% end %>
+                        <% elsif ep.exercise.kind == Exercise::CARDIO %>
+                          <div style="color: #c0deed; font-size: 0.8em;">
+                            <%= ep.exercise.description %>
+                          </div>
+                        <% end %>
                       </li>
                     <% else -%>
-                      <li><%= link_to ep.exercise.name, exercise_plan_path(ep) %>
+                      <li class="item-1"><%= link_to ep.exercise.name, exercise_plan_path(ep.exercises_workout_plan_ids.first) %>
                         <% if ep.exercise.kind == Exercise::STRENGTH %>
-                          <span class="menu"><%= link_to image_tag("edit.png", :class => "menu-edit", :title => "Edit"), edit_strength_plan_path(ep) %><%= link_to image_tag("delete.png", :class => "delete", :title => "Delete"), strength_plan_path(ep), :method => :delete, :confirm => "Delete this exercise plan?" %><%= image_tag "drag.png", :class => "drag", :title => "Move" %></span>
+                          <span class="menu"><%= link_to image_tag("edit.png", :class => "menu-edit", :title => "Edit"), edit_strength_plan_path(ep) %><%= link_to image_tag("delete.png", :class => "delete", :title => "Delete"), strength_plan_path(ep), :method => :delete, :confirm => "Delete this exercise plan?" %><%= image_tag "drag.png", :class => "drag-1", :title => "Move" %></span>
                         <% elsif ep.exercise.kind == Exercise::CARDIO %>
-                          <span class="menu"><%= link_to image_tag("edit.png", :class => "menu-edit", :title => "Edit"), edit_cardio_plan_path(ep) %><%= link_to image_tag("delete.png", :class => "delete", :title => "Delete"), cardio_plan_path(ep), :method => :delete, :confirm => "Delete this exercise plan?" %><%= image_tag "drag.png", :class => "drag", :title => "Move" %></span>
+                          <span class="menu"><%= link_to image_tag("edit.png", :class => "menu-edit", :title => "Edit"), edit_cardio_plan_path(ep) %><%= link_to image_tag("delete.png", :class => "delete", :title => "Delete"), cardio_plan_path(ep), :method => :delete, :confirm => "Delete this exercise plan?" %><%= image_tag "drag.png", :class => "drag-1", :title => "Move" %></span>
                         <% end %>
                       </li>
                     <% end -%>

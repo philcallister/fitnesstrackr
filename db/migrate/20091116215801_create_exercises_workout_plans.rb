@@ -5,6 +5,7 @@ class CreateExercisesWorkoutPlans < ActiveRecord::Migration
       t.references :exercise_plan, :polymorphic => true
       t.references :workout_plan
       t.integer :exercise_workout_plan_position
+      t.boolean    :completed,   :default => false
     end
   end
 

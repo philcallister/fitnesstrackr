@@ -603,8 +603,7 @@ a.button-big:hover, a.button-big:focus {
   background-color: #5599bb;
   color: #fff;
 }
-#program-workout li span.menu {
-  background-color: #e1e9ed;
+#program-workout li span.menu, #program-workout li span.menu-2 {
   border: 1px solid #999;
   padding: 5px;
   float: right;
@@ -615,7 +614,13 @@ a.button-big:hover, a.button-big:focus {
   -webkit-box-shadow: 0px 2px 2px #999;
   box-shadow: 0px 2px 2px #999;
 }
-#program-workout li img.drag {
+#program-workout li span.menu {
+  background-color: #e1e9ed;
+}
+#program-workout li span.menu-2 {
+  background-color: #c0deed;
+}
+#program-workout li img.drag-1,  #program-workout li img.drag-2{
   cursor: move;
 }
 #program-workout li img.delete {
@@ -652,7 +657,7 @@ a.button-big:hover, a.button-big:focus {
   background: #57585a;
   margin: 0 0 0 185px;
   padding: 0;
-  border: 1px solid #aaa;
+  border: 1px solid #444;
   display: none;
   float: left;
   width: 101px;
@@ -677,7 +682,15 @@ a.button-big:hover, a.button-big:focus {
   color: #fff;
   background: #222 url(/images/drop-menu-bg.png) no-repeat 10px center;
 }
-
+#program-workout .exercise-set {
+  font-size: 0.8em;
+  background-color: #e1e9ed;
+  color: #002233;
+  padding: 8px 5px 8px 10px;
+  margin-top: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
 
 /******************************************************************************/
 /* Progress Meter                                                             */

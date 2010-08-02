@@ -12,7 +12,7 @@ class StrengthPlansController < ApplicationController
     @program = @workout_block.program
     respond_to do |format|
       format.html { render :template => 'programs/index' }
-      format.xml  { render :xml => @workout_plan }
+      format.xml  { render :xml => @strength_plan }
    end
   end
 

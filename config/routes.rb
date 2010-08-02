@@ -28,7 +28,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # Strength Plans
   map.resources :strength_plans, :except => [:index, :new] do |strength_plan|
-    #strength_plan.resources :strength_plan_sets, :only => [:index, :new]
+    strength_plan.resources :strength_plan_sets, :only => [:index, :new]
   end
 
   # Single Plans
@@ -39,13 +39,13 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :measurements
   map.resources :cardio_plans, :except => [:index, :new]
   map.resources :single_plan_sets, :except => [:index, :new]
+  map.resources :strength_plan_sets, :except => [:index, :new]
   map.resources :exercises
   map.resources :dashboards, :only => [:index]
   map.resources :analyzes, :only => [:index]
 
-  map.mobile '/mobile',
-              :controller => 'mobile',
-              :action => 'index'
+  # Mobile Access
+  map.resources :mobiles, :only => [:index, :show]
 
   map.root :controller => 'landing',
            :action => 'index'

@@ -34,7 +34,7 @@ class ExercisePlansController < ApplicationController
 
   def find_exercise_plan
     if params[:id]
-      @exercise_plan =  ExercisesWorkoutPlan.find_by_exercise_plan_id(params[:id]).exercise_plan
+      @exercise_plan =  ExercisesWorkoutPlan.find(params[:id]).exercise_plan
     end
   end
 

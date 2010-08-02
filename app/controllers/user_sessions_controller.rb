@@ -14,7 +14,7 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.new(params[:user_session])
     respond_to do |format|
       if @user_session.save
-        format.touch {redirect_back_or_default mobile_url(:format => "touch")}
+        format.touch {redirect_back_or_default mobiles_url(:format => "touch")}
         format.html do
           flash[:notice] = "Sign In successful"
           redirect_back_or_default dashboards_url

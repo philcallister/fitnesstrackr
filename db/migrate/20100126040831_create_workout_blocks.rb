@@ -6,6 +6,7 @@ class CreateWorkoutBlocks < ActiveRecord::Migration
       t.string     :name, :limit => 50, :null => false
       t.string     :description, :limit => 255, :null => false
       t.integer    :workout_block_position
+      t.boolean    :completed,   :default => false
 
       t.timestamps
     end
