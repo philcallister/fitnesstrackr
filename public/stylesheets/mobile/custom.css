@@ -13,5 +13,21 @@
   font-size: 0.75em;
   color: #555;
   text-overflow: ellipsis;
-}
 
+}
+#ajax-dialog {
+  background-color: rgba(17,17,17,0.7);
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.25em;
+  height: 80px;
+  left: 60px;
+  line-height: 80px;
+  margin: 0 auto;
+  position: absolute;
+  text-align: center;
+  top: 136px;
+  width: 200px;
+  display: none;
+  -webkit-border-radius: 10px;
+}

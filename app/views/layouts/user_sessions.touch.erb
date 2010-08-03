@@ -22,8 +22,12 @@
               ]
       });
       
-      // Orientation callback event
       $(function(){
+        // Ajax loading...
+        $('.submit').click(function(e){
+            $('#ajax-dialog').show();
+        });
+        // Orientation callback event
         $('body').bind('turn', function(e, data){
             $('#orient').html('Orientation: ' + data.orientation);
         });
