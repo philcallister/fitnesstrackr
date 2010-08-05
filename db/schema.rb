@@ -13,15 +13,24 @@ ActiveRecord::Schema.define(:version => 20100313044628) do
 
   create_table "cardio_plans", :force => true do |t|
     t.integer  "exercise_id"
-    t.integer  "time",                                      :default => 0
-    t.integer  "level",                                     :default => 0
-    t.decimal  "incline",     :precision => 3, :scale => 1, :default => 0.0
-    t.decimal  "speed",       :precision => 3, :scale => 1, :default => 0.0
-    t.decimal  "distance",    :precision => 5, :scale => 2, :default => 0.0
-    t.integer  "calories",                                  :default => 0
-    t.integer  "min_hr",                                    :default => 0
-    t.integer  "max_hr",                                    :default => 0
+    t.integer  "time",                                          :default => 0
+    t.integer  "level",                                         :default => 0
+    t.decimal  "incline",         :precision => 3, :scale => 1, :default => 0.0
+    t.decimal  "speed",           :precision => 3, :scale => 1, :default => 0.0
+    t.decimal  "distance",        :precision => 5, :scale => 2, :default => 0.0
+    t.integer  "calories",                                      :default => 0
+    t.integer  "min_hr",                                        :default => 0
+    t.integer  "max_hr",                                        :default => 0
     t.string   "notes"
+    t.integer  "actual_time",                                   :default => 0
+    t.integer  "actual_level",                                  :default => 0
+    t.decimal  "actual_incline",  :precision => 3, :scale => 1, :default => 0.0
+    t.decimal  "actual_speed",    :precision => 3, :scale => 1, :default => 0.0
+    t.decimal  "actual_distance", :precision => 5, :scale => 2, :default => 0.0
+    t.integer  "actual_calories",                               :default => 0
+    t.integer  "actual_min_hr",                                 :default => 0
+    t.integer  "actual_max_hr",                                 :default => 0
+    t.string   "actual_notes"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -98,6 +107,8 @@ ActiveRecord::Schema.define(:version => 20100313044628) do
   create_table "single_plan_sets", :force => true do |t|
     t.integer "single_plan_id"
     t.integer "number",         :default => 0
+    t.boolean "completed",      :default => false
+    t.integer "actual_number",  :default => 0
   end
 
   create_table "single_plans", :force => true do |t|
@@ -123,6 +134,9 @@ ActiveRecord::Schema.define(:version => 20100313044628) do
     t.integer "strength_plan_id"
     t.integer "reps",             :default => 0
     t.integer "weight",           :default => 0
+    t.boolean "completed",        :default => false
+    t.integer "actual_reps",      :default => 0
+    t.integer "actual_weight",    :default => 0
   end
 
   create_table "strength_plans", :force => true do |t|

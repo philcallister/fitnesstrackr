@@ -3,6 +3,12 @@ class MobilesController < ApplicationController
   before_filter :require_user
   before_filter :find_exercise_plan, :only => [:show]
 
+  def landing
+    respond_to do |format|
+      format.touch { render :action => "landing" }
+    end
+  end
+
   def index
     # TODO: Select correct workout plan
     program = current_user.programs.first

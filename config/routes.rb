@@ -45,8 +45,16 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :analyzes, :only => [:index]
 
   # Mobile Access
+  map.touch '/mobile.:format',
+            :controller => 'user_sessions',
+            :action => 'new',
+            :format => 'touch'
+  map.mobiles_landing '/mobiles/landing.:format',
+                      :controller => 'mobiles',
+                      :action => 'landing'
   map.resources :mobiles, :only => [:index, :show]
 
+  # The start
   map.root :controller => 'landing',
            :action => 'index'
 

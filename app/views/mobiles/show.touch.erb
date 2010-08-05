@@ -12,11 +12,7 @@
       <li class="sep"><%= @exercise_plan.exercise.name %></li>
       <li class="sep">Sets (Reps&nbsp;<span style="color: #fff;">x</span>&nbsp;Weight)</li>
       <% @strength_plan_sets.each do |sps| %>
-        <li>
-          <a href="#">
-            <div><%= sps.reps %>&nbsp;<span style="color: #3e9ac3;">x</span>&nbsp;<%= sps.weight  %></div>
-          </a>
-        </li>
+        <li><%= link_to "<div>#{sps.reps}&nbsp;<span style='color: #3e9ac3;'>x</span>&nbsp;#{sps.weight}</div>", edit_strength_plan_set_path(sps, :format => 'touch') %></li>
       <% end %>
     </ul>
   <% else %>

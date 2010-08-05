@@ -39,7 +39,10 @@ class StrengthPlanSetsController < ApplicationController
 
   # GET /strength_plan_sets/1/edit
   def edit
-    # edit.html.erb
+    respond_to do |format|
+      format.html # edit.html.erb
+      format.touch # edit.touch.erb
+    end
   end
 
   # POST /strength_plans

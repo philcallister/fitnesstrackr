@@ -11,7 +11,12 @@ class WorkoutPlanTest < ActiveSupport::TestCase
 
   # Associations
   should_belong_to :workout_block
-  should_have_many :workouts
+
+  # TODO: For now, we're removing this association.  Let's circle-back at
+  # to determine if we want to keep completed workout information in this
+  # association
+  #has_many :workouts
+  #should_have_many :workouts
 
   ##############################################################################
   # Adding
@@ -64,6 +69,11 @@ class WorkoutPlanTest < ActiveSupport::TestCase
 
   ##############################################################################
   # Associations -- Workouts
+  # TODO: For now, we're removing this association.  Let's circle-back at
+  # to determine if we want to keep completed workout information in this
+  # association
+  #has_many :workouts
+=begin
   context "An existing workout plan (workouts)" do
     setup do
       @workout_plan = WorkoutPlan.make do |wp|
@@ -77,5 +87,6 @@ class WorkoutPlanTest < ActiveSupport::TestCase
       end
     end
   end
+=end
 
 end

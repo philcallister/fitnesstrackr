@@ -94,7 +94,7 @@
                     </li>
                   <% else -%>
                     <li class="item-1"><%= link_to wb.name_or_date, workout_block_path(wb) %>
-                      <span class="menu"><%= link_to image_tag("edit.png", :class => "menu-edit", :title => "Edit"), edit_workout_block_path(wb) %><%= link_to image_tag("delete.png", :class => "delete", :title => "Delete"), workout_block_path(wb), :method => :delete, :confirm => "Delete this workout period?" %><%= image_tag "drag.png", :class => "drag", :title => "Move" %></span>
+                      <span class="menu"><%= link_to image_tag("edit.png", :class => "menu-edit", :title => "Edit"), edit_workout_block_path(wb) %><%= link_to image_tag("delete.png", :class => "delete", :title => "Delete"), workout_block_path(wb), :method => :delete, :confirm => "Delete this workout period?" %><%= image_tag "drag.png", :class => "drag-1", :title => "Move" %></span>
                     </li>
                   <% end -%>
                 <% end -%>
