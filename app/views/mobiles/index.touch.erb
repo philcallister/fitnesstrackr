@@ -1,4 +1,4 @@
-<div>
+<div id="workout-plan">
   <div class="toolbar">
     <h1>Workout Plan</h1>
     <a class="button back" href="#">Back</a>
@@ -14,7 +14,7 @@
       <li>
         <a href="<%= mobile_path(ep.exercises_workout_plan_ids.first, :format => "touch") %>">
           <div><%= ep.exercise.name %></div>
-          <div class="exericse-plan-notes"><%= ep.notes %></div>
+          <div class="list-notes"><%= ep.notes %></div>
         </a>
       </li>
     <% end %>

@@ -1,16 +1,17 @@
-<% form_for @strength_plan_set, :html => { :class => "form" } do |f| %>
+<% form_for @strength_plan_set, :url =>  {:action => "update", :format => "touch"}, :html => { :class => "form" } do |f| %>
   <div class="toolbar">
     <h1>Exercise Set</h1>
-    <a class="button back" href="#">Back</a>
+    <a class="button cancel" href="#">Cancel</a>
     <a class="button slideup" id="infoButton" href="#logout">Logout</a>
   </div>
   <div style="background-color: #c0deed; padding: 7px 0px 2px 10px;">
     <img src="/images/logo.png" title="get2fit" alt="get2fit" border="0" />
   </div>
   <h1>Completed Set</h1>
+  <%= f.hidden_field :completed, :value => 'true' %>
   <ul class="rounded">
     <li><%= f.text_field :actual_reps, :value => @strength_plan_set.reps, :placeholder => @strength_plan_set.reps %></li>
     <li><%= f.text_field :actual_weight, :value => @strength_plan_set.weight, :placeholder => @strength_plan_set.weight %></li>
   </ul>
-  <a style="margin:0 10px; color:rgba(0,0,0,.9)" href="#" class="submit whiteButton">Done</a>
+  <a style="margin:0 10px; color:rgba(0,0,0,.9)" href="#" class="submit whiteButton replace">Done</a>
 <% end %>

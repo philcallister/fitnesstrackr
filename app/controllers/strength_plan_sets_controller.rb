@@ -77,9 +77,14 @@ class StrengthPlanSetsController < ApplicationController
           flash[:notice] = 'Strength Plan Set was successfully updated.'
           format.html { redirect_to(@strength_plan_set) }
           format.xml  { head :ok }
+          format.touch do
+            exercise_plan = @strength_plan_set.strength_plan.exercises_workout_plans.first
+            redirect_to mobile_path(exercise_plan)
+          end
         else
           format.html { render :action => "edit" }
           format.xml  { render :xml => @strength_plan_set.errors, :status => :unprocessable_entity }
+          format.touch { render :action => "edit" }
         end
       else
         format.html { redirect_to programs_path }
