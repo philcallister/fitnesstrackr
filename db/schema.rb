@@ -132,11 +132,12 @@ ActiveRecord::Schema.define(:version => 20100313044628) do
 
   create_table "strength_plan_sets", :force => true do |t|
     t.integer "strength_plan_id"
-    t.integer "reps",             :default => 0
-    t.integer "weight",           :default => 0
-    t.boolean "completed",        :default => false
-    t.integer "actual_reps",      :default => 0
-    t.integer "actual_weight",    :default => 0
+    t.integer "reps",                       :default => 0
+    t.integer "weight",                     :default => 0
+    t.integer "strength_plan_set_position"
+    t.boolean "completed",                  :default => false
+    t.integer "actual_reps",                :default => 0
+    t.integer "actual_weight",              :default => 0
   end
 
   create_table "strength_plans", :force => true do |t|

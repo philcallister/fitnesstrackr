@@ -5,6 +5,7 @@ class CreateStrengthPlanSets < ActiveRecord::Migration
       t.references :strength_plan
       t.integer :reps, :default => 0
       t.integer :weight, :default => 0
+      t.integer :strength_plan_set_position
       t.boolean :completed,   :default => false
 
       # Parameter for actual sets
