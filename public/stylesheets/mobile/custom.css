@@ -1,3 +1,13 @@
+ul li.complete {
+    background-image: url(img/complete.png), -webkit-gradient(linear, 0% 0%, 0% 100%, from(#4c4d4e), to(#404142));
+    background-position: 97% 50%;
+    background-repeat: no-repeat;
+}
+ul li.complete a.active {
+    background-image: url(img/complete.png);
+    background-position: 97% 50%;
+    background-repeat: no-repeat;
+}
 .info-confirm {
   color: #eee;
   font-size: 1.25em;
@@ -10,8 +20,8 @@
   -webkit-border-radius: 10px;
 }
 .list-notes {
-  font-size: 0.75em;
-  color: #555;
+  font-size: 0.65em;
+  color: #c0deed;
   text-overflow: ellipsis;
 
 }
