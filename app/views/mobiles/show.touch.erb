@@ -7,19 +7,19 @@
   <div style="background-color: #c0deed; padding: 7px 0px 2px 10px;">
     <img src="/images/logo.png" title="get2fit" alt="get2fit" border="0" />
   </div>
+  <h2><%= @exercise_plan.exercise.name %></h2>
   <% if @strength_plan_sets %>
     <ul class="edgetoedge">
-      <li class="sep"><%= @exercise_plan.exercise.name %></li>
-      <li class="sep">Sets (Reps&nbsp;<span style="color: #fff;">x</span>&nbsp;Weight)</li>
       <% @strength_plan_sets.each do |sps| %>
-        <li>
         <% if sps.completed == true -%>
+        <li class="complete">
           <%= image_tag "/images/mobile/complete.png", :border => '0', :style => "padding-top: 8px; vertical-align: middle; float: right;" %>
           <a href="<%= edit_strength_plan_set_path(sps, :format => 'touch') %>">
             <div><%= sps.reps %>&nbsp;<span style='color: #3e9ac3;'>x</span>&nbsp;<%= sps.weight %></div>
             <div class="list-notes">Actual: <%= sps.actual_reps %>&nbsp;x&nbsp;<%= sps.actual_weight %></div>
           </a>
         <% else -%>
+        <li>
           <a href="<%= edit_strength_plan_set_path(sps, :format => 'touch') %>">
             <div><%= sps.reps %>&nbsp;<span style='color: #3e9ac3;'>x</span>&nbsp;<%= sps.weight %></div>
             <div class="list-notes">Not Completed</div>
@@ -28,6 +28,15 @@
         </li>
       <% end %>
     </ul>
+  <h2>Exercise Status</h2>
+  <ul class="individual">
+    <li>
+      <%= link_to "Finished", exercise_plan_path(@exercise_plan, :format => "touch", "exercise_plan[completed]" => "true"), :method => "put" %>
+    </li>
+    <li>
+      <%= link_to "Reset", exercise_plan_path(@exercise_plan, :format => "touch", "exercise_plan[completed]" => "false"), :method => "put" %>
+    </li>
+  </ul>
   <% else %>
     <div>Start exercise now...</div>
   <% end %>
