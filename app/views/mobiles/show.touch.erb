@@ -9,17 +9,16 @@
   </div>
   <h2><%= @exercise_plan.exercise.name %></h2>
   <% if @strength_plan_sets %>
-    <ul class="edgetoedge">
+    <ul class="rounded">
       <% @strength_plan_sets.each do |sps| %>
         <% if sps.completed == true -%>
         <li class="complete">
-          <%= image_tag "/images/mobile/complete.png", :border => '0', :style => "padding-top: 8px; vertical-align: middle; float: right;" %>
           <a href="<%= edit_strength_plan_set_path(sps, :format => 'touch') %>">
             <div><%= sps.reps %>&nbsp;<span style='color: #3e9ac3;'>x</span>&nbsp;<%= sps.weight %></div>
             <div class="list-notes">Actual: <%= sps.actual_reps %>&nbsp;x&nbsp;<%= sps.actual_weight %></div>
           </a>
         <% else -%>
-        <li>
+        <li class="arrow">
           <a href="<%= edit_strength_plan_set_path(sps, :format => 'touch') %>">
             <div><%= sps.reps %>&nbsp;<span style='color: #3e9ac3;'>x</span>&nbsp;<%= sps.weight %></div>
             <div class="list-notes">Not Completed</div>
