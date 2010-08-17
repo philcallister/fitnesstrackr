@@ -31,7 +31,7 @@ class UserSessionsController < ApplicationController
     current_user_session.destroy
     respond_to do |format|
       format.touch {redirect_back_or_default new_user_session_url(:format => "touch")}
-      format.android {render :action => "new"}
+      format.android {render :nothing => true}
       format.html do
         flash[:notice] = "Sign Out successful"
         redirect_back_or_default new_user_session_url
