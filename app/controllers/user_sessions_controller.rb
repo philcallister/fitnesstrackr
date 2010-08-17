@@ -6,6 +6,7 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.new
     respond_to do |format|
       format.touch { render :action => "new" }
+      format.android { render :action => "new" }
       format.html { render :action => "new" }
     end
   end
