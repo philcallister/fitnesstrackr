@@ -4,7 +4,7 @@
       <h1>Login</h1>
     </div>
     <div style="background-color: #c0deed; padding: 7px 0px 2px 10px;">
-      <img src="file:///android_asset/www/logo.png" title="get2fit" alt="get2fit" border="0" />
+      <img src="logo.png" title="get2fit" alt="get2fit" border="0" />
     </div>
     <ul class="rounded">
       <li><%= f.text_field :login, :value => "", :placeholder => "User" %></li>
@@ -19,7 +19,7 @@
       <a href="#" class="back">Back</a>
     </div>
     <div style="background-color: #c0deed; padding: 7px 0px 2px 10px;">
-      <img src="file:///android_asset/www/images/logo.png" title="get2fit" alt="get2fit" border="0" />
+      <img src="logo.png" title="get2fit" alt="get2fit" border="0" />
     </div>
     <div class="info-confirm">Are you sure?</div>
     <%= link_to 'Logout', user_session_path(:format => "touch"), :method => :delete, :style => "margin:0 10px; color:rgba(0,0,0,.9)", :class => "submit whiteButton" %>
