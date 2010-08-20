@@ -3,9 +3,7 @@
     <div class="toolbar">
       <h1>Login</h1>
     </div>
-    <div style="background-color: #c0deed; padding: 7px 0px 2px 10px;">
-      <img src="/images/logo.png" title="get2fit" alt="get2fit" border="0" />
-    </div>
+    <%= render :partial => "mobiles/logo" %>
     <ul class="rounded">
       <li><%= f.text_field :login, :value => "", :placeholder => "User" %></li>
       <li><%= f.password_field :password, :value => "", :placeholder => "Password" %></li>
@@ -13,15 +11,13 @@
     <a style="margin:0 10px; color:rgba(0,0,0,.9)" href="#" class="submit whiteButton">Login</a>
     <div id="ajax-dialog">Loading...</div>
   <% end %>
-  <div id="logout" class="selectable">
+  <% form_for @user_session, :url => user_session_path, :html => { :method => :delete, :class => "form", :id => 'logout' } do %>
     <div class="toolbar">
       <h1>Logout</h1>
       <a href="#" class="back">Back</a>
     </div>
-    <div style="background-color: #c0deed; padding: 7px 0px 2px 10px;">
-      <img src="/images/logo.png" title="get2fit" alt="get2fit" border="0" />
-    </div>
+    <%= render :partial => "mobiles/logo" %>
     <div class="info-confirm">Are you sure?</div>
-    <%= link_to 'Logout', user_session_path(:format => "android"), :method => :delete, :style => "margin:0 10px; color:rgba(0,0,0,.9)", :class => "submit whiteButton" %>
-  </div>
+    <a style="margin:0 10px; color:rgba(0,0,0,.9)" href="#" class="submit whiteButton">Logout</a>
+  <% end %>
 <% end %>

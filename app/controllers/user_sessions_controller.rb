@@ -16,12 +16,14 @@ class UserSessionsController < ApplicationController
     respond_to do |format|
       if @user_session.save
         format.touch {redirect_back_or_default mobiles_landing_url(:format => "touch")}
+        format.android {redirect_back_or_default mobiles_landing_url(:format => "android")}
         format.html do
           flash[:notice] = "Sign In successful"
           redirect_back_or_default dashboards_url
         end
       else
         format.touch { render :action => "new" }
+        format.android { render :action => "new" }
         format.html { render :action => "new" }
       end
     end
@@ -30,14 +32,13 @@ class UserSessionsController < ApplicationController
   def destroy
     current_user_session.destroy
     respond_to do |format|
-      #format.touch {redirect_back_or_default new_user_session_url(:format => "touch")}
       format.touch do
         @user_session = UserSession.new
         render :template => "user_sessions/destroy", :format => "touch", :layout => false
       end
       format.android do
         @user_session = UserSession.new
-        render :action => "new", :format => "android"
+        render :template => "user_sessions/destroy", :format => "touch", :layout => false
       end
       format.html do
         flash[:notice] = "Sign Out successful"
