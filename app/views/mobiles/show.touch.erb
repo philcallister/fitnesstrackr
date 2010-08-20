@@ -4,9 +4,7 @@
     <a class="button back" href="#workout-plan">Back</a>
     <a class="button slideup" id="infoButton" href="#logout">Logout</a>
   </div>
-  <div style="background-color: #c0deed; padding: 7px 0px 2px 10px;">
-    <img src="/images/logo.png" title="get2fit" alt="get2fit" border="0" />
-  </div>
+  <%= render :partial => "mobiles/logo" %>
   <h2><%= @exercise_plan.exercise.name %></h2>
   <% if @strength_plan_sets %>
     <ul class="rounded">

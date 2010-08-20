@@ -30,7 +30,11 @@ class UserSessionsController < ApplicationController
   def destroy
     current_user_session.destroy
     respond_to do |format|
-      format.touch {redirect_back_or_default new_user_session_url(:format => "touch")}
+      #format.touch {redirect_back_or_default new_user_session_url(:format => "touch")}
+      format.touch do
+        @user_session = UserSession.new
+        render :template => "user_sessions/destroy", :format => "touch", :layout => false
+      end
       format.android do
         @user_session = UserSession.new
         render :action => "new", :format => "android"

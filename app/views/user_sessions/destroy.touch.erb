@@ -1,0 +1,12 @@
+<% form_for @user_session, :url => user_session_path, :html => { :class => "form" } do |f| %>
+  <div class="toolbar">
+    <h1>Login</h1>
+  </div>
+  <%= render :partial => "mobiles/logo" %>
+  <ul class="rounded">
+    <li><%= f.text_field :login, :value => "", :placeholder => "User" %></li>
+    <li><%= f.password_field :password, :value => "", :placeholder => "Password" %></li>
+  </ul>
+  <a style="margin:0 10px; color:rgba(0,0,0,.9)" href="#" class="submit whiteButton">Login</a>
+  <div id="ajax-dialog">Loading...</div>
+<% end %>

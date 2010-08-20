@@ -3,9 +3,7 @@
     <h1>Menu</h1>
     <a class="button slideup" id="infoButton" href="#logout">Logout</a>
   </div>
-  <div style="background-color: #c0deed; padding: 7px 0px 2px 10px;">
-    <img src="/images/logo.png" title="get2fit" alt="get2fit" border="0" />
-  </div>
+  <%= render :partial => "mobiles/logo" %>
   <ul class="rounded">
     <li class="forward">
       <a href="<%= mobiles_path(:format => "touch") %>">Start Workout</a>
