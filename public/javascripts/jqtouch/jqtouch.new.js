@@ -342,9 +342,21 @@
 
             // Make sure we are scrolled up to hide location bar
             scrollTo(0, 0);
+
+            // PDC: Flicker bug when going "back" pages
+            if (animation.name === "slide") {
+                var toStart = 'translateX(' + (backwards ? '-' : '') + window.innerWidth + 'px)';
+                fromPage.css('webkitTransform', toStart);
+            }
+
             
             // Define callback to run after animation completes
             var callback = function(event){
+
+                // PDC: Flicker bug when going "back" pages
+                if (animation.name === "slide") {
+                  fromPage.css('webkitTransform', '');
+                }
 
                 if (animation)
                 {
@@ -408,7 +420,9 @@
                 if (!$node.attr('id')) {
                     $node.attr('id', 'page-' + (++newPageCount));
                 }
+                // PDC: Remove any pages with this id
                 $('#'+$node.attr('id')).remove();
+                
                 $node.appendTo($body);
                 if ($node.hasClass('current') || !targetPage ) {
                     targetPage = $node;
