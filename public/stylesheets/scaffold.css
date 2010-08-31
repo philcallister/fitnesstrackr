@@ -603,6 +603,9 @@ a.button-big:hover, a.button-big:focus {
   background-color: #5599bb;
   color: #fff;
 }
+#program-workout li.item-pt {
+  background-color: #aed6a0;
+}
 #program-workout li span.menu, #program-workout li span.menu-2 {
   border: 1px solid #999;
   padding: 5px;
