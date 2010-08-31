@@ -131,8 +131,9 @@
                 <hr />
                 <ul id="workout-plan" style="list-style-type: none; margin-left: 10px; margin-right: 10px; padding: 0;">
                   <% @workout_block.workout_plans.each do |wp| -%>
+                    <% pt = (wp.has_pt == true) ? "item-pt" : "" %>
                     <%  if @workout_plan == wp -%>
-                      <li class="selected item-1">
+                      <li class="selected item-1 <%= pt %>">
                         <div>
                           <%= wp.name %>
                           <span class="menu"><%= link_to image_tag("edit.png", :class => "menu-edit", :title => "Edit"), edit_workout_plan_path(wp) %><%= link_to image_tag("delete.png", :class => "delete", :title => "Delete"), workout_plan_path(wp), :method => :delete, :confirm => "Delete this workout plan?" %><%= image_tag "drag.png", :class => "drag-1", :title => "Move" %></span>
@@ -143,7 +144,7 @@
                         </div>
                       </li>
                     <% else -%>
-                      <li class="item-1"><%= link_to wp.name, workout_plan_path(wp) %>
+                      <li class="item-1 <%= pt %>"><%= link_to wp.name, workout_plan_path(wp) %>
                         <span class="menu"><%= link_to image_tag("edit.png", :class => "menu-edit", :title => "Edit"), edit_workout_plan_path(wp) %><%= link_to image_tag("delete.png", :class => "delete", :title => "Delete"), workout_plan_path(wp), :method => :delete, :confirm => "Delete this workout plan?" %><%= image_tag "drag.png", :class => "drag-1", :title => "Move" %></span>
                       </li>
                     <% end -%>
