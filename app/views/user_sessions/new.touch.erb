@@ -1,5 +1,5 @@
 <% content_for :content do -%>
-  <% form_for @user_session, :url => user_session_path, :html => { :class => "form" } do |f| %>
+  <% form_for @user_session, :url => user_session_path, :html => { :method => :create, :class => "form" } do |f| %>
     <div class="toolbar">
       <h1>Login</h1>
     </div>

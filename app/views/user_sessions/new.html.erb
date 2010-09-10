@@ -3,7 +3,7 @@
     <div class="prefix_2 grid_8 suffix_2" style="padding-bottom: 15px;">
       <h1>Sign In</h1>
 
-      <% form_for @user_session, :url => user_session_path do |f| %>
+      <% form_for @user_session, :url => user_session_path(), :html => { :method => :create } do |f| %>
         <div class="account-form">
           <%= f.error_messages %>
           <%= f.label :login %><br />

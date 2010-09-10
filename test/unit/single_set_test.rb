@@ -1,3 +1,12 @@
+# == Schema Information
+#
+# Table name: single_sets
+#
+#  id        :integer(4)      not null, primary key
+#  single_id :integer(4)
+#  number    :integer(4)      default(0)
+#
+
 require 'test_helper'
 
 class SingleSetTest < ActiveSupport::TestCase

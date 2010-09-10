@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: programs
+#
+#  id          :integer(4)      not null, primary key
+#  user_id     :integer(4)
+#  name        :string(50)      not null
+#  description :string(500)     not null
+#  start_date  :date
+#  completed   :boolean(1)
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 require 'test_helper'
 
 class ProgramTest < ActiveSupport::TestCase

@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: workouts
+#
+#  id              :integer(4)      not null, primary key
+#  workout_plan_id :integer(4)
+#  notes           :string(255)
+#  created_at      :datetime
+#  updated_at      :datetime
+#
+
 class Workout < ActiveRecord::Base
 
   belongs_to :workout_plan

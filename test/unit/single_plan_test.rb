@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: single_plans
+#
+#  id          :integer(4)      not null, primary key
+#  exercise_id :integer(4)
+#  notes       :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 require 'test_helper'
 
 class SinglePlanTest < ActiveSupport::TestCase

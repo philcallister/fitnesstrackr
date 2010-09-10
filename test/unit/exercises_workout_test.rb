@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: exercises_workouts
+#
+#  id                        :integer(4)      not null, primary key
+#  exercise_id               :integer(4)
+#  exercise_type             :string(255)
+#  workout_id                :integer(4)
+#  exercise_workout_position :integer(4)
+#
+
 require 'test_helper'
 
 class ExercisesWorkoutTest < ActiveSupport::TestCase

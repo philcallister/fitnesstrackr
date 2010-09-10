@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: single_plans
+#
+#  id          :integer(4)      not null, primary key
+#  exercise_id :integer(4)
+#  notes       :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 single_plan_1_1:
   exercise: exercise_single_1
   notes: need some single_plan_1_1

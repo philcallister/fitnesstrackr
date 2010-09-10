@@ -1,9 +1,9 @@
 class UserSessionsController < ApplicationController
-  before_filter :require_no_user, :only => [:new, :create]
+  #before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :only => :destroy
 
   def new
-    @user_session = UserSession.new
+    @user_session = (current_user_session) ? current_user_session : UserSession.new
     respond_to do |format|
       format.touch { render :action => "new" }
       format.android { render :action => "new" }
@@ -12,6 +12,7 @@ class UserSessionsController < ApplicationController
   end
 
   def create
+    current_user_session.destroy if current_user_session
     @user_session = UserSession.new(params[:user_session])
     respond_to do |format|
       if @user_session.save

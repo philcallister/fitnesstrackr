@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: workout_plans
+#
+#  id                    :integer(4)      not null, primary key
+#  workout_block_id      :integer(4)
+#  name                  :string(50)      not null
+#  description           :string(255)     not null
+#  workout_plan_position :integer(4)
+#  has_pt                :boolean(1)      not null
+#  completed             :boolean(1)
+#  created_at            :datetime
+#  updated_at            :datetime
+#
+
 class WorkoutPlan < ActiveRecord::Base
 
   # Validations

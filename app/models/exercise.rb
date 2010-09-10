@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: exercises
+#
+#  id          :integer(4)      not null, primary key
+#  name        :string(50)      not null
+#  description :string(255)     not null
+#  kind        :integer(4)
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 class Exercise < ActiveRecord::Base
 
   CARDIO = 0
